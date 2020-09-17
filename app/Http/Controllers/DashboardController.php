@@ -6,14 +6,20 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    // Default pageConfig
+    protected $pageConfigs = [
+        'navbarType' => 'sticky',
+        'footerType' => 'static',
+        'horizontalMenuType' => 'floating',
+        'theme' => 'dark',
+        'navbarColor' => 'bg-primary'
+    ];
+
     // Dashboard - Analytics
     public function dashboardAnalytics(){
-        $pageConfigs = [
-            'pageHeader' => false
-        ];
 
         return view('/pages/dashboard-analytics', [
-            'pageConfigs' => $pageConfigs
+            'pageConfigs' => $this->pageConfigs
         ]);
     }
 

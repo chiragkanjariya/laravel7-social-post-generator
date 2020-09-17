@@ -34,23 +34,6 @@
                     "i18n": "nav.sk_layout_fixed"
                 }
             ]
-        },
-        {
-            "url": "",
-            "navheader": "Support",
-            "icon": ""
-        },
-        {
-            "url": "https://pixinvent.com/demo/vuexy-html-bootstrap-admin-template/documentation/documentation-laravel.html",
-            "name": "Documentation",
-            "icon": "feather icon-folder",
-            "i18n": "nav.documentation"
-        },
-        {
-            "url": "https://pixinvent.ticksy.com/",
-            "name": "Raise Support",
-            "icon": "feather icon-life-buoy",
-            "i18n": "nav.raise_support"
         }
     ]
 }
