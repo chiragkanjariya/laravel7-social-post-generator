@@ -14,7 +14,7 @@
             "icon": "feather icon-zap",
             "submenu": [
                 {
-                    "url": "sk-layout-2-columns",
+                    "url": "dashboard-analytics",
                     "name": "profile.title"
                 }
             ]
