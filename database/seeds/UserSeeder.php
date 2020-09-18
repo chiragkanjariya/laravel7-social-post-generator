@@ -17,6 +17,6 @@ class UserSeeder extends Seeder
             'password' => 'password',
         ]);
 
-        $user->assignRole('Admin');
+        $user->givePermissionTo('Admin');
     }
 }

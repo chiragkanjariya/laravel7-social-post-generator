@@ -13,9 +13,9 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permission = Permission::create(['name' => 'Admin']);
-        $permission->givePermissionTo('role_manage');
+        $permission->assignRole('role_manage');
 
         $permission = Permission::create(['name' => 'User']);
-        $permission->givePermissionTo('role_guest');
+        $permission->assignRole('role_guest');
     }
 }
