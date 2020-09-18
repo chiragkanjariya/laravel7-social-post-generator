@@ -10,28 +10,12 @@
         },
         {
             "url": "",
-            "name": "Starter kit",
+            "name": "profile.title",
             "icon": "feather icon-zap",
             "submenu": [
                 {
                     "url": "sk-layout-2-columns",
-                    "name": "2 Columns",
-                    "i18n": "nav.sk_layout_2_columns"
-                },
-                {
-                    "url": "sk-layout-fixed-navbar",
-                    "name": "Fixed Navbar",
-                    "i18n": "nav.sk_layout_fixed_navbar"
-                },
-                {
-                    "url": "sk-layout-floating-navbar",
-                    "name": "Floating Navbar",
-                    "i18n": "nav.sk_layout_floating_navbar"
-                },
-                {
-                    "url": "sk-layout-fixed",
-                    "name": "Fixed Layout",
-                    "i18n": "nav.sk_layout_fixed"
+                    "name": "profile.title"
                 }
             ]
         }
