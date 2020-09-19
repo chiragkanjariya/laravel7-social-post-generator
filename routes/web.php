@@ -14,10 +14,13 @@
 
 
 // Route url
-Route::get('/', 'DashboardController@dashboardAnalytics');
+Route::middleware(['auth'])->group(function () {
+  Route::get('/', 'DashboardController@dashboardAnalytics');
 
-// Route Dashboards
-Route::get('/dashboard-analytics', 'DashboardController@dashboardAnalytics');
+  // Route Dashboards
+  Route::get('/dashboard-analytics', 'DashboardController@dashboardAnalytics');
+});
+
 
 Auth::routes();
 
