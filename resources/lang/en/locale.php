@@ -68,6 +68,10 @@ return [
         "retypePassword" => "Retype New Password"
 
     ],
+    "scrap-image" => [
+        "title" => "Scrapping Images",
+        "search" => "Search"
+    ],
     "error" => [
         "lockTitle" => "Your account is locked!",
         "lockDescription" => "Your account is locked by admin now, contact to admin.",
