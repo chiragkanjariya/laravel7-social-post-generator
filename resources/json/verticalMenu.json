@@ -18,6 +18,12 @@
                     "name": "profile.title"
                 }
             ]
+        },
+        {
+          "url": "scrap-image",
+          "name": "scrap-image.title",
+          "slug": "scrap-image",
+          "icon": "feather icon-home"
         }
     ]
 }
