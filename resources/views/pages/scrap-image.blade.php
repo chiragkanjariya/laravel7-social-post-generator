@@ -33,14 +33,15 @@
               </div>
             </div>
             <div class="col-sm-6 col-12">
-              <button type="button" id="search" class="btn bg-gradient-primary mr-1 mb-1" style="height: 44px;">Search</button>
+              <button type="button" id="search" class="btn bg-gradient-primary mr-1 mb-1" style="height: 44px;">
+                Search
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row card-image">
-
     </div>
   </section>
 @endsection

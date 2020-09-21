@@ -7,6 +7,10 @@
   })
 
   $("#search").click(function () {
+    $("#search").html('');
+    $("#search").prop("disabled", true);
+    $("#hashtag").prop("disabled", true);
+    $("#search").html('<span class="spinner-border text-white" role="status" aria-hidden="true" style="position: absolute; top: 10px; left: 15px;"></span>');
     $('.card-image').html('');
     $.ajax({
       method: "POST",
@@ -30,6 +34,9 @@
             '  </div>\n' +
             '</div>'
           $(".card-image").append(cards);
+          $("#search").html('Search');
+          $("#search").removeAttr("disabled");
+          $("#hashtag").removeAttr("disabled");
         }
       },
       error: function (result) {
