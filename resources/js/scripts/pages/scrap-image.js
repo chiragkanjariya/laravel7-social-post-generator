@@ -40,7 +40,9 @@
         }
       },
       error: function (result) {
-        console.error(result);
+        $("#search").html('Search');
+        $("#search").removeAttr("disabled");
+        $("#hashtag").removeAttr("disabled");
       }
     });
   })
