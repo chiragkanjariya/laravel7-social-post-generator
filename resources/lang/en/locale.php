@@ -58,15 +58,10 @@ return [
         "title" => "Profile",
         "save" => "Save changes",
         "edit" => "Edit Profile",
-        "general" => "General",
-        "changePassword" => "Change Password",
-        "upload" => "Upload new photo",
-        "allow" => "Allowed JPG, GIF or PNG. Max size of 800kB",
-        "updateSuccess" => "The profile is saved successfully.",
-        "oldPassword" => "Old Password",
-        "newPassword" => "New Password",
-        "retypePassword" => "Retype New Password"
-
+        "create" => "Create Profile",
+        "niche" => "Niche",
+        "hashtag" => "Hashtag",
+        "favourColor" => "Favour Color"
     ],
     "scrap-image" => [
         "title" => "Scrapping Images",
