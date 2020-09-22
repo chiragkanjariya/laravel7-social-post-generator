@@ -12,10 +12,9 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        $permission = Permission::create(['name' => 'Admin']);
-        $permission->assignRole('role_manage');
-
-        $permission = Permission::create(['name' => 'User']);
-        $permission->assignRole('role_guest');
+        $permission = Permission::create(['name' => 'administrator-permission']);
+        $permission = Permission::create(['name' => 'beginner-permission']);
+        $permission = Permission::create(['name' => 'intermediate-permission']);
+        $permission = Permission::create(['name' => 'advanced-permission']);
     }
 }

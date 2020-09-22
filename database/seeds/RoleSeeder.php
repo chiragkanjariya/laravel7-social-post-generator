@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleSeeder extends Seeder
 {
@@ -12,13 +13,13 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        $roles = [
-            'role_manage',
-            'role_guest',
-        ];
- 
-        foreach ($roles as $role) {
-            Role::create(['name' => $role]);
-        }
+      $role = Role::create(['name' => 'Administrator']);
+      $role->syncPermissions(['administrator-permission']);
+      $role = Role::create(['name' => 'Beginner']);
+      $role->syncPermissions(['beginner-permission']);
+      $role = Role::create(['name' => 'Intermediate']);
+      $role->syncPermissions(['intermediate-permission']);
+      $role = Role::create(['name' => 'Advanced']);
+      $role->syncPermissions(['advanced-permission']);
     }
 }
