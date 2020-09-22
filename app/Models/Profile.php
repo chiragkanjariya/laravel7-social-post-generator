@@ -3,6 +3,8 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Niche;
 
 class Profile extends Model
 {
@@ -42,5 +44,15 @@ class Profile extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    /**
+     * The niche who has these have profiles.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function niche(): BelongsTo
+    {
+        return $this->belongsTo(Niche::class, 'niche_id', 'id');
     }
 }
