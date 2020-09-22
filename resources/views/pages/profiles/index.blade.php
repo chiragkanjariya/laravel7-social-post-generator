@@ -5,6 +5,7 @@
 @section('vendor-style')
 	<link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/datatables.min.css')) }}">
 	<link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
+	<link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
 @endsection
 @section('page-style')
 
@@ -44,13 +45,33 @@
 						<tbody>
 							@foreach($profiles as $key => $profile)
 							<tr>
-								<td>{{ $key }}</td>
-								<td>{{ $profile->niche }}</td>
-								<td>{{ $profile->hashtag }}</td>
-								<td>{{ $profile->favour_color }}</td>
+								<td>{{ $profile->id }}</td>
+								<td>{{ $profile->niche->name }}</td>
+								<td>
+									@php
+										$hashtags = explode(',', $profile->hashtag);
+									@endphp
+									@foreach ($hashtags as $hashtag)
+										<span class="badge badge-primary">{{ $hashtag }}</span>
+									@endforeach
+								</td>
+								<td>
+									<input type="color" value="{{ $profile->favour_color }}" disabled/>
+								</td>
 								<td>{{ $profile->created_at }}</td>
 								<td>{{ $profile->updated_at }}</td>
-								<td></td>
+								<td>
+									<form id="deleteForm{{ $profile->id }}" action="{{ route('profiles.destroy', $profile->id) }}" method="POST" style="display: none;">
+										@csrf
+										@method('DELETE')
+									</form>
+									<a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-icon rounded-circle btn-flat-success waves-effect waves-light">
+										<i class="feather icon-edit"></i>
+									</a>
+									<a href="javascript:deleteProfile({{ $profile->id }})" class="btn btn-icon rounded-circle btn-flat-danger waves-effect waves-light">
+										<i class="feather icon-trash-2"></i>
+									</a>
+								</td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -64,6 +85,8 @@
 @section('vendor-script')
 	<script src="{{ asset(mix('vendors/js/tables/datatable/datatables.min.js')) }}"></script>
 	<script src="{{ asset(mix('vendors/js/tables/datatable/datatables.bootstrap4.min.js')) }}"></script>
+	<script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
+	<script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
 @endsection
 @section('page-script')
   <script src="{{ asset(mix('js/scripts/pages/profiles/index.js')) }}"></script>
