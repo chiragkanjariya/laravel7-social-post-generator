@@ -90,12 +90,22 @@ class ProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Profile  $profile
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Profile $profile)
     {
-        //
+        $breadcrumbs = [
+            ['link' => "/profiles", 'name' => trans('locale.profile.title')],
+            ['name'=>trans('locale.profile.edit')]
+        ];
+
+        return view('/pages/profiles/edit', [
+            'pageConfigs' => $this->pageConfigs,
+            'breadcrumbs' => $breadcrumbs,
+            'profile' => $profile
+        ]);
     }
 
     /**
