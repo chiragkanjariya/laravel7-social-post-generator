@@ -23,6 +23,7 @@ return [
     "Logout" => "Logout",
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
+    "details" => "Details",
     "role" => [
         "title" => "Roles",
         "create" => "Create Role",
@@ -58,12 +59,17 @@ return [
     ],
     "profile" => [
         "title" => "Profile",
-        "save" => "Save changes",
+        "save" => "Save Profile",
+        "update" => "Update Profile",
         "edit" => "Edit Profile",
         "create" => "Create Profile",
         "niche" => "Niche",
         "hashtag" => "Hashtag",
-        "favourColor" => "Favour Color"
+        "addTag" => "Add 3 more tags...",
+        "favourColor" => "Favour Color",
+        "message" => [
+            "delete" => "The profile is deleted successfully."
+        ]
     ],
     "scrap-image" => [
         "title" => "Scrapping Images",
