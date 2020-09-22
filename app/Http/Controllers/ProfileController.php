@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use App\Models\Niche;
 use App\Models\Profile;
+use App\Rules\TagValidate;
 use Illuminate\Http\RedirectResponse;
 
 class ProfileController extends Controller
@@ -67,6 +68,11 @@ class ProfileController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        $validator = $request->validate([
+            'niche' => 'required',
+            'hashtag' => ['required', new TagValidate],
+            'favour_color' => 'required'
+        ]);
         Auth()->user()->profiles()->create([
             'niche_id' => $request->niche,
             'hashtag' => $request->hashtag,

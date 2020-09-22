@@ -48,7 +48,7 @@
 				<label for="hashtag">@lang('locale.profile.hashtag')*</label>
 				<br>
 				<input name="hashtag" id="hashtag" type="text" value="{{ old('hashtag') }}" data-role="tagsinput" placeholder="{{ trans('locale.profile.addTag') }}" />
-				<span class="danger">{{ $errors->first('surname') }}</span>
+				<span class="danger">{{ $errors->first('hashtag') }}</span>
 			</fieldset>
 
 			<fieldset class="form-group">
