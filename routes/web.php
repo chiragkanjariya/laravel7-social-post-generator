@@ -14,13 +14,18 @@
 
 
 // Route url
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'isActivated'])->group(function () {
+
+  Route::resource('roles','RoleController');
+  Route::resource('users','UserController');
+
   Route::get('/', 'DashboardController@dashboardAnalytics');
 
   // Route Dashboards
   Route::get('/dashboard-analytics', 'DashboardController@dashboardAnalytics');
   Route::get('/scrap-image', 'ScrapImageController@index');
   Route::post('/scrap-image', 'ScrapImageController@getImages');
+
 });
 
 

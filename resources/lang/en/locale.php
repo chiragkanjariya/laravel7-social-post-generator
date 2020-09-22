@@ -29,6 +29,7 @@ return [
         "edit" => "Edit Role",
         "update" => "Update Role",
         "save" => "Save Role",
+        "delete" => "Delete Role",
         "list" => "Role List",
         "name" => "Name",
         "details" => "Role Details",
@@ -45,9 +46,22 @@ return [
         "edit" => "Edit User",
         "update" => "Update User",
         "save" => "Save User",
+        "delete" => "Delete User",
         "list" => "User List",
         "details" => "User Details",
         "lock" => "Lock",
+        "status" => [
+            "title" => "Status",
+            "activate" => "Activate",
+            "deactivate" => "Deactivate"
+        ],
+        "field" => [
+            "name" => "Name",
+            "email" => "Email",
+            "role" => "Role",
+            "password" => "Password",
+            "confirm-password" => "Confirm Password"
+        ],
         "message" => [
             "save" => "The user is added successfully.",
             "update" => "The user is updated successfully.",
