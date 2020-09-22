@@ -50,6 +50,11 @@ return [
         "list" => "User List",
         "details" => "User Details",
         "lock" => "Lock",
+        "status" => [
+            "title" => "Status",
+            "activate" => "Activate",
+            "deactivate" => "Deactivate"
+        ],
         "field" => [
             "name" => "Name",
             "email" => "Email",
