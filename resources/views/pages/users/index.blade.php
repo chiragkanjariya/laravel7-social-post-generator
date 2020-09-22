@@ -32,7 +32,8 @@
                     <th width="10%">No</th>
                     <th width="20%">Name</th>
                     <th width="20%">Email</th>
-                    <th width="20%">Roles</th>
+                    <th width="10%">Roles</th>
+                    <th width="10%">Status</th>
                     <th width="30%">Action</th>
                   </tr>
                   </thead>
@@ -47,6 +48,13 @@
                           @foreach($user->getRoleNames() as $v)
                             <label class="badge badge-success">{{ $v }}</label>
                           @endforeach
+                        @endif
+                      </td>
+                      <td>
+                        @if($user->status == "activated")
+                          <span class="badge badge-success">{{ trans('locale.user.status.activate') }}</span>
+                        @else
+                          <span class="badge badge-warning">{{ trans('locale.user.status.deactivate') }}</span>
                         @endif
                       </td>
                       <td>
