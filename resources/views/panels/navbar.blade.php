@@ -286,7 +286,7 @@
   </ul>
   {{-- Search Ends --}}
   <!-- END: Header-->
-  
+
 <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
   @csrf
 </form>
