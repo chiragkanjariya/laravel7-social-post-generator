@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use App\Models\Niche;
+use App\Models\Profile;
+use Illuminate\Http\RedirectResponse;
 
 class ProfileController extends Controller
 {
@@ -43,21 +46,34 @@ class ProfileController extends Controller
      */
     public function create(): View
     {
-        
+        $niches = Niche::all();
+        $breadcrumbs = [
+            ['link' => "/profiles", 'name' => trans('locale.profile.title')],
+            ['name'=>trans('locale.profile.create')]
+        ];
+
         return view('/pages/profiles/create', [
             'pageConfigs' => $this->pageConfigs,
-        ])
+            'breadcrumbs' => $breadcrumbs,
+            'niches' => $niches
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        Auth()->user()->profiles()->create([
+            'niche_id' => $request->niche,
+            'hashtag' => $request->hashtag,
+            'favour_color' => $request->favour_color
+        ]);
+
+        return redirect()->route('profiles.index');
     }
 
     /**
@@ -97,11 +113,16 @@ class ProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Profile  $profile
+     * 
+     * @return Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(Profile $profile): RedirectResponse
     {
-        //
+        $profile->delete();
+
+        return redirect()
+            ->route('profiles.index')
+            ->with('message', trans('locale.profile.message.delete'));
     }
 }
