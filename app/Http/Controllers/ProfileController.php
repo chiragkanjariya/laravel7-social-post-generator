@@ -43,10 +43,25 @@ class ProfileController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Contracts\View\View
+     * @return mixed
      */
-    public function create(): View
+    public function create()
     {
+        $role = Auth()->user()->roles[0]->name;
+        $profiles = Auth()->user()->profiles;
+
+        switch ($role) {
+            case 'Beginner':
+                if (count($profiles) > 0) return back()->with('message', trans('locale.profile.message.overProfile'));
+                break;
+            case 'Intermediate':
+                if (count($profiles) > 1) return back()->with('message', trans('locale.profile.message.overProfile'));
+                break;
+            case 'Advanced':
+                if (count($profiles) > 2) return back()->with('message', trans('locale.profile.message.overProfile'));
+                break;
+        }
+
         $niches = Niche::all();
         $breadcrumbs = [
             ['link' => "/profiles", 'name' => trans('locale.profile.title')],

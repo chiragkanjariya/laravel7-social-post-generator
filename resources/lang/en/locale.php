@@ -68,7 +68,8 @@ return [
         "addTag" => "Add 3 more tags...",
         "favourColor" => "Favour Color",
         "message" => [
-            "delete" => "The profile is deleted successfully."
+            "delete" => "The profile is deleted successfully.",
+            "overProfile" => "The profile count is over in your account."
         ]
     ],
     "scrap-image" => [
