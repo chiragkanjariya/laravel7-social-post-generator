@@ -26,6 +26,8 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   Route::get('/scrap-image', 'ScrapImageController@index');
   Route::post('/scrap-image', 'ScrapImageController@getImages');
 
+  // Profile
+  Route::resource('/profiles', 'ProfileController');
 });
 
 
