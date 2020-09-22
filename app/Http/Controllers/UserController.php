@@ -48,7 +48,8 @@ class UserController extends Controller
   public function create()
   {
     $roles = Role::pluck('name','name')->all();
-    return view('pages.users.create', compact('roles'))
+    $status = array("activated"=>trans('locale.user.status.activate'), "deactivated"=>trans('locale.user.status.deactivate'));
+    return view('pages.users.create', compact('roles', 'status'))
       ->with('breadcrumbs', [
           ['link'=>"/users",'name'=>trans('locale.user.title')], ['name'=>trans('locale.user.create')]
         ])
@@ -71,7 +72,7 @@ class UserController extends Controller
     ]);
 
     $input = $request->all();
-    $input['password'] = Hash::make($input['password']);
+    $input['password'] = $input['password'];
 
     $user = User::create($input);
     $user->assignRole($request->input('roles'));
@@ -107,8 +108,9 @@ class UserController extends Controller
     $user = User::find($id);
     $roles = Role::pluck('name','name')->all();
     $userRole = $user->roles->pluck('name','name')->all();
+    $status = array("activated"=>trans('locale.user.status.activate'), "deactivated"=>trans('locale.user.status.deactivate'));
 
-    return view('pages.users.edit',compact('user','roles','userRole'))
+    return view('pages.users.edit',compact('user','roles','userRole', 'status'))
       ->with('breadcrumbs', [
         ['link'=>"/users",'name'=>trans('locale.user.title')], ['name'=>trans('locale.user.edit')]
       ])
@@ -133,7 +135,7 @@ class UserController extends Controller
 
     $input = $request->all();
     if(!empty($input['password'])){
-      $input['password'] = Hash::make($input['password']);
+      $input['password'] = $input['password'];
     }else{
       $input = array_except($input, array('password'));
     }

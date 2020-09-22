@@ -14,7 +14,7 @@
 
 
 // Route url
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'isActivated'])->group(function () {
 
   Route::resource('roles','RoleController');
   Route::resource('users','UserController');

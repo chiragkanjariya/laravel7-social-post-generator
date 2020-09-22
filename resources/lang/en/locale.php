@@ -50,6 +50,18 @@ return [
         "list" => "User List",
         "details" => "User Details",
         "lock" => "Lock",
+        "status" => [
+            "title" => "Status",
+            "activate" => "Activate",
+            "deactivate" => "Deactivate"
+        ],
+        "field" => [
+            "name" => "Name",
+            "email" => "Email",
+            "role" => "Role",
+            "password" => "Password",
+            "confirm-password" => "Confirm Password"
+        ],
         "message" => [
             "save" => "The user is added successfully.",
             "update" => "The user is updated successfully.",
