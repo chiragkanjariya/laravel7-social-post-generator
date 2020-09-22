@@ -7,7 +7,7 @@
                 $submenuTranslation = $menu->i18n;
             }
         ?>
-    <li class="{{ (request()->is($submenu->url)) ? 'active' : '' }}">
+    <li class="{{ (request()->is($submenu->slug)) ? 'active' : '' }}">
         <a href="{{ $submenu->url }}">
             <i class="{{ isset($submenu->icon) ? $submenu->icon : "" }}"></i>
             <span class="menu-title" data-i18n="{{ $submenuTranslation }}">{{ __('locale.'.$submenu->name) }}</span>

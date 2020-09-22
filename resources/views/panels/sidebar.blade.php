@@ -24,39 +24,43 @@ $configData = Helper::applClasses();
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
       {{-- Foreach menu item starts --}}
       @if(isset($menuData[0]))
-      @foreach($menuData[0]->menu as $menu)
-      @if(isset($menu->navheader))
-      <li class="navigation-header">
-        <span>{{ $menu->navheader }}</span>
-      </li>
-      @else
-      {{-- Add Custom Class with nav-item --}}
-      @php
-      $custom_classes = "";
-      if(isset($menu->classlist)) {
-      $custom_classes = $menu->classlist;
-      }
-      $translation = "";
-      if(isset($menu->i18n)){
-      $translation = $menu->i18n;
-      }
-      @endphp
-      <li class="nav-item {{ (request()->is($menu->url)) ? 'active' : '' }} {{ $custom_classes }}">
-        <a href="{{ $menu->url }}">
-          <i class="{{ $menu->icon }}"></i>
-          <span class="menu-title" data-i18n="{{ $translation }}">{{ __('locale.'.$menu->name) }}</span>
-          @if (isset($menu->badge))
-          <?php $badgeClasses = "badge badge-pill badge-primary float-right" ?>
-          <span
-            class="{{ isset($menu->badgeClass) ? $menu->badgeClass.' test' : $badgeClasses.' notTest' }} ">{{$menu->badge}}</span>
+        @foreach($menuData[0]->menu as $menu)
+          @if(isset($menu->navheader))
+            <li class="navigation-header">
+              <span>{{ $menu->navheader }}</span>
+            </li>
+          @else
+            @php
+            $custom_classes = "";
+            if(isset($menu->classlist)) {
+                $custom_classes = $menu->classlist;
+            }
+            $translation = "";
+            if(isset($menu->i18n)){
+                $translation = $menu->i18n;
+            }
+            @endphp
+            @if(isset($menu->permission))
+              @cannot($menu->permission)
+                @continue
+              @endcan
+            @endif
+            <li class="nav-item {{ (request()->is($menu->slug)) ? 'active' : '' }} {{ $custom_classes }}">
+              <a href="{{ $menu->url }}">
+                <i class="{{ $menu->icon }}"></i>
+                <span class="menu-title" data-i18n="{{ $translation }}">{{ __('locale.'.$menu->name) }}</span>
+                @if (isset($menu->badge))
+                <?php $badgeClasses = "badge badge-pill badge-primary float-right" ?>
+                <span
+                  class="{{ isset($menu->badgeClass) ? $menu->badgeClass.' test' : $badgeClasses.' notTest' }} ">{{$menu->badge}}</span>
+                @endif
+              </a>
+              @if(isset($menu->submenu))
+              @include('panels/submenu', ['menu' => $menu->submenu])
+              @endif
+            </li>
           @endif
-        </a>
-        @if(isset($menu->submenu))
-        @include('panels/submenu', ['menu' => $menu->submenu])
-        @endif
-      </li>
-      @endif
-      @endforeach
+        @endforeach
       @endif
       {{-- Foreach menu item ends --}}
     </ul>
