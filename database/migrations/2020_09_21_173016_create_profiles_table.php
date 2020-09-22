@@ -18,7 +18,9 @@ class CreateProfilesTable extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->tinyInteger('niche');
+            $table->foreignId('niche_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->string('hashtag');
             $table->string('favour_color');
             

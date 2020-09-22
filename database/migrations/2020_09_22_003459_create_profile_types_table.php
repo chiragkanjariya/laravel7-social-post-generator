@@ -13,7 +13,7 @@ class CreateProfileTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_types', function (Blueprint $table) {
+        Schema::create('niches', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateProfileTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_types');
+        Schema::dropIfExists('niches');
     }
 }
