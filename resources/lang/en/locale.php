@@ -23,6 +23,9 @@ return [
     "Logout" => "Logout",
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
+    "post-manage" => [
+        "title" => "Manage Post"
+    ],
     "role" => [
         "title" => "Roles",
         "create" => "Create Role",
