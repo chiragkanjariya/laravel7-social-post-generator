@@ -55,7 +55,13 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
               <strong>{{ trans('locale.user.field.role') }}:</strong>
-              {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control select2')) !!}
+              {!! Form::select('roles[]', $roles, $userRole, array('class' => 'form-control select2')) !!}
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+              <strong>{{ trans('locale.user.status.title') }}:</strong>
+              {!! Form::select('status', $status, null, array('class' => 'form-control select2')) !!}
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12 text-center">
