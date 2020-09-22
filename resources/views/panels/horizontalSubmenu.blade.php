@@ -12,7 +12,7 @@
       }
   ?>
   <li
-    class="{{ (request()->is($submenu->url)) ? 'active' : '' }} {{ (isset($submenu->submenu)) ? "dropdown dropdown-submenu" : '' }} {{ $custom_classes }}">
+    class="{{ (request()->is($submenu->slug)) ? 'active' : '' }} {{ (isset($submenu->submenu)) ? "dropdown dropdown-submenu" : '' }} {{ $custom_classes }}">
     <a href="{{ $submenu->url }}" class="dropdown-item {{ (isset($submenu->submenu)) ? "dropdown-toggle" : '' }}"
       {{ (isset($submenu->submenu)) ? 'data-toggle=dropdown' : '' }}>
       <i class="{{ isset($submenu->icon) ? $submenu->icon : "" }}"></i>
