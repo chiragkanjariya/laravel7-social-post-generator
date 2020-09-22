@@ -32,19 +32,19 @@
 	</div>
 	<div class="card-content">
 	<div class="card-body card-dashboard">
-		<form action="{{ route('profiles.store') }}" method="POST">
+		<form action="{{ route('profiles.update', $profile->id) }}" method="POST">
 			@csrf
+			@method('PUT')
 			<fieldset class="form-group">
 				<label for="niche">@lang('locale.profile.niche')</label>
 				<input class="form-control" value="{{ $profile->niche->name }}" readonly/>
-				<span class="danger">{{ $errors->first('niche') }}</span>
 			</fieldset>
 
 			<fieldset class="form-group">
 				<label for="hashtag">@lang('locale.profile.hashtag')*</label>
 				<br>
 				<input name="hashtag" id="hashtag" type="text" value="{{ $profile->hashtag }}" data-role="tagsinput" placeholder="{{ trans('locale.profile.addTag') }}" />
-				<span class="danger">{{ $errors->first('surname') }}</span>
+				<span class="danger">{{ $errors->first('hashtag') }}</span>
 			</fieldset>
 
 			<fieldset class="form-group">

@@ -118,12 +118,22 @@ class ProfileController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Profile  $profile
+     * 
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Profile $profile): RedirectResponse
     {
-        //
+        $validator = $request->validate([
+            'hashtag' => ['required', new TagValidate],
+            'favour_color' => 'required'
+        ]);
+        $profile->update([
+            'hashtag' => $request->hashtag,
+            'favour_color' => $request->favour_color
+        ]);
+
+        return redirect()->route('profiles.index');
     }
 
     /**
