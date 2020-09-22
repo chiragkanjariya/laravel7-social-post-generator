@@ -52,7 +52,7 @@
 										$hashtags = explode(',', $profile->hashtag);
 									@endphp
 									@foreach ($hashtags as $hashtag)
-										<span class="badge badge-primary">{{ $hashtag }}</span>
+										<span class="badge badge-pill badge-md badge-glow badge-primary">{{ $hashtag }}</span>
 									@endforeach
 								</td>
 								<td>
