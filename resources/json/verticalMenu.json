@@ -7,6 +7,12 @@
             "icon": "feather icon-home"
         },
         {
+          "url": "/profiles",
+          "name": "profile.title",
+          "slug": "profiles",
+          "icon": "feather icon-aperture"
+        },
+        {
           "url": "/users",
           "name": "user.title",
           "slug": "users",

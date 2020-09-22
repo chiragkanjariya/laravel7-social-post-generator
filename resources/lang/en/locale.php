@@ -26,6 +26,7 @@ return [
     "post-manage" => [
         "title" => "Manage Post"
     ],
+    "details" => "Details",
     "role" => [
         "title" => "Roles",
         "create" => "Create Role",
@@ -73,17 +74,18 @@ return [
     ],
     "profile" => [
         "title" => "Profile",
-        "save" => "Save changes",
+        "save" => "Save Profile",
+        "update" => "Update Profile",
         "edit" => "Edit Profile",
-        "general" => "General",
-        "changePassword" => "Change Password",
-        "upload" => "Upload new photo",
-        "allow" => "Allowed JPG, GIF or PNG. Max size of 800kB",
-        "updateSuccess" => "The profile is saved successfully.",
-        "oldPassword" => "Old Password",
-        "newPassword" => "New Password",
-        "retypePassword" => "Retype New Password"
-
+        "create" => "Create Profile",
+        "niche" => "Niche",
+        "hashtag" => "Hashtag",
+        "addTag" => "Add 3 more tags...",
+        "favourColor" => "Favour Color",
+        "message" => [
+            "delete" => "The profile is deleted successfully.",
+            "overProfile" => "The profile count is over in your account."
+        ]
     ],
     "scrap-image" => [
         "title" => "Scrapping Images",
