@@ -3,27 +3,50 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 
 class ProfileController extends Controller
 {
     /**
+     * Default page configs
+     * 
+     * @var array
+     */
+    protected $pageConfigs = [
+        'navbarType' => 'sticky',
+        'footerType' => 'static',
+        'horizontalMenuType' => 'floating',
+        'theme' => 'dark',
+        'navbarColor' => 'bg-primary'
+    ];
+
+    /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $profiles = Auth()->user()->profiles;
+
+        return view('/pages/profiles/index', [
+            'pageConfigs' => $this->pageConfigs,
+            'profiles' => $profiles
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        
+        return view('/pages/profiles/create', [
+            'pageConfigs' => $this->pageConfigs,
+        ])
     }
 
     /**
