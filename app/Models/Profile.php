@@ -31,9 +31,9 @@ class Profile extends Model
      */
     protected $fillable = [
         'user_id',
-        'niche',
+        'niche_id',
         'hashtag',
-        'cavour_color'
+        'favour_color'
     ];
 
     /**
