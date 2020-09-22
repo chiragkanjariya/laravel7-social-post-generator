@@ -14,10 +14,10 @@
           "icon": "feather icon-user"
         },
         {
-          "url": "/scrap-image",
-          "name": "scrap-image.title",
-          "slug": "scrap-image",
-          "icon": "feather icon-wind"
+          "url": "/post-manage",
+          "name": "post-manage.title",
+          "slug": "post-manage",
+          "icon": "feather icon-share"
         }
     ]
 }
