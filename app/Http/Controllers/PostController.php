@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -21,6 +22,34 @@ class PostController extends Controller
     'bodyClass' => 'chat-application',
     'navbarColor' => 'bg-primary'
   ];
+
+  /**
+   * Display a listing of the resource.
+   *
+   * @return \Illuminate\Http\Response
+   */
+  function __construct()
+  {
+  }
+
+  public function view_index(){
+    $viewPageConfigs = [
+      'navbarType' => 'sticky',
+      'footerType' => 'static',
+      'horizontalMenuType' => 'floating',
+      'theme' => 'dark',
+      'navbarColor' => 'bg-primary'
+    ];
+    $profiles = Profile::query()->where('user_id', Auth::user()->id)->get();
+    return view('pages.post-view', [
+      'pageConfigs' => $viewPageConfigs,
+      'profiles' => $profiles
+    ]);
+  }
+
+  public function download_image(){
+
+  }
 
   public function manage_index(){
     $result = array();
