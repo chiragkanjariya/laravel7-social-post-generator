@@ -25,7 +25,7 @@ class PostController extends Controller
   public function manage_index(){
     $result = array();
     $profiles = DB::select(DB::raw('
-    SELECT profiles.*, posts_cnt.cnt, niches.name as niche_name FROM PROFILES
+    SELECT profiles.*, posts_cnt.cnt, niches.name as niche_name FROM profiles
       LEFT JOIN (SELECT COUNT(posts.id) AS cnt, posts.profile_id FROM posts WHERE DATE(posts.created_at) = \'2020-09-23\' GROUP BY posts.profile_id) AS posts_cnt ON profiles.id = posts_cnt.profile_id
       LEFT JOIN niches ON profiles.niche_id = niches.id
     ORDER BY posts_cnt.cnt'));
