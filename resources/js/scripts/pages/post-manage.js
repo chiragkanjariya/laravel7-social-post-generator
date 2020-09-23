@@ -233,7 +233,7 @@
           '        <h4 class="card-title">' + data.post_title + '</h4>\n' +
           '        <p class="card-text text-left">' + data.post_content + '</p>\n' +
           '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
-          '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post( + data.id + \')" >Delete</a>\n' +
+          '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + data.id + ')" >Delete</a>\n' +
           '        </div>'
         '      </div>\n' +
         '    </div>\n' +
