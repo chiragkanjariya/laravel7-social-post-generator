@@ -4,6 +4,20 @@
 
 @section('vendor-style')
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
+  <style>
+    .overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      opacity: 0.5;
+      transition: .7s ease;
+    }
+  </style>
 @endsection
 @section('page-style')
   <link rel="stylesheet" href="{{ asset(mix('css/plugins/forms/validation/form-validation.css')) }}">
@@ -71,6 +85,17 @@
                     </div>
                   </div>
                 </div>
+                <div class="col-12 mb-2">
+                  <div class="vs-checkbox-con vs-checkbox-success">
+                    <input type="checkbox" id="isoverlay" value="false">
+                    <span class="vs-checkbox vs-checkbox-lg">
+                      <span class="vs-checkbox--check">
+                        <i class="vs-icon feather icon-life-buoy"></i>
+                      </span>
+                    </span>
+                    <span class="">Image overlay</span>
+                  </div>
+                </div>
                 <div class="col-12">
                   <div class="form-group">
                     <div class="controls">
@@ -103,6 +128,8 @@
 @section('vendor-script')
   <script src="{{ asset(mix('vendors/js/forms/validation/jqBootstrapValidation.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
 @endsection
 @section('page-script')
   <script src="{{ asset(mix('js/scripts/pages/post-manage.js')) }}"></script>
