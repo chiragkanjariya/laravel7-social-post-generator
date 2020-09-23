@@ -3,27 +3,27 @@
         {
             "url": "/",
             "name": "Dashboard",
-            "slug": "dashboard",
-            "badge": "2",
-            "badgeClass": "badge badge-warning badge-pill float-right",
+            "slug": "/",
             "icon": "feather icon-home"
         },
         {
-            "url": "",
-            "name": "profile.title",
-            "icon": "feather icon-zap",
-            "submenu": [
-                {
-                    "url": "dashboard-analytics",
-                    "name": "profile.title"
-                }
-            ]
+          "url": "/profiles",
+          "name": "profile.title",
+          "slug": "profiles",
+          "icon": "feather icon-aperture"
         },
         {
-          "url": "scrap-image",
-          "name": "scrap-image.title",
-          "slug": "scrap-image",
-          "icon": "feather icon-home"
+          "url": "/users",
+          "name": "user.title",
+          "slug": "users",
+          "permission": "administrator-permission",
+          "icon": "feather icon-user"
+        },
+        {
+          "url": "/post-manage",
+          "name": "post-manage.title",
+          "slug": "post-manage",
+          "icon": "feather icon-share"
         }
     ]
 }

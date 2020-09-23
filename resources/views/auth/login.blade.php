@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+
 <section class="row flexbox-container">
   <div class="col-xl-8 col-11 d-flex justify-content-center">
     <div class="card bg-authentication rounded-0 mb-0">
@@ -22,7 +23,13 @@
                 <h4 class="mb-0">Login</h4>
               </div>
             </div>
-            <p class="px-2">Welcome back, please login to your account.</p>
+            @if ($message = Session::get('warning'))
+              <div class="alert alert-warning">
+                <p class="px-2">{{ $message }}</p>
+              </div>
+            @else
+              <p class="px-2">Welcome back, please login to your account.</p>
+            @endif
             <div class="card-content">
               <div class="card-body pt-1">
                 <form method="POST" action="{{ route('login') }}">

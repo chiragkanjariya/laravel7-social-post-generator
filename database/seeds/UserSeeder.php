@@ -15,8 +15,8 @@ class UserSeeder extends Seeder
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => 'password',
+            'status' => 'activated',
         ]);
-
-        $user->givePermissionTo('Admin');
+        $user->assignRole('Administrator');
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+USE Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'status',
     ];
 
     /**
@@ -43,7 +44,17 @@ class User extends Authenticatable
      * @param String  $password
      */
     public function setPasswordAttribute($password)
-    {   
+    {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    /**
+     * The profiles has all profiles of oneself.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function profiles(): HasMany
+    {
+        return $this->hasMany(Profile::class, 'user_id', 'id');
     }
 }

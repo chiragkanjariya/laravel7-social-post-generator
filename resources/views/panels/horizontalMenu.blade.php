@@ -35,12 +35,12 @@
         }
         @endphp
         @if(isset($menu->dropdown))
-        <li class="@if(isset($menu->submenu)){{'dropdown'}}@endif nav-item {{ (request()->is($menu->url)) ? 'active' : '' }} {{ $custom_classes }}"
+        <li class="@if(isset($menu->submenu)){{'dropdown'}}@endif nav-item {{ (request()->is($menu->slug)) ? 'active' : '' }} {{ $custom_classes }}"
           @if(isset($menu->submenu)){{'data-menu=dropdown'}}@endif>
           <a href="{{ $menu->url }}" class="@if(isset($menu->submenu)){{'dropdown-toggle'}}@endif nav-link" @if(isset($menu->submenu)){{'data-toggle=dropdown'}}@endif>
             @else
-        <li class="nav-item {{ (request()->is($menu->url)) ? 'active' : '' }} {{ $custom_classes }}">
-          <a href="{{ $menu->url === '/' ? '' : '/' }}{{ $menu->url }}" class="nav-link">
+        <li class="nav-item {{ (request()->is($menu->slug)) ? 'active' : '' }} {{ $custom_classes }}">
+          <a href="{{ $menu->url }}" class="nav-link">
             @endif
             <i class="{{ $menu->icon }}"></i>
             <span data-i18n="{{ $translation }}">{{ __('locale.'.$menu->name) }}</span>
