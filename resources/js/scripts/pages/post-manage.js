@@ -121,7 +121,7 @@
             '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
             '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
             '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result[row].id + ')">Delete</a>\n' +
-            '        </div>'
+            '        </div>\n' +
             '      </div>\n' +
             '    </div>\n' +
             '  </div>\n' +
@@ -250,11 +250,11 @@
           '        <p class="card-text text-left">' + data.post_content + '</p>\n' +
           '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
           '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + data.id + ')" >Delete</a>\n' +
-          '        </div>'
-        '      </div>\n' +
-        '    </div>\n' +
-        '  </div>\n' +
-        '</div>'
+          '        </div>\n' +
+          '      </div>\n' +
+          '    </div>\n' +
+          '  </div>\n' +
+          '</div>'
         $(".card-post").append(cards)
         if (parseInt(data.isoverlay) == 1)
         {
