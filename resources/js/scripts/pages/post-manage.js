@@ -132,6 +132,8 @@
               $('.card-post-' + result[row].id).find('.overlay').css('height', $('.card-post-' + result[row].id).find('img')[0].clientHeight + 'px');
               $('.card-post-' + result[row].id).find('.overlay').css('background-color', profile.color)
             }, 10)
+          } else {
+            $('.card-post-' + result[row].id).find('.overlay').css('height', '0px');
           }
         }
       },
@@ -215,7 +217,7 @@
     formData.append('title', $('#create-modal-title').val())
     formData.append('content', $('#create-modal-content').val())
     formData.append('profile_id', profile.id)
-    if($('#isoverlay').prop("checked") == true){
+    if($('#create-modal-isoverlay').prop("checked") == true){
       formData.append('isoverlay', 1)
     } else {
       formData.append('isoverlay', 0)
@@ -260,6 +262,8 @@
             $('.card-post-' + data.id).find('.overlay').css('height', $('.card-post-' + data.id).find('img')[0].clientHeight + 'px');
             $('.card-post-' + data.id).find('.overlay').css('background-color', profile.color)
           }, 30)
+        } else {
+          $('.card-post-' + data.id).find('.overlay').css('height', '0px');
         }
         $('#create-post').modal('hide');
         toastr.success('New post was saved successfully', 'Congratulation'
@@ -327,6 +331,7 @@ function delete_post(id) {
           id: id
         },
         success: function (result) {
+          $(".user-chats").animate({ scrollTop: 0 }, 400)
           $('.card-post-' + id).remove();
         },
         error: function (result) {
