@@ -23,7 +23,14 @@
           "url": "/post-manage",
           "name": "post-manage.title",
           "slug": "post-manage",
+          "permission": "administrator-permission",
           "icon": "feather icon-share"
+        },
+        {
+          "url": "/post-view",
+          "name": "post-view.title",
+          "slug": "post-view",
+          "icon": "feather icon-share-2"
         }
     ]
 }
