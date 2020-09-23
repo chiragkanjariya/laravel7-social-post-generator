@@ -87,7 +87,7 @@
                 </div>
                 <div class="col-12 mb-2">
                   <div class="vs-checkbox-con vs-checkbox-success">
-                    <input type="checkbox" id="isoverlay" value="false">
+                    <input type="checkbox" id="create-modal-isoverlay" value="false">
                     <span class="vs-checkbox vs-checkbox-lg">
                       <span class="vs-checkbox--check">
                         <i class="vs-icon feather icon-life-buoy"></i>
