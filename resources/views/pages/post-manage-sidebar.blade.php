@@ -7,7 +7,7 @@
       </span>
       <div class="header-profile-sidebar">
         <div class="avatar">
-          <img src="{{ asset('images/portrait/small/avatar-s-11.jpg') }}" alt="user_avatar" height="70" width="70">
+{{--          <img src="{{ asset('images/portrait/small/avatar-s-11.jpg') }}" alt="user_avatar" height="70" width="70">--}}
         </div>
         <h4 class="chat-user-name"></h4>
       </div>

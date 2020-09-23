@@ -115,6 +115,7 @@
             '  <div class="card" style="max-width: 300px; margin: auto">\n' +
             '    <div class="card-content">\n' +
             '      <img class="card-img-top img-fluid" src="/storage/' + result[row].post_image + '" width="150" height="150" alt="Card image cap" />\n' +
+            '      <div class="overlay"></div>\n' +
             '      <div class="card-body">\n' +
             '        <h4 class="card-title">' + result[row].post_title + '</h4>\n' +
             '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
@@ -126,6 +127,12 @@
             '  </div>\n' +
             '</div>'
           $(".card-post").append(cards)
+          if (parseInt(result[row].isoverlay) == 1) {
+            setTimeout(function () {
+              $('.card-post-' + result[row].id).find('.overlay').css('height', $('.card-post-' + result[row].id).find('img')[0].clientHeight + 'px');
+              $('.card-post-' + result[row].id).find('.overlay').css('background-color', profile.color)
+            }, 10)
+          }
         }
       },
       error: function (result) {
@@ -203,17 +210,23 @@
   $('#create-post-form').submit(function (e) {
     e.preventDefault();
     let profile = JSON.parse($($(".chat-users-list-wrapper li.active")[0]).attr('data-profile'));
-    console.log(profile);
     let formData = new FormData()
     formData.append('_token', $("#_token").val())
     formData.append('title', $('#create-modal-title').val())
     formData.append('content', $('#create-modal-content').val())
     formData.append('profile_id', profile.id)
+    if($('#isoverlay').prop("checked") == true){
+      formData.append('isoverlay', 1)
+    } else {
+      formData.append('isoverlay', 0)
+    }
     let image = document.querySelector('#create-image-upload').files[0]
     formData.append('image', image)
     if (!image)
     {
-      alert('The image should be uploaded.')
+      toastr.warning('The image should be uploaded', 'Notification'
+        , { "progressBar": true, "closeButton": true, timeOut: 5000 }
+      );
       return false;
     }
     $.ajax({
@@ -229,6 +242,7 @@
           '  <div class="card" style="max-width: 300px; margin: auto">\n' +
           '    <div class="card-content">\n' +
           '      <img class="card-img-top img-fluid" src="/storage/' + data.post_image + '" width="150" height="150" alt="Card image cap" />\n' +
+          '      <div class="overlay"></div>\n' +
           '      <div class="card-body">\n' +
           '        <h4 class="card-title">' + data.post_title + '</h4>\n' +
           '        <p class="card-text text-left">' + data.post_content + '</p>\n' +
@@ -240,7 +254,17 @@
         '  </div>\n' +
         '</div>'
         $(".card-post").append(cards)
+        if (parseInt(data.isoverlay) == 1)
+        {
+          setTimeout(function () {
+            $('.card-post-' + data.id).find('.overlay').css('height', $('.card-post-' + data.id).find('img')[0].clientHeight + 'px');
+            $('.card-post-' + data.id).find('.overlay').css('background-color', profile.color)
+          }, 30)
+        }
         $('#create-post').modal('hide');
+        toastr.success('New post was saved successfully', 'Congratulation'
+          , { "progressBar": true, "closeButton": true, timeOut: 2000 }
+          );
       }
     })
   })
@@ -282,18 +306,32 @@ function create() {
 }
 
 function delete_post(id) {
-  if (!confirm("Are you really?")) return;
-  $.ajax({
-    method: "POST",
-    url: "post-delete",
-    data: {
-      _token: $("#_token").val(),
-      id: id
-    },
-    success: function (result) {
-      $('.card-post-'+id).remove();
-    },
-    error: function (result) {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!',
+    confirmButtonClass: 'btn btn-primary',
+    cancelButtonClass: 'btn btn-danger ml-1',
+    buttonsStyling: false,
+  }).then(function (result) {
+    if (result.value) {
+      $.ajax({
+        method: "POST",
+        url: "post-delete",
+        data: {
+          _token: $("#_token").val(),
+          id: id
+        },
+        success: function (result) {
+          $('.card-post-' + id).remove();
+        },
+        error: function (result) {
+        }
+      })
     }
   })
 }
