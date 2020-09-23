@@ -13,6 +13,6 @@ class Post extends Model
    * @var array
    */
   protected $fillable = [
-    'post_title', 'post_content', 'post_image', 'profile_id',
+    'post_title', 'post_content', 'post_image', 'profile_id', 'isoverlay',
   ];
 }
