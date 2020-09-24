@@ -75,7 +75,7 @@
             </li>  --}}
             <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
                 data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span
-                  class="badge badge-pill badge-primary badge-up">5</span></a>
+                  class="badge badge-pill badge-danger badge-up">5</span></a>
               <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                 <li class="dropdown-menu-header">
                   <div class="dropdown-header m-0 p-2">
@@ -290,3 +290,38 @@
 <form id="logout" action="{{ route('logout') }}" method="POST" style="display: none;">
   @csrf
 </form>
+
+  <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+  <script>
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
+      cluster: 'eu',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('notification-channel');
+    channel.bind('notification-event', function(data) {
+      console.log(data)
+      if (!("Notification" in window)) {
+        console.log("This browser does not support desktop notification");
+        return;
+      }
+
+      Notification.requestPermission(permission => {
+        let notification = new Notification('New post alert!', {
+          body: 'aaa', // content for the alert
+          icon: '{{ asset('images/icons/notification.png') }}' // optional image url
+        });
+
+        // link to page on clicking the notification
+        notification.onclick = () => {
+          const url = new URL(window.location.href);
+          let message_url = url.protocol + '//' + url.hostname;
+          if (url.port) message_url += ':' + url.port;
+          message_url += '/messages'
+          window.open(message_url);
+        };
+      })
+    });
+
+  </script>
