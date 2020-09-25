@@ -23,10 +23,10 @@ return [
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
     "post-manage" => [
-        "title" => "Manage Post"
+        "title" => "Post management"
     ],
     "post-view" => [
-        "title" => "View Post"
+        "title" => "New posts"
     ],
     "details" => "Details",
     "role" => [

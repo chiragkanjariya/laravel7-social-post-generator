@@ -13,6 +13,17 @@
           "icon": "feather icon-aperture"
         },
         {
+          "url": "/post-view",
+          "name": "post-view.title",
+          "slug": "post-view",
+          "icon": "feather icon-share-2"
+        },
+        {
+          "url": "",
+          "navheader": "adminPanel",
+          "icon": ""
+        },
+        {
           "url": "/users",
           "name": "user.title",
           "slug": "users",
@@ -25,12 +36,6 @@
           "slug": "post-manage",
           "permission": "administrator-permission",
           "icon": "feather icon-share"
-        },
-        {
-          "url": "/post-view",
-          "name": "post-view.title",
-          "slug": "post-view",
-          "icon": "feather icon-share-2"
         }
     ]
 }
