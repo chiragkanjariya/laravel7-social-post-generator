@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Rules\OldpasswordValidate;
+use Auth;
 
 class AccountController extends Controller
 {
@@ -28,7 +29,7 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $user = Auth()->user();
+        $user = Auth::user();
         return view('pages/accounts/edit', [
             'pageConfigs' => $this->pageConfigs,
             'user' => $user

@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Hash;
+use Auth;
 
 class OldpasswordValidate implements Rule
 {
@@ -26,7 +27,7 @@ class OldpasswordValidate implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Hash::check($value, Auth()->user()->password);
+        return Hash::check($value, Auth::user()->password);
     }
 
     /**
