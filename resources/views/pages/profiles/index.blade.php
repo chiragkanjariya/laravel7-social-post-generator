@@ -37,6 +37,7 @@
 								<th>@lang('locale.profile.niche')</th>
 								<th>@lang('locale.profile.hashtag')</th>
 								<th>@lang('locale.profile.favourColor')</th>
+								<th>@lang('locale.profile.instagram')</th>
 								<th>@lang('locale.CreatedAt')</th>
 								<th>@lang('locale.UpdatedAt')</th>
 								<th>@lang('locale.Actions')</th>
@@ -57,6 +58,9 @@
 								</td>
 								<td>
 									<input type="color" value="{{ $profile->favour_color }}" disabled/>
+								</td>
+								<td>
+									<a href="{{ $profile->instagram }}" target="_blank">{{ $profile->instagram }}</a>
 								</td>
 								<td>{{ $profile->created_at }}</td>
 								<td>{{ $profile->updated_at }}</td>
