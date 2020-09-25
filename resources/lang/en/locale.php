@@ -47,7 +47,7 @@ return [
         ]
     ],
     "user" => [
-        "title" => "Users",
+        "title" => "User management",
         "create" => "Create User",
         "edit" => "Edit User",
         "update" => "Update User",
@@ -75,7 +75,7 @@ return [
         ],
     ],
     "profile" => [
-        "title" => "Profile",
+        "title" => "My profile",
         "save" => "Save Profile",
         "update" => "Update Profile",
         "edit" => "Edit Profile",
