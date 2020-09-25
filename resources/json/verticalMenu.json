@@ -21,7 +21,8 @@
         {
           "url": "",
           "navheader": "adminPanel",
-          "icon": ""
+          "icon": "",
+          "permission": "administrator-permission"
         },
         {
           "url": "/users",

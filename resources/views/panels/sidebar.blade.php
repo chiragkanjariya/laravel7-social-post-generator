@@ -26,6 +26,11 @@ $configData = Helper::applClasses();
       @if(isset($menuData[0]))
         @foreach($menuData[0]->menu as $menu)
           @if(isset($menu->navheader))
+            @if(isset($menu->permission))
+              @cannot($menu->permission)
+                @continue
+              @endcan
+            @endif
             <li class="navigation-header">
               <span>{{ $menu->navheader }}</span>
             </li>
