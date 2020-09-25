@@ -16,7 +16,6 @@ return [
     "ConfirmPassword" => "Confirm Password",
     "Register" => "Register",
     "acceptCondition" => "I accept the terms & conditions.",
-    "CreateAccount" => "Create Account",
     "fillCreateForm" => "Fill the below form to create a new account.",
     "Login" => "Login",
     "Username" => "Username",
@@ -90,6 +89,17 @@ return [
         "message" => [
             "delete" => "The profile is deleted successfully.",
             "overProfile" => "The profile count is over in your account."
+        ]
+    ],
+    "account" => [
+        'title' => "My Account",
+        "create" => "Create Account",
+        "edit" => "Edit Account",
+        "save" => "Save Account",
+        "firstname" => "First Name",
+        "lastname" => "Last Name",
+        "message" => [
+            'save' => "Your account info is saved successfully."
         ]
     ],
     "scrap-image" => [
