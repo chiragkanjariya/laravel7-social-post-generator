@@ -86,12 +86,14 @@ class ProfileController extends Controller
         $validator = $request->validate([
             'niche' => 'required',
             'hashtag' => ['required', new TagValidate],
-            'favour_color' => 'required'
+            'favour_color' => 'required',
+            'instagram' => 'active_url|nullable'
         ]);
         Auth()->user()->profiles()->create([
             'niche_id' => $request->niche,
             'hashtag' => $request->hashtag,
-            'favour_color' => $request->favour_color
+            'favour_color' => $request->favour_color,
+            'instagram' => $request->instagram
         ]);
 
         return redirect()->route('profiles.index');
@@ -141,11 +143,13 @@ class ProfileController extends Controller
     {
         $validator = $request->validate([
             'hashtag' => ['required', new TagValidate],
-            'favour_color' => 'required'
+            'favour_color' => 'required',
+            'instagram' => 'active_url|nullable'
         ]);
         $profile->update([
             'hashtag' => $request->hashtag,
-            'favour_color' => $request->favour_color
+            'favour_color' => $request->favour_color,
+            'instagram' => $request->instagram
         ]);
 
         return redirect()->route('profiles.index');
