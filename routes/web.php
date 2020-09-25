@@ -40,6 +40,7 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   // Account
   Route::get('/account', 'AccountController@index')->name('account.show');
   Route::post('/account-update/{user}', 'AccountController@update')->name('account.update');
+  Route::post('/account-changepassword/{user}', 'AccountController@changePassword')->name('account.changepassword');
 });
 
 

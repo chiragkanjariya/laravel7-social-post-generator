@@ -98,6 +98,11 @@ return [
         "save" => "Save Account",
         "firstname" => "First Name",
         "lastname" => "Last Name",
+        "general" => "General",
+        "changePassword" => "Change Password",
+        "oldPassword" => "Old Password",
+        "newPassword" => "New Password",
+        "retypePassword" => "Retype New Password",
         "message" => [
             'save' => "Your account info is saved successfully."
         ]

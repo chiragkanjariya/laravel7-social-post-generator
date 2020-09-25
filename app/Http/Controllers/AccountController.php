@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Rules\OldpasswordValidate;
 
 class AccountController extends Controller
 {
@@ -65,5 +66,30 @@ class AccountController extends Controller
         return redirect()
             ->route('account.show')
             ->with('message', trans('locale.account.message.save'));
+    }
+
+    /**
+     * Change password in my account page
+     * 
+     * @param \App\Models\User  $user
+     * @param \Illuminate\Http\Request  $request
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function changePassword(User $user, Request $request)
+    {
+        $validator = $request->validate([
+            'old_password' => ['required', new OldpasswordValidate],
+            'new_password' => 'required|min:6',
+            'retype_password' => 'required|min:6|same:new_password',
+        ]);
+
+        $user->update([
+            'password' => $request->new_password
+        ]);
+
+        return redirect()
+            ->route('account.show')
+            ->with('message', trans('locale.account.successPassword'));
     }
 }
