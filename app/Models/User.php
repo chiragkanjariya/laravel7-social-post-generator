@@ -6,7 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
-USE Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use File;
 
 class User extends Authenticatable
 {
@@ -52,6 +53,15 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function setPhotoAttribute($photo)
+    {
+        $photoPath = public_path("storage/$this->photo");
+        if (File::exists($photoPath) && $this->photo != null) { // unlink or remove previous image from folder
+            unlink($photoPath);
+        }
+        $this->attributes['photo'] = $photo;
     }
 
     /**
