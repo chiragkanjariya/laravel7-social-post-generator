@@ -33,7 +33,8 @@ class Profile extends Model
         'user_id',
         'niche_id',
         'hashtag',
-        'favour_color'
+        'favour_color',
+        'instagram'
     ];
 
     /**
