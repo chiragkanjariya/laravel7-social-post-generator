@@ -26,6 +26,9 @@ return [
     "post-manage" => [
         "title" => "Manage Post"
     ],
+    "post-view" => [
+        "title" => "View Post"
+    ],
     "details" => "Details",
     "role" => [
         "title" => "Roles",
@@ -82,6 +85,8 @@ return [
         "hashtag" => "Hashtag",
         "addTag" => "Add 3 more tags...",
         "favourColor" => "Favour Color",
+        "instagram" => "Instagram",
+        "instagram_hold" => "Example: https://www.instagram.com/user",
         "message" => [
             "delete" => "The profile is deleted successfully.",
             "overProfile" => "The profile count is over in your account."
