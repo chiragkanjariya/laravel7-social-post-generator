@@ -25,6 +25,9 @@ return [
     "post-manage" => [
         "title" => "Manage Post"
     ],
+    "post-view" => [
+        "title" => "View Post"
+    ],
     "details" => "Details",
     "role" => [
         "title" => "Roles",

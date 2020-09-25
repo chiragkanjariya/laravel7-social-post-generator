@@ -30,6 +30,9 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   Route::post('/post-get', 'PostController@getPosts');
   Route::post('/post-save', 'PostController@savePosts');
   Route::post('/post-delete', 'PostController@deletePost');
+  
+  Route::get('/post-view', 'PostController@view_index');
+  Route::post('/post-image-download', 'PostController@download_image');
 
   // Profile
   Route::resource('/profiles', 'ProfileController');
