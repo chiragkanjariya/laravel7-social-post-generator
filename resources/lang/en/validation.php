@@ -132,6 +132,7 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'hashtag' => 'The :attribute should be 3 more tags.'
     ],
 
     /*

@@ -36,6 +36,6 @@ class TagValidate implements Rule
      */
     public function message()
     {
-        return 'The :attribute should be 3 more tags.';
+        return trans('validation.custom.hashtag');
     }
 }
