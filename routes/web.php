@@ -31,9 +31,13 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   Route::post('/post-save', 'PostController@savePosts');
   Route::post('/post-delete', 'PostController@deletePost');
   Route::post('/post-approve', 'PostController@approvePost');
-  
+  Route::get('/post-not-approve', 'PostController@getNotApprovedPost');
   Route::get('/post-view', 'PostController@view_index');
   Route::post('/post-image-download', 'PostController@download_image');
+
+  // My posts
+  Route::get('myposts', 'MyPostController@index');
+  Route::delete('myposts/{post}', 'MyPostController@destroy')->name('myposts.destroy');
 
   // Profile
   Route::resource('/profiles', 'ProfileController');

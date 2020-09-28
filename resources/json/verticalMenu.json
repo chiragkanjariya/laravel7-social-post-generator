@@ -13,6 +13,12 @@
           "icon": "feather icon-aperture"
         },
         {
+          "url": "/myposts",
+          "name": "mypost.title",
+          "slug": "myposts",
+          "icon": "feather icon-package"
+        },
+        {
           "url": "/post-view",
           "name": "post-view.title",
           "slug": "post-view",

@@ -23,11 +23,18 @@ return [
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
     "approve" => "Approve",
+    "delete" => "Delete",
     "post-manage" => [
         "title" => "Post management"
     ],
     "post-view" => [
         "title" => "New posts"
+    ],
+    "mypost" => [
+        "title" => "My posts",
+        "message" => [
+            "delete" => "The post is deleted successfully."
+        ]
     ],
     "details" => "Details",
     "role" => [
