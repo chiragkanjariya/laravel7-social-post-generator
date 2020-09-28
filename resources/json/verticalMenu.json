@@ -25,6 +25,12 @@
           "icon": "feather icon-share-2"
         },
         {
+          "url": "/freeposts",
+          "name": "freepost.title",
+          "slug": "freeposts",
+          "icon": "feather icon-octagon"
+        },
+        {
           "url": "",
           "navheader": "adminPanel",
           "icon": "",
