@@ -39,6 +39,10 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   Route::get('myposts', 'MyPostController@index');
   Route::delete('myposts/{post}', 'MyPostController@destroy')->name('myposts.destroy');
 
+  // Free posts
+  Route::get('freeposts', 'FreePostController@index');
+  
+
   // Profile
   Route::resource('/profiles', 'ProfileController');
 
