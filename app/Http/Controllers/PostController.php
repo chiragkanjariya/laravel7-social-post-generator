@@ -83,7 +83,6 @@ class PostController extends Controller
   public function getPosts(Request  $request){
     $posts = Post::query()->where('profile_id', $request->profile_id)
       ->where('created_at', 'LIKE', date('Y-m-d').'%')
-      ->where('isapproved', 0)
       ->get();
     return new JsonResponse($posts, 202);
   }
@@ -135,5 +134,19 @@ class PostController extends Controller
     $post->save();
 
     return new JsonResponse(null, 204);
+  }
+
+  /**
+   * get posts by profile id
+   * @param \Illuminate\Http\Request  $request
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function getNotApprovedPost(Request  $request){
+    $posts = Post::query()->where('profile_id', $request->profile_id)
+      ->where('created_at', 'LIKE', date('Y-m-d').'%')
+      ->where('isapproved', 0)
+      ->get();
+    return new JsonResponse($posts, 202);
   }
 }
