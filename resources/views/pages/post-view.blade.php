@@ -68,8 +68,8 @@
       let profile_color = $(this).children("option:selected").attr("profile-color");
       $(".card-post").html('')
       $.ajax({
-        method: "POST",
-        url: "post-get",
+        method: "GET",
+        url: "post-not-approve",
         data: {
           _token: $("#_token").val(),
           profile_id: profile_id
