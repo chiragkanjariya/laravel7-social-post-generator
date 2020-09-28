@@ -22,6 +22,7 @@ return [
     "Logout" => "Logout",
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
+    "approve" => "Approve",
     "post-manage" => [
         "title" => "Post management"
     ],

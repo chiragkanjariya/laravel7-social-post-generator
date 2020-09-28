@@ -81,7 +81,10 @@ class PostController extends Controller
    * @return \Illuminate\Http\JsonResponse
    */
   public function getPosts(Request  $request){
-    $posts = Post::query()->where('profile_id', $request->profile_id)->where('created_at', 'LIKE', date('Y-m-d').'%')->get();
+    $posts = Post::query()->where('profile_id', $request->profile_id)
+      ->where('created_at', 'LIKE', date('Y-m-d').'%')
+      ->where('isapproved', 0)
+      ->get();
     return new JsonResponse($posts, 202);
   }
   /**
@@ -116,5 +119,21 @@ class PostController extends Controller
             'profile_id' => $request->profile_id,
         ]);
     return new JsonResponse($post, 202);
+  }
+
+  /**
+   * Approve post when user clicks approve buttion on view post page.
+   * 
+   * @param \Illuminate\Http\Request  $request
+   * 
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function approvePost(Request $request)
+  {
+    $post = Post::findOrfail($request->post_id);
+    $post->isapproved = 1;
+    $post->save();
+
+    return new JsonResponse(null, 204);
   }
 }
