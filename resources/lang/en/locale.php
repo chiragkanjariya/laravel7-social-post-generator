@@ -48,6 +48,20 @@ return [
             "delete" => "The free post is removed successfully."
         ]
     ],
+    "instagram" => [
+        "title" => "Instagram",
+        "management" => "Instagram Management",
+        "followers" => "Followers",
+        "bestHashtags" => "Best Hashtags",
+        "posts" => "Posts",
+        "advices" => "Advices",
+        "save" => "Save Instagram",
+        "edit" => "Edit Instagram",
+        "message" => [
+            "save" => "The instagram data is stored successfully.",
+            "delete" => "The instagram data is deleted successfully."
+        ]
+    ],
     "details" => "Details",
     "role" => [
         "title" => "Roles",
@@ -136,5 +150,11 @@ return [
         "lockDescription" => "Your account is locked by admin now, contact to admin.",
         "notMatchPassword" => "The specified password does not match the database password.",
         "postImageValidate" => "The post image is not uploaded."
+    ],
+    "swal" => [
+        "delConfirm" => [
+            "title" => "Are you sure?",
+            "text" => "You would not be able to revert this!"
+        ],
     ]
 ];

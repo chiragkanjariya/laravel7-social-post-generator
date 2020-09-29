@@ -48,6 +48,14 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   // Profile
   Route::resource('/profiles', 'ProfileController');
 
+  // Instagram
+  Route::get('/instagrams', 'InstagramController@index');
+
+  Route::get('/instagrams/management', 'InstagramController@indexManagement');
+  Route::get('/instagrams/{profile}/edit', 'InstagramController@edit')->name('instagrams.edit');
+  Route::post('/instagrams/{profile}', 'InstagramController@store')->name('instagrams.store');
+  Route::delete('/instagrams/{profile}', 'InstagramController@destroy')->name('instagrams.destroy');
+
   // Account
   Route::get('/account', 'AccountController@index')->name('account.show');
   Route::post('/account-update/{user}', 'AccountController@update')->name('account.update');
