@@ -8,6 +8,12 @@ class Freepost extends Model
 {
     protected $table = 'freeposts';
 
+    protected $fillable = [
+        'title',
+        'image',
+        'content'
+    ];
+    
     /**
      * The user of freepost.
      * 
