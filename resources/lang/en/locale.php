@@ -22,11 +22,31 @@ return [
     "Logout" => "Logout",
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
+    "approve" => "Approve",
+    "delete" => "Delete",
+    "warning" => "Warning",
     "post-manage" => [
-        "title" => "Manage Post"
+        "title" => "Post management"
     ],
     "post-view" => [
-        "title" => "View Post"
+        "title" => "New posts"
+    ],
+    "mypost" => [
+        "title" => "My posts",
+        "message" => [
+            "delete" => "The post is deleted successfully."
+        ]
+    ],
+    "freepost" => [
+        "title" => "Free posts",
+        "create" => "Create free post",
+        "save" => "Save post",
+        "title" => "Post title",
+        "content" => "Post content",
+        "message" => [
+            "save" => "The free post is stored successfully.",
+            "delete" => "The free post is removed successfully."
+        ]
     ],
     "details" => "Details",
     "role" => [
@@ -47,7 +67,7 @@ return [
         ]
     ],
     "user" => [
-        "title" => "Users",
+        "title" => "User management",
         "create" => "Create User",
         "edit" => "Edit User",
         "update" => "Update User",
@@ -75,7 +95,7 @@ return [
         ],
     ],
     "profile" => [
-        "title" => "Profile",
+        "title" => "My profile",
         "save" => "Save Profile",
         "update" => "Update Profile",
         "edit" => "Edit Profile",
@@ -98,6 +118,11 @@ return [
         "save" => "Save Account",
         "firstname" => "First Name",
         "lastname" => "Last Name",
+        "general" => "General",
+        "changePassword" => "Change Password",
+        "oldPassword" => "Old Password",
+        "newPassword" => "New Password",
+        "retypePassword" => "Retype New Password",
         "message" => [
             'save' => "Your account info is saved successfully."
         ]
@@ -109,6 +134,7 @@ return [
     "error" => [
         "lockTitle" => "Your account is locked!",
         "lockDescription" => "Your account is locked by admin now, contact to admin.",
-        "notMatchPassword" => "The specified password does not match the database password."
+        "notMatchPassword" => "The specified password does not match the database password.",
+        "postImageValidate" => "The post image is not uploaded."
     ]
 ];

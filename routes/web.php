@@ -30,9 +30,20 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   Route::post('/post-get', 'PostController@getPosts');
   Route::post('/post-save', 'PostController@savePosts');
   Route::post('/post-delete', 'PostController@deletePost');
-  
+  Route::post('/post-approve', 'PostController@approvePost');
+  Route::get('/post-not-approve', 'PostController@getNotApprovedPost');
   Route::get('/post-view', 'PostController@view_index');
   Route::post('/post-image-download', 'PostController@download_image');
+
+  // My posts
+  Route::get('/myposts', 'MyPostController@index');
+  Route::delete('/myposts/{post}', 'MyPostController@destroy')->name('myposts.destroy');
+
+  // Free posts
+  Route::get('/freeposts', 'FreePostController@index');
+  Route::get('/freeposts/create', 'FreePostController@create')->name('freeposts.create');
+  Route::post('/freeposts', 'FreePostController@store')->name('freeposts.store');
+  Route::delete('/freeposts/{freepost}', 'FreePostController@destroy')->name('freeposts.destroy');
 
   // Profile
   Route::resource('/profiles', 'ProfileController');
@@ -40,6 +51,7 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   // Account
   Route::get('/account', 'AccountController@index')->name('account.show');
   Route::post('/account-update/{user}', 'AccountController@update')->name('account.update');
+  Route::post('/account-changepassword/{user}', 'AccountController@changePassword')->name('account.changepassword');
 });
 
 

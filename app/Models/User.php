@@ -73,4 +73,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Profile::class, 'user_id', 'id');
     }
+
+    /**
+     * Freeposts of user
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function freeposts(): HasMany
+    {
+        return $this->hasMany(Freepost::class);
+    }
 }

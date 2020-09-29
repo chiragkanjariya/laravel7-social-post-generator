@@ -56,4 +56,14 @@ class Profile extends Model
     {
         return $this->belongsTo(Niche::class, 'niche_id', 'id');
     }
+
+    /**
+     * The posts which has the profile.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
+    }
 }

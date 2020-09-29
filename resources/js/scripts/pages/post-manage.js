@@ -84,7 +84,11 @@
   $(".chat-users-list-wrapper li").on("click", function () {
     let profile = JSON.parse($(this).attr('data-profile'));
     $('.profile-title').text(profile.user.name + " : " + profile.niche + " Profile")
-    $('.avatar > p').css('background-color', profile.color)
+    if (profile.user.photo === null) {
+      $('.avatar > img').attr('src', "/images/avatar.png");
+    } else {
+      $('.avatar > img').attr('src', "/storage/" + profile.user.photo);
+    }
 
     $('.chat-user-name').text(profile.user.name)
     $('#user-email').text(profile.user.email)
