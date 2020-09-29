@@ -31,6 +31,12 @@
           "icon": "feather icon-octagon"
         },
         {
+          "url": "/instagrams",
+          "name": "instagram.title",
+          "slug": "instagrams",
+          "icon": "feather icon-instagram"
+        },
+        {
           "url": "",
           "navheader": "adminPanel",
           "icon": "",
@@ -49,6 +55,13 @@
           "slug": "post-manage",
           "permission": "administrator-permission",
           "icon": "feather icon-share"
+        },
+        {
+          "url": "/instagrams/management",
+          "name": "instagram.management",
+          "slug": "instagrams/management",
+          "permission": "administrator-permission",
+          "icon": "feather icon-instagram"
         }
     ]
 }
