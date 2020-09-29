@@ -41,7 +41,6 @@ return [
         "title" => "Free posts",
         "create" => "Create free post",
         "save" => "Save post",
-        "title" => "Post title",
         "content" => "Post content",
         "message" => [
             "save" => "The free post is stored successfully.",
