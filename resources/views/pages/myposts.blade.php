@@ -102,10 +102,13 @@
       canvas.style.setProperty('margin-left', '500px');
       var context = canvas.getContext("2d");
       let color = $("#post-overlay-" + postId).attr("profile-color");
+      let isoverlay = $("#post-overlay-" + postId).attr("is-overlay");
       context.drawImage(image, 0, 0, image.width, image.height);
-      context.fillStyle = color;
-      context.globalAlpha = 0.5;
-      context.fillRect(0, 0, image.width, image.height)
+      if (parseInt(isoverlay) == 1) {
+        context.fillStyle = color;
+        context.globalAlpha = 0.5;
+        context.fillRect(0, 0, image.width, image.height)
+      }
 
       ReImg.fromCanvas(canvas).downloadPng();
     }
