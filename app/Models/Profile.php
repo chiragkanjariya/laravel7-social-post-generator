@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Models\Niche;
 
 class Profile extends Model
@@ -65,5 +66,15 @@ class Profile extends Model
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Instagram of specified profile.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function analysistInstagram(): HasOne
+    {
+        return $this->hasOne(Instagram::class);
     }
 }
