@@ -9,6 +9,7 @@ use App\Models\Niche;
 use App\Models\Profile;
 use App\Rules\TagValidate;
 use Illuminate\Http\RedirectResponse;
+use Auth;
 
 class ProfileController extends Controller
 {
@@ -32,7 +33,7 @@ class ProfileController extends Controller
      */
     public function index(): View
     {
-        $profiles = Auth()->user()->profiles;
+        $profiles = Auth::user()->profiles;
 
         return view('/pages/profiles/index', [
             'pageConfigs' => $this->pageConfigs,
@@ -47,8 +48,8 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        $role = Auth()->user()->roles[0]->name;
-        $profiles = Auth()->user()->profiles;
+        $role = Auth::user()->roles[0]->name;
+        $profiles = Auth::user()->profiles;
 
         switch ($role) {
             case 'Beginner':
@@ -86,12 +87,14 @@ class ProfileController extends Controller
         $validator = $request->validate([
             'niche' => 'required',
             'hashtag' => ['required', new TagValidate],
-            'favour_color' => 'required'
+            'favour_color' => 'required',
+            'instagram' => 'active_url|nullable'
         ]);
-        Auth()->user()->profiles()->create([
+        Auth::user()->profiles()->create([
             'niche_id' => $request->niche,
             'hashtag' => $request->hashtag,
-            'favour_color' => $request->favour_color
+            'favour_color' => $request->favour_color,
+            'instagram' => $request->instagram
         ]);
 
         return redirect()->route('profiles.index');
@@ -141,11 +144,13 @@ class ProfileController extends Controller
     {
         $validator = $request->validate([
             'hashtag' => ['required', new TagValidate],
-            'favour_color' => 'required'
+            'favour_color' => 'required',
+            'instagram' => 'active_url|nullable'
         ]);
         $profile->update([
             'hashtag' => $request->hashtag,
-            'favour_color' => $request->favour_color
+            'favour_color' => $request->favour_color,
+            'instagram' => $request->instagram
         ]);
 
         return redirect()->route('profiles.index');

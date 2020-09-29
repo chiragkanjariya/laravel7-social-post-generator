@@ -3,8 +3,10 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Hash;
+use Auth;
 
-class TagValidate implements Rule
+class OldpasswordValidate implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,8 +27,7 @@ class TagValidate implements Rule
      */
     public function passes($attribute, $value)
     {
-        $hashtags = explode(',', $value);
-        return count($hashtags) > 2;
+        return Hash::check($value, Auth::user()->password);
     }
 
     /**
@@ -36,6 +37,6 @@ class TagValidate implements Rule
      */
     public function message()
     {
-        return trans('validation.custom.hashtag');
+        return trans('validation.custom.old_password');
     }
 }

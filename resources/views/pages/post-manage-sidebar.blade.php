@@ -7,7 +7,7 @@
       </span>
       <div class="header-profile-sidebar">
         <div class="avatar">
-{{--          <img src="{{ asset('images/portrait/small/avatar-s-11.jpg') }}" alt="user_avatar" height="70" width="70">--}}
+          <img src="{{ asset('images/portrait/small/avatar-s-11.jpg') }}" alt="user_avatar" height="70" width="70">
         </div>
         <h4 class="chat-user-name"></h4>
       </div>
@@ -50,14 +50,23 @@
         @foreach($profiles as $profile)
         <li data-profile="{{ json_encode($profile) }}" data-id="{{ $profile['id'] }}">
           <div class="pr-1 sidebar-profile-toggle">
-{{--              <span class="avatar m-0 avatar-md">--}}
-{{--                <img class="media-object rounded-circle" src="{{ asset('images/portrait/small/avatar-s-8.jpg') }}" height="42" width="42" alt="Generic placeholder image">--}}
-{{--              </span>--}}
+            <span class="m-0">
+              @if($profile['user']->photo === null)
+              <img class="media-object rounded-circle" src="{{ asset('images/avatar.png') }}" height="42" width="42" alt="Generic placeholder image">
+              @else
+              <img class="media-object rounded-circle" src="{{ asset('storage') . '/' . $profile['user']->photo }}" height="42" width="42" alt="Generic placeholder image">
+              @endif
+            </span>
           </div>
           <div class="user-chat-info">
             <div class="contact-info">
               <h5 class="font-weight-bold mb-0">{{ $profile['user']->name }} : {{ $profile['niche'] }} Profile</h5>
-              <p class="truncate">{{ $profile['hashtags'] }}</p>
+              @php
+                $hashtags = explode(',', $profile['hashtags']);
+              @endphp
+              @foreach ($hashtags as $hashtag)
+                <span class="badge badge-pill badge-glow badge-warning">{{ $hashtag }}</span>
+              @endforeach
             </div>
             <div class="contact-meta">
 {{--              <span class="badge badge-warning badge-pill float-right mr-2 text-white font-weight-bold">{{ $profile['count'] }}</span>--}}

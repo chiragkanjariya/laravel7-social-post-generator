@@ -55,7 +55,7 @@ class PostController extends Controller
     $result = array();
     $profiles = DB::select(DB::raw('
     SELECT profiles.*, posts_cnt.cnt, niches.name as niche_name FROM profiles
-      LEFT JOIN (SELECT COUNT(posts.id) AS cnt, posts.profile_id FROM posts WHERE DATE(posts.created_at) = \'2020-09-23\' GROUP BY posts.profile_id) AS posts_cnt ON profiles.id = posts_cnt.profile_id
+      LEFT JOIN (SELECT COUNT(posts.id) AS cnt, posts.profile_id FROM posts WHERE DATE(posts.created_at) = '. date('Y-m-d') .' GROUP BY posts.profile_id) AS posts_cnt ON profiles.id = posts_cnt.profile_id
       LEFT JOIN niches ON profiles.niche_id = niches.id
     ORDER BY posts_cnt.cnt'));
     foreach ($profiles as $profile)
@@ -81,7 +81,9 @@ class PostController extends Controller
    * @return \Illuminate\Http\JsonResponse
    */
   public function getPosts(Request  $request){
-    $posts = Post::query()->where('profile_id', $request->profile_id)->get();
+    $posts = Post::query()->where('profile_id', $request->profile_id)
+      ->where('created_at', 'LIKE', date('Y-m-d').'%')
+      ->get();
     return new JsonResponse($posts, 202);
   }
   /**
@@ -116,5 +118,35 @@ class PostController extends Controller
             'profile_id' => $request->profile_id,
         ]);
     return new JsonResponse($post, 202);
+  }
+
+  /**
+   * Approve post when user clicks approve buttion on view post page.
+   * 
+   * @param \Illuminate\Http\Request  $request
+   * 
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function approvePost(Request $request)
+  {
+    $post = Post::findOrfail($request->post_id);
+    $post->isapproved = 1;
+    $post->save();
+
+    return new JsonResponse(null, 204);
+  }
+
+  /**
+   * get posts by profile id
+   * @param \Illuminate\Http\Request  $request
+   *
+   * @return \Illuminate\Http\JsonResponse
+   */
+  public function getNotApprovedPost(Request  $request){
+    $posts = Post::query()->where('profile_id', $request->profile_id)
+      ->where('created_at', 'LIKE', date('Y-m-d').'%')
+      ->where('isapproved', 0)
+      ->get();
+    return new JsonResponse($posts, 202);
   }
 }

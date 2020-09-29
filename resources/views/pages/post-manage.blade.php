@@ -38,8 +38,7 @@
           <div class="vs-con-items d-flex align-items-center">
             <div class="sidebar-toggle d-block d-lg-none mr-1"><i class="feather icon-menu font-large-1"></i></div>
             <div class="avatar user-profile-toggle m-0 m-0 mr-1">
-{{--              <img src="{{ asset('images/portrait/small/avatar-s-1.jpg') }}" alt="" height="40" width="40" />--}}
-              <p class="mb-0" style="height: 40px; width: 40px; border-radius: 50%;"></p>
+              <img src="{{ asset('images/portrait/small/avatar-s-1.jpg') }}" alt="" height="40" width="40" />
             </div>
             <h6 class="mb-0 profile-title">Felecia Rower</h6>
           </div>

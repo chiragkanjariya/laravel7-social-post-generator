@@ -13,6 +13,24 @@
           "icon": "feather icon-aperture"
         },
         {
+          "url": "/myposts",
+          "name": "mypost.title",
+          "slug": "myposts",
+          "icon": "feather icon-package"
+        },
+        {
+          "url": "/post-view",
+          "name": "post-view.title",
+          "slug": "post-view",
+          "icon": "feather icon-share-2"
+        },
+        {
+          "url": "",
+          "navheader": "adminPanel",
+          "icon": "",
+          "permission": "administrator-permission"
+        },
+        {
           "url": "/users",
           "name": "user.title",
           "slug": "users",
@@ -25,12 +43,6 @@
           "slug": "post-manage",
           "permission": "administrator-permission",
           "icon": "feather icon-share"
-        },
-        {
-          "url": "/post-view",
-          "name": "post-view.title",
-          "slug": "post-view",
-          "icon": "feather icon-share-2"
         }
     ]
 }

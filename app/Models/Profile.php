@@ -33,7 +33,8 @@ class Profile extends Model
         'user_id',
         'niche_id',
         'hashtag',
-        'favour_color'
+        'favour_color',
+        'instagram'
     ];
 
     /**
@@ -54,5 +55,15 @@ class Profile extends Model
     public function niche(): BelongsTo
     {
         return $this->belongsTo(Niche::class, 'niche_id', 'id');
+    }
+
+    /**
+     * The posts which has the profile.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function posts(): HasMany
+    {
+        return $this->hasMany(Post::class);
     }
 }

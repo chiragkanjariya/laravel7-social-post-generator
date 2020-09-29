@@ -53,6 +53,12 @@
 				<span class="danger">{{ $errors->first('favour_color') }}</span>
 			</fieldset>
 
+			<fieldset class="form-group">
+				<label for="instagram">@lang('locale.profile.instagram')</label>
+				<input name="instagram" class="form-control" placeholder="@lang('locale.profile.instagram_hold')" value="{{ $profile->instagram }}">
+				<span class="danger">{{ $errors->first('instagram') }}</span>
+			</fieldset>
+
 			<div class="text-right">
 				<button class="btn btn-primary">@lang('locale.profile.update')</button>
 			</div>

@@ -16,18 +16,25 @@ return [
     "ConfirmPassword" => "Confirm Password",
     "Register" => "Register",
     "acceptCondition" => "I accept the terms & conditions.",
-    "CreateAccount" => "Create Account",
     "fillCreateForm" => "Fill the below form to create a new account.",
     "Login" => "Login",
     "Username" => "Username",
     "Logout" => "Logout",
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
+    "approve" => "Approve",
+    "delete" => "Delete",
     "post-manage" => [
-        "title" => "Manage Post"
+        "title" => "Post management"
     ],
     "post-view" => [
-        "title" => "View Post"
+        "title" => "New posts"
+    ],
+    "mypost" => [
+        "title" => "My posts",
+        "message" => [
+            "delete" => "The post is deleted successfully."
+        ]
     ],
     "details" => "Details",
     "role" => [
@@ -48,7 +55,7 @@ return [
         ]
     ],
     "user" => [
-        "title" => "Users",
+        "title" => "User management",
         "create" => "Create User",
         "edit" => "Edit User",
         "update" => "Update User",
@@ -76,7 +83,7 @@ return [
         ],
     ],
     "profile" => [
-        "title" => "Profile",
+        "title" => "My profile",
         "save" => "Save Profile",
         "update" => "Update Profile",
         "edit" => "Edit Profile",
@@ -85,9 +92,27 @@ return [
         "hashtag" => "Hashtag",
         "addTag" => "Add 3 more tags...",
         "favourColor" => "Favour Color",
+        "instagram" => "Instagram",
+        "instagram_hold" => "Example: https://www.instagram.com/user",
         "message" => [
             "delete" => "The profile is deleted successfully.",
             "overProfile" => "The profile count is over in your account."
+        ]
+    ],
+    "account" => [
+        'title' => "My Account",
+        "create" => "Create Account",
+        "edit" => "Edit Account",
+        "save" => "Save Account",
+        "firstname" => "First Name",
+        "lastname" => "Last Name",
+        "general" => "General",
+        "changePassword" => "Change Password",
+        "oldPassword" => "Old Password",
+        "newPassword" => "New Password",
+        "retypePassword" => "Retype New Password",
+        "message" => [
+            'save' => "Your account info is saved successfully."
         ]
     ],
     "scrap-image" => [
