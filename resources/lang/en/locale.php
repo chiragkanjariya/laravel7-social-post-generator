@@ -24,6 +24,7 @@ return [
     "adminPanel" => "Admin panel",
     "approve" => "Approve",
     "delete" => "Delete",
+    "warning" => "Warning",
     "post-manage" => [
         "title" => "Post management"
     ],
@@ -34,6 +35,17 @@ return [
         "title" => "My posts",
         "message" => [
             "delete" => "The post is deleted successfully."
+        ]
+    ],
+    "freepost" => [
+        "title" => "Free posts",
+        "create" => "Create free post",
+        "save" => "Save post",
+        "title" => "Post title",
+        "content" => "Post content",
+        "message" => [
+            "save" => "The free post is stored successfully.",
+            "delete" => "The free post is removed successfully."
         ]
     ],
     "details" => "Details",
@@ -122,6 +134,7 @@ return [
     "error" => [
         "lockTitle" => "Your account is locked!",
         "lockDescription" => "Your account is locked by admin now, contact to admin.",
-        "notMatchPassword" => "The specified password does not match the database password."
+        "notMatchPassword" => "The specified password does not match the database password.",
+        "postImageValidate" => "The post image is not uploaded."
     ]
 ];
