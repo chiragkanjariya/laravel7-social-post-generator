@@ -86,7 +86,7 @@
               '      <div class="card-body">\n' +
               '        <h4 class="card-title">' + result[row].post_title + '</h4>\n' +
               '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
-              '        <a href="#" class="btn btn-sm btn-danger" onclick="deletePost('+ result[row].id +')">{{ trans("locale.delete") }}</a>\n' +
+              '        <a href="#" class="btn btn-sm btn-danger" onclick="deletePost('+ result[row].id +')">{{ trans("locale.disapprove") }}</a>\n' +
               '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
               '          <a href="#" class="btn btn-sm btn-primary" onclick="approvePost(' + result[row].id + ')">{{ trans("locale.approve") }}</a>\n' +
               '        </div>\n' +

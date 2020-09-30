@@ -23,6 +23,7 @@ return [
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
     "approve" => "Approve",
+    "disapprove" => "Disapprove",
     "delete" => "Delete",
     "warning" => "Warning",
     "success" => "Success",
