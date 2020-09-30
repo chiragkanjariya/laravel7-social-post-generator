@@ -16,13 +16,52 @@ return [
     "ConfirmPassword" => "Confirm Password",
     "Register" => "Register",
     "acceptCondition" => "I accept the terms & conditions.",
-    "CreateAccount" => "Create Account",
     "fillCreateForm" => "Fill the below form to create a new account.",
     "Login" => "Login",
     "Username" => "Username",
     "Logout" => "Logout",
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
+    "approve" => "Approve",
+    "delete" => "Delete",
+    "warning" => "Warning",
+    "post-manage" => [
+        "title" => "Post management"
+    ],
+    "post-view" => [
+        "title" => "New posts"
+    ],
+    "mypost" => [
+        "title" => "My posts",
+        "message" => [
+            "delete" => "The post is deleted successfully."
+        ]
+    ],
+    "freepost" => [
+        "title" => "Free posts",
+        "create" => "Create free post",
+        "save" => "Save post",
+        "content" => "Post content",
+        "message" => [
+            "save" => "The free post is stored successfully.",
+            "delete" => "The free post is removed successfully."
+        ]
+    ],
+    "instagram" => [
+        "title" => "Instagram",
+        "management" => "Instagram Management",
+        "followers" => "Followers",
+        "bestHashtags" => "Best Hashtags",
+        "posts" => "Posts",
+        "advices" => "Advices",
+        "save" => "Save Instagram",
+        "edit" => "Edit Instagram",
+        "message" => [
+            "save" => "The instagram data is stored successfully.",
+            "delete" => "The instagram data is deleted successfully."
+        ]
+    ],
+    "details" => "Details",
     "role" => [
         "title" => "Roles",
         "create" => "Create Role",
@@ -41,7 +80,7 @@ return [
         ]
     ],
     "user" => [
-        "title" => "Users",
+        "title" => "User management",
         "create" => "Create User",
         "edit" => "Edit User",
         "update" => "Update User",
@@ -69,18 +108,37 @@ return [
         ],
     ],
     "profile" => [
-        "title" => "Profile",
-        "save" => "Save changes",
+        "title" => "My profile",
+        "save" => "Save Profile",
+        "update" => "Update Profile",
         "edit" => "Edit Profile",
+        "create" => "Create Profile",
+        "niche" => "Niche",
+        "hashtag" => "Hashtag",
+        "addTag" => "Add 3 more tags...",
+        "favourColor" => "Favour Color",
+        "instagram" => "Instagram",
+        "instagram_hold" => "Example: https://www.instagram.com/user",
+        "message" => [
+            "delete" => "The profile is deleted successfully.",
+            "overProfile" => "The profile count is over in your account."
+        ]
+    ],
+    "account" => [
+        'title' => "My Account",
+        "create" => "Create Account",
+        "edit" => "Edit Account",
+        "save" => "Save Account",
+        "firstname" => "First Name",
+        "lastname" => "Last Name",
         "general" => "General",
         "changePassword" => "Change Password",
-        "upload" => "Upload new photo",
-        "allow" => "Allowed JPG, GIF or PNG. Max size of 800kB",
-        "updateSuccess" => "The profile is saved successfully.",
         "oldPassword" => "Old Password",
         "newPassword" => "New Password",
-        "retypePassword" => "Retype New Password"
-
+        "retypePassword" => "Retype New Password",
+        "message" => [
+            'save' => "Your account info is saved successfully."
+        ]
     ],
     "scrap-image" => [
         "title" => "Scrapping Images",
@@ -89,6 +147,13 @@ return [
     "error" => [
         "lockTitle" => "Your account is locked!",
         "lockDescription" => "Your account is locked by admin now, contact to admin.",
-        "notMatchPassword" => "The specified password does not match the database password."
+        "notMatchPassword" => "The specified password does not match the database password.",
+        "postImageValidate" => "The post image is not uploaded."
+    ],
+    "swal" => [
+        "delConfirm" => [
+            "title" => "Are you sure?",
+            "text" => "You would not be able to revert this!"
+        ],
     ]
 ];

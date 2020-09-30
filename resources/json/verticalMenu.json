@@ -7,6 +7,42 @@
             "icon": "feather icon-home"
         },
         {
+          "url": "/profiles",
+          "name": "profile.title",
+          "slug": "profiles",
+          "icon": "feather icon-aperture"
+        },
+        {
+          "url": "/myposts",
+          "name": "mypost.title",
+          "slug": "myposts",
+          "icon": "feather icon-package"
+        },
+        {
+          "url": "/post-view",
+          "name": "post-view.title",
+          "slug": "post-view",
+          "icon": "feather icon-share-2"
+        },
+        {
+          "url": "/freeposts",
+          "name": "freepost.title",
+          "slug": "freeposts",
+          "icon": "feather icon-octagon"
+        },
+        {
+          "url": "/instagrams",
+          "name": "instagram.title",
+          "slug": "instagrams",
+          "icon": "feather icon-instagram"
+        },
+        {
+          "url": "",
+          "navheader": "adminPanel",
+          "icon": "",
+          "permission": "administrator-permission"
+        },
+        {
           "url": "/users",
           "name": "user.title",
           "slug": "users",
@@ -14,10 +50,18 @@
           "icon": "feather icon-user"
         },
         {
-          "url": "/scrap-image",
-          "name": "scrap-image.title",
-          "slug": "scrap-image",
-          "icon": "feather icon-wind"
+          "url": "/post-manage",
+          "name": "post-manage.title",
+          "slug": "post-manage",
+          "permission": "administrator-permission",
+          "icon": "feather icon-share"
+        },
+        {
+          "url": "/instagrams/management",
+          "name": "instagram.management",
+          "slug": "instagrams/management",
+          "permission": "administrator-permission",
+          "icon": "feather icon-instagram"
         }
     ]
 }

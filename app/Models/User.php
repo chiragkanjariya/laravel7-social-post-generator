@@ -6,6 +6,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use File;
 
 class User extends Authenticatable
 {
@@ -17,7 +19,13 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'status',
+        'name',
+        'firstname',
+        'lastname',
+        'photo',
+        'email',
+        'password',
+        'status',
     ];
 
     /**
@@ -45,5 +53,34 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function setPhotoAttribute($photo)
+    {
+        $photoPath = public_path("storage/$this->photo");
+        if (File::exists($photoPath) && $this->photo != null) { // unlink or remove previous image from folder
+            unlink($photoPath);
+        }
+        $this->attributes['photo'] = $photo;
+    }
+
+    /**
+     * The profiles has all profiles of oneself.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function profiles(): HasMany
+    {
+        return $this->hasMany(Profile::class, 'user_id', 'id');
+    }
+
+    /**
+     * Freeposts of user
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function freeposts(): HasMany
+    {
+        return $this->hasMany(Freepost::class);
     }
 }

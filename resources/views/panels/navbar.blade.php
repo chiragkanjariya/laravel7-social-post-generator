@@ -15,6 +15,10 @@
       <div class="navbar-container content">
         <div class="navbar-collapse" id="navbar-mobile">
           <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
+            <ul class="nav navbar-nav">
+              <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs"
+                                                                    href="#"><i class="ficon feather icon-menu"></i></a></li>
+            </ul>
             {{--  <ul class="nav navbar-nav">
               <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs"
                   href="#"><i class="ficon feather icon-menu"></i></a></li>
@@ -49,12 +53,6 @@
               <div class="dropdown-menu" aria-labelledby="dropdown-flag">
                 <a class="dropdown-item" href="{{url('lang/en')}}" data-language="en">
                   <i class="flag-icon flag-icon-us"></i> English
-                </a>
-                <a class="dropdown-item" href="{{url('lang/fr')}}" data-language="fr">
-                  <i class="flag-icon flag-icon-fr"></i> French
-                </a>
-                <a class="dropdown-item" href="{{url('lang/de')}}" data-language="de">
-                  <i class="flag-icon flag-icon-de"></i> German
                 </a>
                 <a class="dropdown-item" href="{{url('lang/pt')}}" data-language="pt">
                   <i class="flag-icon flag-icon-pt"></i> Portuguese
@@ -149,16 +147,15 @@
             <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#"
                 data-toggle="dropdown">
                 <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
-                  {{ Auth::user()->name }}</span><span class="user-status">Available</span></div><span><img class="round"
-                    src="{{asset('images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40"
-                    width="40" /></span>
+                  {{ Auth::user()->name }}</span><span class="user-status">Available</span></div><span>
+                  @if(Auth::user()->photo === null)
+                  <img class="round" src="{{asset('images/avatar.png') }}" alt="avatar" height="40" width="40" /></span>
+                  @else
+                  <img class="round" src="{{ asset('storage') . '/' . Auth::user()->photo }}" alt="avatar" height="40" width="40" /></span>
+                  @endif
               </a>
-              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="javascript:void(0)"><i
-                    class="feather icon-user"></i> Edit Profile</a><a class="dropdown-item" href="javascript:void(0)"><i
-                    class="feather icon-mail"></i> My
-                  Inbox</a><a class="dropdown-item" href="javascript:void(0)"><i class="feather icon-check-square"></i>
-                  Task</a><a class="dropdown-item" href="javascript:void(0)"><i class="feather icon-message-square"></i>
-                  Chats</a>
+              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('account.show') }}"><i
+                    class="feather icon-user"></i> {{ trans('locale.account.title') }}</a>
                   <div class="dropdown-divider"></div><a class="dropdown-item" href="#logout" onclick="$('#logout').submit();"><i
                       class="feather icon-power"></i> Logout</a>
               </div>

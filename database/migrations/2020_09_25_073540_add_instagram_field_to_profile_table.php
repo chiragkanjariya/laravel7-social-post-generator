@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfileTypesTable extends Migration
+class AddInstagramFieldToProfileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateProfileTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->string('instagram')->nullable();
         });
     }
 
@@ -27,6 +25,8 @@ class CreateProfileTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_types');
+        Schema::table('profiles', function (Blueprint $table) {
+            Schema::dropIfExists('instagram');
+        });
     }
 }

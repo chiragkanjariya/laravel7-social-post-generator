@@ -8,6 +8,13 @@
         <script src="{{ asset(mix('js/core/app.js')) }}"></script>
         <script src="{{ asset(mix('js/scripts/components.js')) }}"></script>
 
+        <script type="text/javascript">
+                $.ajaxSetup({
+                        headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                });
+        </script>
 @if($configData['blankPage'] == false)
 
         <script src="{{ asset(mix('js/scripts/footer.js')) }}"></script>
