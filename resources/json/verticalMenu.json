@@ -2,7 +2,7 @@
     "menu": [
         {
             "url": "/",
-            "name": "Dashboard",
+            "name": "HowItWorks",
             "slug": "/",
             "icon": "feather icon-home"
         },

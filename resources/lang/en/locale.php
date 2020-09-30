@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "Dashboard" => "Dashboard",
+    "HowItWorks" => "How it works",
     "id" => "ID",
     "CreatedAt" => "CreatedAt",
     "UpdatedAt" => "UpdatedAt",
