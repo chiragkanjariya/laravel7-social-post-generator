@@ -2,13 +2,6 @@
 
 @section('title', trans('locale.instagram.title'))
 
-@section('vendor-style')
-	<link rel="stylesheet" href="{{ asset(mix('vendors/css/tables/datatable/datatables.min.css')) }}">
-@endsection
-@section('page-style')
-
-@endsection
-
 @section('content')
 	@if (session()->get('message'))
 	<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -21,70 +14,70 @@
 	</div>
 	@endif
 
-	<div class="card">
-		<div class="card-content">
-			<div class="card-body">
-				<div class="table-responsive">
-					<table id="dataTable" class="table table-striped">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>@lang('locale.instagram.title')</th>
-								<th>@lang('locale.instagram.followers')</th>
-								<th>@lang('locale.instagram.bestHashtags')</th>
-								<th>@lang('locale.instagram.posts')</th>
-								<th>@lang('locale.instagram.advices')</th>
-								<th>@lang('locale.UpdatedAt')</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($profiles as $key => $profile)
-							<tr>
-								<td>{{ $profile->id }}</td>
-								<td>
-									<a href="{{ $profile->instagram }}" target="_blank">{{ $profile->instagram }}</a>
-								</td>
-								<td>{{ $profile->analysistInstagram->followers ?? '' }}</td>
-								<td>
-									@php
-									$hashtags = explode(',', $profile->analysistInstagram->best_hashtags ?? '');
-									@endphp
-									@foreach ($hashtags as $hashtag)
-									<span class="badge badge-pill badge-md badge-glow badge-primary">{{ $hashtag }}</span>
-									@endforeach
-								</td>
-								<td>{{ $profile->analysistInstagram->posts ?? '' }}</td>
-								<td>{{ $profile->analysistInstagram->advices ?? '' }}</td>
-								<td>{{ $profile->analysistInstagram->updated_at ?? '' }}</td>
-							</tr>
-							@endforeach
-						</tbody>
-					</table>
+	@foreach($profiles as $key => $profile)
+	<a href="{{ $profile->instagram }}" target="_blank">{{ $profile->instagram }}</a>
+	<div class="row">
+		<div class="col-lg-2 col-md-6 col-12">
+			<div class="card">
+				 <div class="card-header d-flex flex-column align-items-start">
+					  <div class="avatar bg-rgba-primary p-50 m-0">
+							<div class="avatar-content">
+								 <i class="feather icon-users text-primary font-medium-5"></i>
+							</div>
+					  </div>
+					  <h2 class="text-bold-700 mt-1 mb-25">{{ $profile->analysistInstagram->followers ?? 0 }}</h2>
+					  <p>{{ trans('locale.instagram.followers') }}</p>
+				 </div>
+			</div>
+		</div>
+	
+		<div class="col-lg-2 col-md-6 col-12">
+			<div class="card">
+				 <div class="card-header d-flex flex-column align-items-start">
+					  <div class="avatar bg-rgba-primary p-50 m-0">
+							<div class="avatar-content">
+								<i class="feather icon-octagon text-primary font-medium-5"></i>
+							</div>
+					  </div>
+					  <h2 class="text-bold-700 mt-1 mb-25">{{ $profile->analysistInstagram->posts ?? 0 }}</h2>
+					  <p>{{ trans('locale.instagram.posts') }}</p>
+				 </div>
+			</div>
+		</div>
+
+		<div class="col-lg-3 col-md-6 col-12">
+			<div class="card">
+				<div class="card-header d-flex flex-column align-items-start">
+					<div class="avatar bg-rgba-primary p-50 m-0">
+						<div class="avatar-content">
+							<i class="feather icon-award text-primary font-medium-5"></i>
+						</div>
+					</div>
+					@php
+						$hashtags = explode(',', $profile->analysistInstagram->best_hashtags ?? '');
+					@endphp
+					<div class="row text-bold-700 mt-1 mb-25">
+					@foreach ($hashtags as $hashtag)
+						<span class="text-bold-700 mt-1 ml-1 mb-0 badge badge-sm badge-primary">{{ $hashtag ?? '' }}</span>
+					@endforeach
+					</div>
+					<p>{{ trans('locale.instagram.bestHashtags') }}</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-5 col-md-6 col-12">
+			<div class="card">
+				<div class="card-header">
+					<h4 class="card-title">{{ trans('locale.instagram.advices') }}</h4>
+				</div>
+				<div class="card-content">
+					<div class="card-body">
+						{!! $profile->analysistInstagram->advices ?? '' !!}
+				 	</div>
 				</div>
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('vendor-script')
-	<script src="{{ asset(mix('vendors/js/tables/datatable/datatables.min.js')) }}"></script>
-	<script src="{{ asset(mix('vendors/js/tables/datatable/datatables.bootstrap4.min.js')) }}"></script>
-@endsection
-@section('page-script')
-  	<script>
-		$('#dataTable').DataTable({
-			scrollCollapse: true,
-			bInfo: false,
-			language: {
-			paginate: {
-				previous: "<i class='mdi mdi-chevron-left'>",
-				next: "<i class='mdi mdi-chevron-right'>"
-			}
-			},
-			drawCallback: function() {
-			$(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-			$('.dataTables_scrollBody').css('min-height', '400px');
-			}
-		});
-  	</script>
+	@endforeach
 @endsection
