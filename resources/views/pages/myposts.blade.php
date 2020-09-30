@@ -7,20 +7,6 @@
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
 @endsection
-@section('page-style')
-  <style>
-    .post-overlay {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      opacity: 0.5;
-      transition: .7s ease;
-    }
-  </style>
-@endsection
 
 @section('content')
 	@if (session()->get('message'))
@@ -134,16 +120,5 @@
         , { "progressBar": true, "closeButton": true, timeOut: 2000 }
       );
     }
-		$(document).ready(function () {
-      $(".post-overlay").each(function () {
-        let color = $(this).attr("profile-color")
-        let isoverlay = $(this).attr("is-overlay")
-        let height = $(this).parent().find('img')[0].clientHeight + 'px';
-        if (parseInt(isoverlay) == 1)
-        {
-          $(this).css("background-color", color).css("height", height)
-        }
-      })
-    })
   </script>
 @endsection
