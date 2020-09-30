@@ -5,6 +5,7 @@
 @section('vendor-style')
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
+	<link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
   <style>
     .overlay {
       position: absolute;
@@ -17,8 +18,6 @@
       transition: .7s ease;
     }
   </style>
-@endsection
-@section('page-style')
 @endsection
 
 @include('pages/post-manage-sidebar')
@@ -56,6 +55,7 @@
 @section('vendor-script')
   <script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
+	<script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
 @endsection
 @section('page-script')
   <script>
@@ -86,8 +86,9 @@
               '      <div class="card-body">\n' +
               '        <h4 class="card-title">' + result[row].post_title + '</h4>\n' +
               '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
+              '        <a href="#" class="btn btn-sm btn-danger" onclick="deletePost('+ result[row].id +')">{{ trans("locale.delete") }}</a>\n' +
               '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
-              '          <a href="#" class="btn btn-sm btn-danger" onclick="approvePost(' + result[row].id + ')">{{ trans("locale.approve") }}</a>\n' +
+              '          <a href="#" class="btn btn-sm btn-primary" onclick="approvePost(' + result[row].id + ')">{{ trans("locale.approve") }}</a>\n' +
               '        </div>\n' +
               '      </div>\n' +
               '    </div>\n' +
@@ -134,6 +135,46 @@
           }
         }
       });
+    }
+
+    function deletePost(postId) {
+      Swal.fire({
+        title: '{{ trans("locale.swal.delConfirm.title") }}',
+        text: '{{ trans("locale.swal.delConfirm.text") }}',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '{{ trans("locale.swal.delConfirm.yes") }}',
+        confirmButtonClass: 'btn btn-primary',
+        cancelButtonClass: 'btn btn-danger ml-1',
+        buttonsStyling: false,
+      }).then(function (result) {
+        if (result.value) {
+          $.ajax({
+            method: "POST",
+            url: "post-delete",
+            data: {
+              id: postId
+            },
+            success: function (data, textStatus, jqXHR) {
+              if (jqXHR.status === 202) {
+                toastr.success(
+                  '{{ trans("locale.mypost.message.delete") }}',
+                  '{{ trans("locale.success") }}',
+                  {
+                    "progressBar": true,
+                    "closeButton": true,
+                    timeOut: 2000
+                  }
+                );
+    
+                $('.select2').trigger('change');
+              }
+            }
+          });
+        }
+      })
     }
   </script>
 @endsection
