@@ -59,7 +59,7 @@
 
 			<fieldset class="form-group">
 				<label for="instagram">@lang('locale.profile.instagram')</label>
-				<input name="instagram" class="form-control" placeholder="@lang('locale.profile.instagram_hold')" value="{{ old('instagram') }}">
+				<input name="instagram" class="form-control" value="{{ old('instagram') }}">
 				<span class="danger">{{ $errors->first('instagram') }}</span>
 			</fieldset>
 
