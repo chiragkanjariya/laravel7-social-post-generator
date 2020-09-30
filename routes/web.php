@@ -28,6 +28,8 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   Route::get('/scrap-image', 'ScrapImageController@index');
   Route::post('/scrap-image', 'ScrapImageController@getImages');
 
+  Route::get('/notification', 'NotificationController@index');
+
   Route::get('/post-manage', 'PostController@manage_index');
   Route::post('/post-get', 'PostController@getPosts');
   Route::post('/post-save', 'PostController@savePosts');
