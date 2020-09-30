@@ -53,13 +53,13 @@ class ProfileController extends Controller
 
         switch ($role) {
             case 'Beginner':
-                if (count($profiles) > 0) return back()->with('message', trans('locale.profile.message.overProfile'));
+                if (count($profiles) > 0) return redirect('/profiles')->with('message', trans('locale.profile.message.overProfile'));
                 break;
             case 'Intermediate':
-                if (count($profiles) > 1) return back()->with('message', trans('locale.profile.message.overProfile'));
+                if (count($profiles) > 1) return redirect('/profiles')->with('message', trans('locale.profile.message.overProfile'));
                 break;
             case 'Advanced':
-                if (count($profiles) > 2) return back()->with('message', trans('locale.profile.message.overProfile'));
+                if (count($profiles) > 2) return redirect('/profiles')->with('message', trans('locale.profile.message.overProfile'));
                 break;
         }
 
@@ -88,7 +88,6 @@ class ProfileController extends Controller
             'niche' => 'required',
             'hashtag' => ['required', new TagValidate],
             'favour_color' => 'required',
-            'instagram' => 'active_url|nullable'
         ]);
         Auth::user()->profiles()->create([
             'niche_id' => $request->niche,
@@ -145,7 +144,6 @@ class ProfileController extends Controller
         $validator = $request->validate([
             'hashtag' => ['required', new TagValidate],
             'favour_color' => 'required',
-            'instagram' => 'active_url|nullable'
         ]);
         $profile->update([
             'hashtag' => $request->hashtag,

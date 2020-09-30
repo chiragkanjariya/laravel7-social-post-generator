@@ -72,9 +72,9 @@
 									<a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-icon rounded-circle btn-flat-success waves-effect waves-light">
 										<i class="feather icon-edit"></i>
 									</a>
-									<a href="javascript:deleteProfile({{ $profile->id }})" class="btn btn-icon rounded-circle btn-flat-danger waves-effect waves-light">
+									{{--  <a href="javascript:deleteProfile({{ $profile->id }})" class="btn btn-icon rounded-circle btn-flat-danger waves-effect waves-light">
 										<i class="feather icon-trash-2"></i>
-									</a>
+									</a>  --}}
 								</td>
 							</tr>
 							@endforeach

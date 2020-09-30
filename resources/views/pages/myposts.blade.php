@@ -7,20 +7,6 @@
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
 @endsection
-@section('page-style')
-  <style>
-    .post-overlay {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      opacity: 0.5;
-      transition: .7s ease;
-    }
-  </style>
-@endsection
 
 @section('content')
 	@if (session()->get('message'))
@@ -47,8 +33,7 @@
               <a class="dropdown-item" href="javascript:copy({{ $post->id }})">Copy to clipboard</a>
             </div>
           </div>
-					<img class="card-img-top img-fluid" id="post-img-{{ $post->id }}" src="/storage/{{ $post->post_image }}" width="100%" alt="Approved posts" />
-					<div class="post-overlay" id="post-overlay-{{ $post->id }}" profile-color="{{ $post->profile->favour_color }}" is-overlay="{{ $post->isoverlay }}"></div>
+          <canvas id="canvas-{{ $post->id }}" class="card-img-top img-fluid canvas-image" width="100%" post-id="{{ $post->id }}" img-path="/storage/{{ $post->post_image }}" is-overlay="{{ $post->isoverlay }}" profile-color="{{ $post->profile->favour_color }}" alt="Approved posts"></canvas>
 					<div class="card-body">
 						<h4 class="card-title">{{ $post->post_title }}</h4>
 						<p class="card-text text-left" id="post-content-{{ $post->id }}">{{ $post->post_content }}</p>
@@ -75,6 +60,28 @@
 @endsection
 @section('page-script')
   <script>
+    $( ".canvas-image" ).each(function( index ) {
+      var postId = $(this).attr('post-id');
+      var canvas = document.getElementById('canvas-'+postId);
+      var context = canvas.getContext("2d");
+      var color = $(this).attr("profile-color");
+      var isoverlay = $(this).attr("is-overlay");
+
+      const img = new Image()
+      img.src = $(this).attr('img-path')
+      img.onload = () => {
+        canvas.width  = img.width;
+        canvas.height = img.height;
+        context.drawImage(img, 0, 0)
+
+        if (parseInt(isoverlay) == 1) {
+          context.fillStyle = color;
+          context.globalAlpha = 0.5;
+          context.fillRect(0, 0, canvas.width, canvas.height)
+        }
+      }
+    });
+
 		function deletePost(postId) {
 			Swal.fire({
 				title: 'Are you sure?',
@@ -94,21 +101,7 @@
 			 })
 		}
 		function download(postId) {
-      var image  = document.getElementById("post-img-" + postId);
-      var canvas = document.createElement("canvas");
-      // document.body.appendChild(canvas);
-      canvas.width  = image.width;
-      canvas.height = image.height;
-      canvas.style.setProperty('margin-left', '500px');
-      var context = canvas.getContext("2d");
-      let color = $("#post-overlay-" + postId).attr("profile-color");
-      let isoverlay = $("#post-overlay-" + postId).attr("is-overlay");
-      context.drawImage(image, 0, 0, image.width, image.height);
-      if (parseInt(isoverlay) == 1) {
-        context.fillStyle = color;
-        context.globalAlpha = 0.5;
-        context.fillRect(0, 0, image.width, image.height)
-      }
+      var canvas  = document.getElementById("canvas-" + postId);
 
       ReImg.fromCanvas(canvas).downloadPng();
     }
@@ -127,16 +120,5 @@
         , { "progressBar": true, "closeButton": true, timeOut: 2000 }
       );
     }
-		$(document).ready(function () {
-      $(".post-overlay").each(function () {
-        let color = $(this).attr("profile-color")
-        let isoverlay = $(this).attr("is-overlay")
-        let height = $(this).parent().find('img')[0].clientHeight + 'px';
-        if (parseInt(isoverlay) == 1)
-        {
-          $(this).css("background-color", color).css("height", height)
-        }
-      })
-    })
   </script>
 @endsection

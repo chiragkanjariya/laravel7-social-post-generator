@@ -1,7 +1,7 @@
 <?php
 
 return [
-    "Dashboard" => "Dashboard",
+    "HowItWorks" => "How it works",
     "id" => "ID",
     "CreatedAt" => "CreatedAt",
     "UpdatedAt" => "UpdatedAt",
@@ -23,8 +23,10 @@ return [
     "userPanel" => "User panel",
     "adminPanel" => "Admin panel",
     "approve" => "Approve",
+    "disapprove" => "Disapprove",
     "delete" => "Delete",
     "warning" => "Warning",
+    "success" => "Success",
     "post-manage" => [
         "title" => "Post management"
     ],
@@ -153,7 +155,8 @@ return [
     "swal" => [
         "delConfirm" => [
             "title" => "Are you sure?",
-            "text" => "You would not be able to revert this!"
+            "text" => "You would not be able to revert this!",
+            "yes" => "Yes, delete it!"
         ],
     ]
 ];
