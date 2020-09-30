@@ -53,13 +53,13 @@ class ProfileController extends Controller
 
         switch ($role) {
             case 'Beginner':
-                if (count($profiles) > 0) return back()->with('message', trans('locale.profile.message.overProfile'));
+                if (count($profiles) > 0) return redirect('/profiles')->with('message', trans('locale.profile.message.overProfile'));
                 break;
             case 'Intermediate':
-                if (count($profiles) > 1) return back()->with('message', trans('locale.profile.message.overProfile'));
+                if (count($profiles) > 1) return redirect('/profiles')->with('message', trans('locale.profile.message.overProfile'));
                 break;
             case 'Advanced':
-                if (count($profiles) > 2) return back()->with('message', trans('locale.profile.message.overProfile'));
+                if (count($profiles) > 2) return redirect('/profiles')->with('message', trans('locale.profile.message.overProfile'));
                 break;
         }
 
