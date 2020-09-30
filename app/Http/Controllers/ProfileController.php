@@ -88,7 +88,6 @@ class ProfileController extends Controller
             'niche' => 'required',
             'hashtag' => ['required', new TagValidate],
             'favour_color' => 'required',
-            'instagram' => 'active_url|nullable'
         ]);
         Auth::user()->profiles()->create([
             'niche_id' => $request->niche,
@@ -145,7 +144,6 @@ class ProfileController extends Controller
         $validator = $request->validate([
             'hashtag' => ['required', new TagValidate],
             'favour_color' => 'required',
-            'instagram' => 'active_url|nullable'
         ]);
         $profile->update([
             'hashtag' => $request->hashtag,
