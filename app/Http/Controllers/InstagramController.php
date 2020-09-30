@@ -59,12 +59,21 @@ class InstagramController extends Controller
             'advices' => 'required|string|max:190'
         ]);
         
-        $profile->analysistInstagram()->updateOrCreate([
-            'followers' => $request->followers,
-            'best_hashtags' => $request->best_hashtags,
-            'posts' => $request->posts,
-            'advices' => $request->advices
-        ]);
+        if ($profile->analysistInstagram) {
+            $profile->analysistInstagram()->first()->update([
+                'followers' => $request->followers,
+                'best_hashtags' => $request->best_hashtags,
+                'posts' => $request->posts,
+                'advices' => $request->advices
+            ]);
+        } else {
+            $profile->analysistInstagram()->create([
+                'followers' => $request->followers,
+                'best_hashtags' => $request->best_hashtags,
+                'posts' => $request->posts,
+                'advices' => $request->advices
+            ]);
+        }
 
         return redirect('/instagrams/management')
             ->with('message', trans('locale.instagram.message.save'));
