@@ -11,11 +11,6 @@ use phpDocumentor\Reflection\Types\True_;
 
 class NotificationController extends Controller
 {
-    public function __construct()
-    {
-      $this->middleware('permission:administrator-permission', ['only' => ['index','create','store','edit','update','destroy']]);
-    }
-
    /**
    * init function.
    *
