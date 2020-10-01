@@ -1,9 +1,9 @@
 {
     "menu": [
         {
-            "url": "/",
+            "url": "/dashboard-analytics",
             "name": "HowItWorks",
-            "slug": "/",
+            "slug": "/dashboard-analytics",
             "icon": "feather icon-home"
         },
         {
