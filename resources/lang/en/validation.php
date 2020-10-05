@@ -133,7 +133,8 @@ return [
             'rule-name' => 'custom-message',
         ],
         'hashtag' => 'The :attribute should be 3 more tags.',
-        'old_password' => 'The :attribute does not match with our database'
+        'old_password' => 'The :attribute does not match with our database',
+        'less_time' => 'The :attribute can not less than current time.'
     ],
 
     /*

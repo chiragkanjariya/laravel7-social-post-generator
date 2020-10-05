@@ -292,7 +292,7 @@
   <script>
     Pusher.logToConsole = true;
     var pusher = new Pusher('{{ env('PUSHER_APP_KEY') }}', {
-      cluster: 'eu',
+      cluster: 'mt1',
       forceTLS: true
     });
 

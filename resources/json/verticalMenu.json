@@ -1,9 +1,9 @@
 {
     "menu": [
         {
-            "url": "/",
+            "url": "/dashboard-analytics",
             "name": "HowItWorks",
-            "slug": "/",
+            "slug": "/dashboard-analytics",
             "icon": "feather icon-home"
         },
         {
@@ -35,6 +35,12 @@
           "name": "instagram.title",
           "slug": "instagrams",
           "icon": "feather icon-instagram"
+        },
+        {
+          "url": "/schedulers",
+          "name": "scheduler.title",
+          "slug": "schedulers",
+          "icon": "feather icon-calendar"
         },
         {
           "url": "",
