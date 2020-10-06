@@ -142,6 +142,21 @@ return [
             'save' => "Your account info is saved successfully."
         ]
     ],
+    "scheduler" => [
+        "title" => "Scheduler",
+        "create" => "Create Schedule",
+        "edit" => "Edit Schedule",
+        "save" => "Save Schedule",
+        "update" => "Update Schedule",
+        "schedule" => "Schedule",
+        "scheduleTitle" => "Schedule Title",
+        "scheduleDescription" => "Schedule Description",
+        "message" => [
+            "save" => "Your schedule is saved successfully.",
+            "update" => "The schedule is updated successfully.",
+            "delete" => "The schedule is deleted successfully."
+        ]
+    ],
     "scrap-image" => [
         "title" => "Scrapping Images",
         "search" => "Search"
