@@ -110,7 +110,7 @@ class SchedulerController extends Controller
         $validator = $request->validate([
             'title' => 'required|string|max:190',
             'description' => 'required|string|max:190',
-            'schedule' => 'required|string|max:190'
+            'schedule' => ['required', 'string', 'max:190', new LessTodayValidate]
         ]);
 
         $scheduler->update([
