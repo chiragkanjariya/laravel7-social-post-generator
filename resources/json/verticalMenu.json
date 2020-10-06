@@ -37,6 +37,12 @@
           "icon": "feather icon-instagram"
         },
         {
+          "url": "/schedulers",
+          "name": "scheduler.title",
+          "slug": "schedulers",
+          "icon": "feather icon-calendar"
+        },
+        {
           "url": "",
           "navheader": "adminPanel",
           "icon": "",
