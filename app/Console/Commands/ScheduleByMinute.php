@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\Scheduler;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class ScheduleByMinute extends Command
 {
