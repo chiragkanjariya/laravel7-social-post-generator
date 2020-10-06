@@ -19,9 +19,7 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
   Route::resource('roles','RoleController');
   Route::resource('users','UserController');
 
-  Route::get('/', function(){
-    return redirect('/profiles/create');
-  });
+  Route::get('/', 'DashboardController@dashboardAnalytics')->middleware('hasProfile');
 
   // Route Dashboards
   Route::get('/dashboard-analytics', 'DashboardController@dashboardAnalytics');
