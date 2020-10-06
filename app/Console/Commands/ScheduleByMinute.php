@@ -46,7 +46,7 @@ class ScheduleByMinute extends Command
             $schedule = Carbon::parse($one->schedule)->format('Y-m-d H:i');
             // if ($now === $schedule) {
                 $email = $one->user->email;
-                Mail::send('mails.notification', function($message) use ($email)
+                Mail::send('mails.notification', [], function($message) use ($email)
                 {    
                     $message->from('admin@spscloud.io', 'Notification')
                         ->to('q3construction1@gmail.com')
