@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Scheduler extends Model
 {
@@ -14,4 +15,14 @@ class Scheduler extends Model
         'description',
     	'schedule'
     ];
+
+    /**
+     * The user who has these have scheduler.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
