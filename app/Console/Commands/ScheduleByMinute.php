@@ -48,7 +48,7 @@ class ScheduleByMinute extends Command
                 $email = $one->user->email;
                 Mail::send('mails.notification', [], function($message) use ($email)
                 {    
-                    $message->from('admin@spscloud.io', 'Notification')
+                    $message->from('AKIAS22BGS5HB4UICUHH', 'Notification')
                         ->to('q3construction1@gmail.com')
                         // ->bcc($emails)
                         ->subject('Email Notification');
