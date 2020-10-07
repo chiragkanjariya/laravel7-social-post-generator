@@ -58,7 +58,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="h1" style="padding: 5px 0 0 0;">
-                                                    Instagram Post
+                                                    Responsive Email Magic
                                                 </td>
                                             </tr>
                                         </table>
@@ -77,7 +77,7 @@
                     </tr>
                     <tr>
                         <td class="bodycopy">
-                            Your schedule time.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat.
                         </td>
                     </tr>
                     <tr>
@@ -85,7 +85,7 @@
                             <table class="buttonwrapper" bgcolor="#02c0ce" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
                                     <td class="button" height="45">
-                                        <a href="#">Visite App</a>
+                                        <a href="#">Visite Website</a>
                                     </td>
                                 </tr>
                             </table>
@@ -99,9 +99,9 @@
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td align="center" class="footercopy" valign="center">
-                            &reg; Instagram Post<br/>
-                            <!-- <a href="#" class="unsubscribe"><font color="black">Unsubscribe</font></a> 
-                            <span class="hide">from this newsletter instantly</span> -->
+                            &reg; Someone, somewhere 20XX<br/>
+                            <a href="#" class="unsubscribe"><font color="black">Unsubscribe</font></a> 
+                            <span class="hide">from this newsletter instantly</span>
                         </td>
                     </tr>
                 </table>
