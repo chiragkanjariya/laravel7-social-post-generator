@@ -27,10 +27,8 @@ class AddPostToSchedulersTable extends Migration
      */
     public function down()
     {
-        if (Schema::hasColumn('schedulers', 'post_id')) {
-            Schema::table('schedulers', function (Blueprint $table) {
-                $table->dropColumn('post_id');
-            });
-        }
+        Schema::table('schedulers', function (Blueprint $table) {
+            $table->dropColumn('post_id');
+        });
     }
 }
