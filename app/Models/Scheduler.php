@@ -25,4 +25,12 @@ class Scheduler extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * The post who has specified schedule.
+     */
+    public function post()
+    {
+        return $this->belongsTo(Post::class);
+    }
 }

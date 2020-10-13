@@ -26,4 +26,14 @@ class Post extends Model
   {
     return $this->belongsTo(Profile::class);
   }
+
+  /**
+   * The schedule of specified post
+   * 
+   * @return \Illuminate\Database\Eloquent\Relations\HasOne
+   */
+  public function schedule()
+  {
+    return $this->hasOne(Scheduler::class);
+  }
 }

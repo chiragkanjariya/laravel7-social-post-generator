@@ -65,6 +65,7 @@ Route::middleware(['auth', 'isActivated'])->group(function () {
 
   // Scheduler
   Route::resource('/schedulers', 'SchedulerController');
+  Route::post('/schedulers/{post}/create', 'SchedulerController@storeByPost');
 });
 
 
