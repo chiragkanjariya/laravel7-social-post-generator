@@ -81,7 +81,7 @@
               '<div class="col-lg-4 col-md-6 col-sm-12 mt-1 card-post-' + result[row].id + '">\n' +
               '  <div class="card" style="max-width: 300px; margin: auto">\n' +
               '    <div class="card-content">\n' +
-              '      <canvas id="canvas-'+ result[row].id +'" class="card-img-top img-fluid canvas-image" width="100%" post-id="'+ result[row].id +'" img-path="/storage/'+ result[row].post_image +'" alt="Approved posts"></canvas>\n' +
+              '      <canvas id="canvas-'+ result[row].id +'" class="card-img-top img-fluid canvas-image" width="100%" post-id="'+ result[row].id +'" img-path="/storage/'+ result[row].post_image +'" is-overlay="'+ result[row].isoverlay +'" alt="Approved posts"></canvas>\n' +
               '      <div class="card-body">\n' +
               '        <h4 class="card-title">' + result[row].post_title + '</h4>\n' +
               '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
@@ -101,7 +101,6 @@
             var postId = $(this).attr('post-id');
             var canvas = document.getElementById('canvas-'+postId);
             var context = canvas.getContext("2d");
-            var color = $(this).attr("profile-color");
             var isoverlay = $(this).attr("is-overlay");
 
             const img = new Image()
@@ -112,7 +111,7 @@
               context.drawImage(img, 0, 0)
 
               if (parseInt(isoverlay) == 1) {
-                context.fillStyle = color;
+                context.fillStyle = profile_color;
                 context.globalAlpha = 0.5;
                 context.fillRect(0, 0, canvas.width, canvas.height)
               }
