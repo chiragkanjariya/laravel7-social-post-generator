@@ -74,6 +74,22 @@ class SchedulerController extends Controller
     }
 
     /**
+     * Store schedule by specified post
+     */
+    public function storeByPost(\App\Models\Post $post, Request $request)
+    {
+        $post->schedule()->updateOrCreate(['post_id' => $post->id], [
+            'title' => $request->title,
+            'description' => $request->description,
+            'schedule' => $request->schedule,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect('/myposts')
+            ->with('message', trans('locale.scheduler.message.save'));
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Scheduler  $scheduler
