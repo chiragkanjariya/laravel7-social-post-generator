@@ -34,6 +34,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
+								<th>@lang('locale.scheduler.post')</th>
 								<th>@lang('locale.scheduler.scheduleTitle')</th>
 								<th>@lang('locale.scheduler.scheduleDescription')</th>
 								<th>@lang('locale.scheduler.schedule')</th>
@@ -46,6 +47,10 @@
 							@foreach($schedulers as $key => $one)
 							<tr>
 								<td>{{ $one->id }}</td>
+								<td>
+									<img src="/storage/{{ $one->post->post_image }}" alt="Post Image" height="70px">
+									{{ $one->post->post_title }}
+								</td>
 								<td>{{ $one->title }}</td>
 								<td>{{ $one->description }}</td>
 								<td>{{ $one->schedule }}</td>
