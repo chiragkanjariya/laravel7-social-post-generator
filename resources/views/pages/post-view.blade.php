@@ -94,25 +94,30 @@
               '  </div>\n' +
               '</div>'
             $(".card-post").append(cards)
-            var postId = result[row].id;
+          }
+          
+          // draw canvas
+          $( ".canvas-image" ).each(function( index ) {
+            var postId = $(this).attr('post-id');
             var canvas = document.getElementById('canvas-'+postId);
             var context = canvas.getContext("2d");
-            var isoverlay = result[row].isoverlay;
+            var color = $(this).attr("profile-color");
+            var isoverlay = $(this).attr("is-overlay");
 
-            const img = new Image();
-            img.src = '/storage/'+ result[row].post_image;
+            const img = new Image()
+            img.src = $(this).attr('img-path')
             img.onload = () => {
               canvas.width  = img.width;
               canvas.height = img.height;
               context.drawImage(img, 0, 0)
 
               if (parseInt(isoverlay) == 1) {
-                context.fillStyle = profile_color;
+                context.fillStyle = color;
                 context.globalAlpha = 0.5;
                 context.fillRect(0, 0, canvas.width, canvas.height)
               }
             }
-          }
+          });
         },
         error: function (result) {
           
