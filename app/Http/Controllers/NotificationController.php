@@ -20,11 +20,10 @@ class NotificationController extends Controller
     {
       $data = new Notification;
       $data->channel = ['notification-channel'];
-      $data->title = 'Alert';
-      $data->message = 'Go okay ma?';
+      $data->title = 'Alert11';
+      $data->message = ['message' => 'Message', 'user' => \Auth::user()->id];
       $data->url = 'http://google.com';
       $data->icon = 'mid mid-bar';
-      $data->user = \Auth::user()->id;
       $res = event(new NotificationEvent($data));
       return $res;
     }
