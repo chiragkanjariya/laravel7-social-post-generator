@@ -25,7 +25,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			<a href="{{ route('schedulers.create') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"><i class="fa fa-plus"></i> @lang('locale.scheduler.create')</a>
+			{{-- <a href="{{ route('schedulers.create') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"><i class="fa fa-plus"></i> @lang('locale.scheduler.create')</a> --}}
 		</div>
 		<div class="card-content">
 			<div class="card-body">
