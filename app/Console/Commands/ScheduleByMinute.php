@@ -62,8 +62,8 @@ class ScheduleByMinute extends Command
 
                 $data = new Notification;
                 $data->channel = ['notification-channel'];
-                $data->title = 'Alert';
-                $data->message = 'Go okay ma?';
+                $data->title = 'Schedule';
+                $data->message = ['message' => 'It is your post schedule time', 'user' => \Auth::user()->id];
                 $data->url = 'http://google.com';
                 $data->icon = 'mid mid-bar';
                 $data->user = \Auth::user()->id;

@@ -307,8 +307,8 @@
       }
 
       Notification.requestPermission(permission => {
-        let notification = new Notification('New post alert!', {
-          body: 'aaa', // content for the alert
+        let notification = new Notification(data.title, {
+          body: data.message.message, // content for the alert
           icon: '{{ asset('images/icons/notification.png') }}' // optional image url
         });
 
@@ -317,7 +317,8 @@
           const url = new URL(window.location.href);
           let message_url = url.protocol + '//' + url.hostname;
           if (url.port) message_url += ':' + url.port;
-          message_url += '/messages'
+          message_url += '/messages';
+          console.log(message_url);
           window.open(message_url);
         };
       })
