@@ -46,18 +46,18 @@ class ScheduleByMinute extends Command
         $schedulers = Scheduler::where('schedule', '>', $now)->get();
         foreach ($schedulers as $one) {
             $schedule = Carbon::parse($one->schedule)->format('Y-m-d H:i');
-            // if ($now === $schedule) {
+            if ($now === $schedule) {
                 $email = $one->user->email;
                 $email = 'user@localhost.com';
                 Mail::send('mails.notification', [], function($message) use ($email)
                 {    
-                    // $message->from('levantapp1@gmail.com', 'Alert')
+                    $message->from('levantapp1@gmail.com', 'Schedule')
+                        ->to($email)
+                        ->subject('Schedule');
+
+                    // $message->from('root@localhost.com', 'Alert')
                     //     ->to($email)
                     //     ->subject('Alert');
-
-                    $message->from('root@localhost.com', 'Alert')
-                        ->to($email)
-                        ->subject('Alert');
                 });
 
                 $data = new Notification;
@@ -68,7 +68,7 @@ class ScheduleByMinute extends Command
                 $data->icon = 'mid mid-bar';
                 $data->user = \Auth::user()->id;
                 $res = event(new NotificationEvent($data));
-            // }
+            }
         }
     }
 }
