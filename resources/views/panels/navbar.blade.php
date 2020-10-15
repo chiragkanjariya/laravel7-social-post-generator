@@ -299,6 +299,8 @@
     var channel = pusher.subscribe('notification-channel');
     channel.bind('notification-event', function(data) {
       console.log(data)
+      if (data.user != {{ \Auth::user()->id }})
+        return;
       if (!("Notification" in window)) {
         console.log("This browser does not support desktop notification");
         return;

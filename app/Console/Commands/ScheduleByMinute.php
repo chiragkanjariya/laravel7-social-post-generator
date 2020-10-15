@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use App\Models\Scheduler;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use App\Models\Notification;
+use App\Events\NotificationEvent;
 
 class ScheduleByMinute extends Command
 {
@@ -57,6 +59,15 @@ class ScheduleByMinute extends Command
                         ->to($email)
                         ->subject('Alert');
                 });
+
+                $data = new Notification;
+                $data->channel = ['notification-channel'];
+                $data->title = 'Alert';
+                $data->message = 'Go okay ma?';
+                $data->url = 'http://google.com';
+                $data->icon = 'mid mid-bar';
+                $data->user = \Auth::user()->id;
+                $res = event(new NotificationEvent($data));
             // }
         }
     }

@@ -24,7 +24,7 @@ class NotificationController extends Controller
       $data->message = 'Go okay ma?';
       $data->url = 'http://google.com';
       $data->icon = 'mid mid-bar';
-
+      $data->user = \Auth::user()->id;
       $res = event(new NotificationEvent($data));
       return $res;
     }
