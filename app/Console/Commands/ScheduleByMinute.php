@@ -40,19 +40,24 @@ class ScheduleByMinute extends Command
      */
     public function handle()
     {
-        $schedulers = Scheduler::all();
         $now = Carbon::now()->format('Y-m-d H:i');
+        $schedulers = Scheduler::where('schedule', '>', $now)->get();
         foreach ($schedulers as $one) {
             $schedule = Carbon::parse($one->schedule)->format('Y-m-d H:i');
-            if ($now === $schedule) {
+            // if ($now === $schedule) {
                 $email = $one->user->email;
+                $email = 'user@localhost.com';
                 Mail::send('mails.notification', [], function($message) use ($email)
                 {    
-                    $message->from('levantapp1@gmail.com', 'Alert')
-                        ->to('q3construction1@gmail.com')
+                    // $message->from('levantapp1@gmail.com', 'Alert')
+                    //     ->to($email)
+                    //     ->subject('Alert');
+
+                    $message->from('root@localhost.com', 'Alert')
+                        ->to($email)
                         ->subject('Alert');
                 });
-            }
+            // }
         }
     }
 }
