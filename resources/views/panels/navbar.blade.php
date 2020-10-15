@@ -317,8 +317,7 @@
           const url = new URL(window.location.href);
           let message_url = url.protocol + '//' + url.hostname;
           if (url.port) message_url += ':' + url.port;
-          message_url += '/messages';
-          console.log(message_url);
+          message_url += data.url;
           window.open(message_url);
         };
       })
