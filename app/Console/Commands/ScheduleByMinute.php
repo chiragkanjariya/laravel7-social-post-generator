@@ -48,7 +48,7 @@ class ScheduleByMinute extends Command
             $schedule = Carbon::parse($one->schedule)->format('Y-m-d H:i');
             // if ($now === $schedule) {
                 $email = $one->user->email;
-                $email = 'user@localhost.com';
+                // $email = 'user@localhost.com';
                 Mail::send('mails.notification', [], function($message) use ($email)
                 {    
                     $message->from('levantapp1@gmail.com', 'Schedule')
@@ -63,10 +63,10 @@ class ScheduleByMinute extends Command
                 $data = new Notification;
                 $data->channel = ['notification-channel'];
                 $data->title = 'Schedule';
-                $data->message = ['message' => 'It is your post schedule time', 'user' => \Auth::user()->id];
+                $data->message = ['message' => 'It is your post schedule time', 'user' => $one->user_id];
                 $data->url = '/myposts';
                 $data->icon = 'mid mid-bar';
-                $data->user = \Auth::user()->id;
+                $data->user = $one->user_id;
                 $res = event(new NotificationEvent($data));
             // }
         }
