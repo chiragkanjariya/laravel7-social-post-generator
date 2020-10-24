@@ -49,7 +49,7 @@
 								<td>{{ $one->id }}</td>
 								<td>
 									<img src="/storage/{{ $one->post->post_image }}" alt="Post Image" height="70px">
-									{{ $one->post->post_title }}
+									<p>{{ $one->post->post_title }}</p>
 								</td>
 								<td>{{ $one->title }}</td>
 								<td>{{ $one->description }}</td>
