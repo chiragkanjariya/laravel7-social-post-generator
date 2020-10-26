@@ -103,13 +103,15 @@
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
+    var postDate = $('#postDate').val();
     $(".card-post").html('')
     $.ajax({
       method: "POST",
       url: "post-get",
       data: {
         _token: $("#_token").val(),
-        profile_id: profile.id
+        profile_id: profile.id,
+        post_date: postDate
       },
       success: function (result) {
         for (let row in result)
@@ -146,6 +148,55 @@
     })
     chatContainer.animate({ scrollTop: 0 }, 400)
     // chatContainer.animate({ scrollTop: chatContainer[0].scrollHeight }, 400)
+  });
+
+  // Post date change
+  $('#postDate').change(function() {
+    let profile = JSON.parse($('ul.chat-users-list-wrapper').find('li.active').attr('data-profile'));
+    var postDate = $('#postDate').val();
+    $(".card-post").html('')
+    $.ajax({
+      method: "POST",
+      url: "post-get",
+      data: {
+        _token: $("#_token").val(),
+        profile_id: profile.id,
+        post_date: postDate
+      },
+      success: function (result) {
+        for (let row in result)
+        {
+          let cards = '' +
+            '<div class="col-lg-4 col-md-6 col-sm-12 mt-1 card-post-' + result[row].id + '">\n' +
+            '  <div class="card" style="max-width: 300px; margin: auto">\n' +
+            '    <div class="card-content">\n' +
+            '      <img class="card-img-top img-fluid" src="/storage/' + result[row].post_image + '" width="150" height="150" alt="Card image cap" />\n' +
+            '      <div class="overlay"></div>\n' +
+            '      <div class="card-body">\n' +
+            '        <h4 class="card-title">' + result[row].post_title + '</h4>\n' +
+            '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
+            '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
+            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result[row].id + ')">Delete</a>\n' +
+            '        </div>\n' +
+            '      </div>\n' +
+            '    </div>\n' +
+            '  </div>\n' +
+            '</div>'
+          $(".card-post").append(cards)
+          if (parseInt(result[row].isoverlay) == 1) {
+            setTimeout(function () {
+              $('.card-post-' + result[row].id).find('.overlay').css('height', $('.card-post-' + result[row].id).find('img')[0].clientHeight + 'px');
+              $('.card-post-' + result[row].id).find('.overlay').css('background-color', profile.color)
+            }, 10)
+          } else {
+            $('.card-post-' + result[row].id).find('.overlay').css('height', '0px');
+          }
+        }
+      },
+      error: function (result) {
+      }
+    })
+    chatContainer.animate({ scrollTop: 0 }, 400)
   });
 
   // Chat sidebar toggle
