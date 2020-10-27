@@ -68,9 +68,6 @@
                 <span class="badge badge-pill badge-glow badge-warning">{{ $hashtag }}</span>
               @endforeach
             </div>
-            <div class="contact-meta">
-{{--              <span class="badge badge-warning badge-pill float-right mr-2 text-white font-weight-bold">{{ $profile['count'] }}</span>--}}
-            </div>
           </div>
         </li>
         @endforeach
