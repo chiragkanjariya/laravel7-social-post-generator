@@ -69,6 +69,7 @@
                     </div>
                     <div class="text-right"><a href="{{ route('password.request') }}" class="card-link">Forgot Password?</a></div>
                   </div>
+                  <a href="https://levantapp.com" class="btn btn-outline-primary float-left btn-inline waves-effect waves-light" target="_blank">Register</a>
                   <button type="submit" class="btn btn-primary float-right btn-inline">Login</button>
               </form>
               </div>

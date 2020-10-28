@@ -6,6 +6,12 @@
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('vendors/css/pickers/pickadate/pickadate.css')) }}">
+@endsection
+@section('page-style')
+  <link rel="stylesheet" href="{{ asset(mix('css/plugins/forms/validation/form-validation.css')) }}">
+  <link rel="stylesheet" href="{{ asset(mix('css/pages/post-manage.css')) }}">
+
   <style>
     .overlay {
       position: absolute;
@@ -17,15 +23,21 @@
       opacity: 0.5;
       transition: .7s ease;
     }
+    .date-duration {
+      position: absolute;
+      width: 280px;
+    }
+    .vs-con-items.d-flex.align-items-center {
+      margin-top: 25px;
+    }
   </style>
-@endsection
-@section('page-style')
-  <link rel="stylesheet" href="{{ asset(mix('css/plugins/forms/validation/form-validation.css')) }}">
-  <link rel="stylesheet" href="{{ asset(mix('css/pages/post-manage.css')) }}">
 @endsection
 
 @include('pages/post-manage-sidebar')
 @section('content')
+  <div class="date-duration">
+    <input type='text' id="postDate" class="form-control pickadate-months-year" value="{{ date('Y-m-d') }}"/>
+  </div>
   <input type="hidden" id="_token" value="{{ @csrf_token() }}">
   <div class="chat-overlay"></div>
   <section class="chat-app-window">
@@ -129,7 +141,20 @@
   <script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
+
+  <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.js')) }}"></script>
+  <script src="{{ asset(mix('vendors/js/pickers/pickadate/picker.date.js')) }}"></script>
 @endsection
 @section('page-script')
   <script src="{{ asset(mix('js/scripts/pages/post-manage.js')) }}"></script>
+
+  <script>
+    // Month and Year Select Picker
+    $('.pickadate-months-year').pickadate({
+      selectYears: true,
+      selectMonths: true,
+      formatSubmit: 'yyyy-mm',
+      format: 'yyyy-mm',
+    });
+  </script>
 @endsection

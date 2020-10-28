@@ -25,7 +25,7 @@
 
 	<div class="card">
 		<div class="card-header">
-			<a href="{{ route('schedulers.create') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"><i class="fa fa-plus"></i> @lang('locale.scheduler.create')</a>
+			{{-- <a href="{{ route('schedulers.create') }}" class="btn btn-primary mr-1 mb-1 waves-effect waves-light"><i class="fa fa-plus"></i> @lang('locale.scheduler.create')</a> --}}
 		</div>
 		<div class="card-content">
 			<div class="card-body">
@@ -34,6 +34,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
+								<th>@lang('locale.scheduler.post')</th>
 								<th>@lang('locale.scheduler.scheduleTitle')</th>
 								<th>@lang('locale.scheduler.scheduleDescription')</th>
 								<th>@lang('locale.scheduler.schedule')</th>
@@ -46,6 +47,10 @@
 							@foreach($schedulers as $key => $one)
 							<tr>
 								<td>{{ $one->id }}</td>
+								<td>
+									<img src="/storage/{{ $one->post->post_image }}" alt="Post Image" height="70px">
+									<p>{{ $one->post->post_title }}</p>
+								</td>
 								<td>{{ $one->title }}</td>
 								<td>{{ $one->description }}</td>
 								<td>{{ $one->schedule }}</td>

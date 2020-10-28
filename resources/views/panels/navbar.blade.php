@@ -299,14 +299,16 @@
     var channel = pusher.subscribe('notification-channel');
     channel.bind('notification-event', function(data) {
       console.log(data)
+      if (data.message.user != {{ \Auth::user()->id }})
+        return;
       if (!("Notification" in window)) {
         console.log("This browser does not support desktop notification");
         return;
       }
 
       Notification.requestPermission(permission => {
-        let notification = new Notification('New post alert!', {
-          body: 'aaa', // content for the alert
+        let notification = new Notification(data.title, {
+          body: data.message.message, // content for the alert
           icon: '{{ asset('images/icons/notification.png') }}' // optional image url
         });
 
@@ -315,7 +317,7 @@
           const url = new URL(window.location.href);
           let message_url = url.protocol + '//' + url.hostname;
           if (url.port) message_url += ':' + url.port;
-          message_url += '/messages'
+          message_url += data.url;
           window.open(message_url);
         };
       })

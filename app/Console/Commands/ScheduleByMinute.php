@@ -6,6 +6,8 @@ use Illuminate\Console\Command;
 use App\Models\Scheduler;
 use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
+use App\Models\Notification;
+use App\Events\NotificationEvent;
 
 class ScheduleByMinute extends Command
 {
@@ -40,20 +42,28 @@ class ScheduleByMinute extends Command
      */
     public function handle()
     {
-        $schedulers = Scheduler::all();
         $now = Carbon::now()->format('Y-m-d H:i');
+        $schedulers = Scheduler::where('schedule', '>', $now)->get();
         foreach ($schedulers as $one) {
             $schedule = Carbon::parse($one->schedule)->format('Y-m-d H:i');
-            // if ($now === $schedule) {
+            if ($now === $schedule) {
                 $email = $one->user->email;
                 Mail::send('mails.notification', [], function($message) use ($email)
                 {    
-                    $message->from('AKIAS22BGS5HB4UICUHH', 'Notification')
-                        ->to('q3construction1@gmail.com')
-                        // ->bcc($emails)
-                        ->subject('Email Notification');
+                    $message->from('levantapp1@gmail.com', 'Schedule')
+                        ->to($email)
+                        ->subject('Schedule');
                 });
-            // }
+
+                $data = new Notification;
+                $data->channel = ['notification-channel'];
+                $data->title = 'Schedule';
+                $data->message = ['message' => 'It is your post schedule time', 'user' => $one->user_id];
+                $data->url = '/myposts';
+                $data->icon = 'mid mid-bar';
+                $data->user = $one->user_id;
+                $res = event(new NotificationEvent($data));
+            }
         }
     }
 }

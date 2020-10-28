@@ -147,6 +147,7 @@ return [
         "create" => "Create Schedule",
         "edit" => "Edit Schedule",
         "save" => "Save Schedule",
+        "post" => "Post",
         "update" => "Update Schedule",
         "schedule" => "Schedule",
         "scheduleTitle" => "Schedule Title",

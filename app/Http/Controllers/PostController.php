@@ -82,7 +82,7 @@ class PostController extends Controller
    */
   public function getPosts(Request  $request){
     $posts = Post::query()->where('profile_id', $request->profile_id)
-      ->where('created_at', 'LIKE', date('Y-m-d').'%')
+      ->where('created_at', 'LIKE', $request->post_date.'%')
       ->get();
     return new JsonResponse($posts, 202);
   }

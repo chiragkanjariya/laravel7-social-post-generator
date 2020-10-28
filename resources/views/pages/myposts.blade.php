@@ -6,11 +6,14 @@
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
+
+  {{-- datetime picker --}}
+	<link rel="stylesheet" href="{{ asset(mix('vendors/css/jquery.datetimepicker.css')) }}">
 @endsection
 
 @section('content')
 	@if (session()->get('message'))
-	<div class="alert alert-primary alert-dismissible fade show" role="alert">
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
 		<p class="mb-0">
 			{{ session()->get('message') }}
 		</p>
@@ -21,17 +24,17 @@
 	@endif
 	<div class="row">
 		@foreach($posts as $key => $post)
-		<div class="col-lg-3 col-md-6 col-sm-12 mt-1">
+		<div class="col-lg-4 col-md-6 col-sm-12 mt-1">
 			<div class="card">
 				<div class="card-content">
           <div class="btn-group dropdown mb-1" style="position: absolute; right: 2px; top: 5px; z-index: 1;">
-            <button type="button" class="btn btn-sm btn-primary dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Action
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="javascript:download({{ $post->id }})">Download Image</a>
-              <a class="dropdown-item" href="javascript:copy({{ $post->id }})">Copy to clipboard</a>
-            </div>
+            <a class="btn btn-sm btn-success" href="javascript:download({{ $post->id }})">Download Image</a>
+            <a class="btn btn-sm btn-danger" href="javascript:copy({{ $post->id }})">Copy to clipboard</a>
+            @if (\Carbon\Carbon::parse($post->schedule->schedule ?? '0000-00-00 00:00')->format('Y-m-d H:i') < \Carbon\Carbon::now()->format('Y-m-d H:i'))
+              <button class="btn btn-sm btn-primary" onclick="addSchedule({{ $post }});">Add Schedule</button>
+            @else
+              <button class="btn btn-sm btn-info" onclick="updateSchedule({{ $post }});">Update Schedule</button>
+            @endif
           </div>
           <canvas id="canvas-{{ $post->id }}" class="card-img-top img-fluid canvas-image" width="100%" post-id="{{ $post->id }}" img-path="/storage/{{ $post->post_image }}" is-overlay="{{ $post->isoverlay }}" profile-color="{{ $post->profile->favour_color }}" alt="Approved posts"></canvas>
 					<div class="card-body">
@@ -49,7 +52,56 @@
 			</div>
 		</div>
 		@endforeach
-	</div>
+  </div>
+  
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="schedule" aria-hidden="true">
+    <form id="schedule-form" action="">
+      @csrf
+      <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modal-title">Add Schedule</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-body">
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <div class="controls">
+                      <label for="schedule-title">Title</label>
+                      <input type="text" id="schedule-title" name="title" class="form-control" placeholder="" required >
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <div class="controls">
+                      <label for="schedule-description">Description</label>
+                      <textarea class="form-control" id="schedule-description" name="description" rows="5" required></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-group">
+                    <div class="controls">
+                      <label for="schedule">@lang('locale.scheduler.schedule')</label>
+                      <input type="text" id="schedule-time" name="schedule" class="form-control" required/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 @endsection
 
 @section('vendor-script')
@@ -57,6 +109,11 @@
   <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
   <script src="{{ asset('reimg.js') }}"></script>
+
+  {{-- datetime picker --}}
+	<script src="{{ asset(mix('vendors/js/php-date-formatter.js')) }}"></script>
+	<script src="{{ asset(mix('vendors/js/jquery.mousewheel.js')) }}"></script>
+	<script src="{{ asset(mix('vendors/js/jquery.datetimepicker.js')) }}"></script>
 @endsection
 @section('page-script')
   <script>
@@ -120,5 +177,31 @@
         , { "progressBar": true, "closeButton": true, timeOut: 2000 }
       );
     }
+    function addSchedule(post) {
+      $('#modal-title').text('Add schedule');
+      $('#schedule-form').attr('method', 'POST');
+      $('#schedule-form').attr('action', '/schedulers/'+ post['id'] +'/create');
+      $('#schedule-title').val('');
+      $('#schedule-description').val('');
+      $('#schedule-time').val('');
+      $('#modal').modal({
+        'backdrop': 'static'
+      });
+    }
+    function updateSchedule(post) {
+      $('#modal-title').text('Update schedule');
+      $('#schedule-form').attr('method', 'POST');
+      $('#schedule-form').attr('action', '/schedulers/'+ post['id'] +'/create');
+      $('#schedule-title').val(post['schedule']['title']);
+      $('#schedule-description').val(post['schedule']['description']);
+      $('#schedule-time').val(post['schedule']['schedule']);
+      $('#modal').modal({
+        'backdrop': 'static'
+      });
+    }
+
+    $('#schedule-time').datetimepicker({
+			format: 'Y-m-d H:i:s'
+		});
   </script>
 @endsection
