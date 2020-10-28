@@ -114,32 +114,33 @@
         post_date: postDate
       },
       success: function (result) {
-        for (let row in result)
+        $("#post-count").text(result['count'])
+        for (let row in result['posts'])
         {
           let cards = '' +
-            '<div class="col-lg-4 col-md-6 col-sm-12 mt-1 card-post-' + result[row].id + '">\n' +
+            '<div class="col-lg-4 col-md-6 col-sm-12 mt-1 card-post-' + result['posts'][row].id + '">\n' +
             '  <div class="card" style="max-width: 300px; margin: auto">\n' +
             '    <div class="card-content">\n' +
-            '      <img class="card-img-top img-fluid" src="/storage/' + result[row].post_image + '" width="150" height="150" alt="Card image cap" />\n' +
+            '      <img class="card-img-top img-fluid" src="/storage/' + result['posts'][row].post_image + '" width="150" height="150" alt="Card image cap" />\n' +
             '      <div class="overlay"></div>\n' +
             '      <div class="card-body">\n' +
-            '        <h4 class="card-title">' + result[row].post_title + '</h4>\n' +
-            '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
+            '        <h4 class="card-title">' + result['posts'][row].post_title + '</h4>\n' +
+            '        <p class="card-text text-left">' + result['posts'][row].post_content + '</p>\n' +
             '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
-            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result[row].id + ')">Delete</a>\n' +
+            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result['posts'][row].id + ')">Delete</a>\n' +
             '        </div>\n' +
             '      </div>\n' +
             '    </div>\n' +
             '  </div>\n' +
             '</div>'
           $(".card-post").append(cards)
-          if (parseInt(result[row].isoverlay) == 1) {
+          if (parseInt(result['posts'][row].isoverlay) == 1) {
             setTimeout(function () {
-              $('.card-post-' + result[row].id).find('.overlay').css('height', $('.card-post-' + result[row].id).find('img')[0].clientHeight + 'px');
-              $('.card-post-' + result[row].id).find('.overlay').css('background-color', profile.color)
+              $('.card-post-' + result['posts'][row].id).find('.overlay').css('height', $('.card-post-' + result['posts'][row].id).find('img')[0].clientHeight + 'px');
+              $('.card-post-' + result['posts'][row].id).find('.overlay').css('background-color', profile.color)
             }, 10)
           } else {
-            $('.card-post-' + result[row].id).find('.overlay').css('height', '0px');
+            $('.card-post-' + result['posts'][row].id).find('.overlay').css('height', '0px');
           }
         }
       },
@@ -153,6 +154,25 @@
   // Post date change
   $('#postDate').change(function() {
     let profile = JSON.parse($('ul.chat-users-list-wrapper').find('li.active').attr('data-profile'));
+    $('.profile-title').text(profile.user.name + " : " + profile.niche + " Profile")
+    if (profile.user.photo === null) {
+      $('.avatar > img').attr('src', "/images/avatar.png");
+    } else {
+      $('.avatar > img').attr('src', "/storage/" + profile.user.photo);
+    }
+
+    $('.chat-user-name').text(profile.user.name)
+    $('#user-email').text(profile.user.email)
+    $('#user-role').text(profile.role)
+    if (profile.user.status == 'activated')
+    {
+      $('#user-status').removeClass('badge-warning').addClass('badge-success')
+      $('#user-status').text("Activated")
+    } else {
+      $('#user-status').removeClass('badge-success').addClass('badge-warning')
+      $('#user-status').text("Deactivated")
+    }
+
     var postDate = $('#postDate').val();
     $(".card-post").html('')
     $.ajax({
@@ -164,32 +184,33 @@
         post_date: postDate
       },
       success: function (result) {
-        for (let row in result)
+        $("#post-count").text(result['count'])
+        for (let row in result['posts'])
         {
           let cards = '' +
-            '<div class="col-lg-4 col-md-6 col-sm-12 mt-1 card-post-' + result[row].id + '">\n' +
+            '<div class="col-lg-4 col-md-6 col-sm-12 mt-1 card-post-' + result['posts'][row].id + '">\n' +
             '  <div class="card" style="max-width: 300px; margin: auto">\n' +
             '    <div class="card-content">\n' +
-            '      <img class="card-img-top img-fluid" src="/storage/' + result[row].post_image + '" width="150" height="150" alt="Card image cap" />\n' +
+            '      <img class="card-img-top img-fluid" src="/storage/' + result['posts'][row].post_image + '" width="150" height="150" alt="Card image cap" />\n' +
             '      <div class="overlay"></div>\n' +
             '      <div class="card-body">\n' +
-            '        <h4 class="card-title">' + result[row].post_title + '</h4>\n' +
-            '        <p class="card-text text-left">' + result[row].post_content + '</p>\n' +
+            '        <h4 class="card-title">' + result['posts'][row].post_title + '</h4>\n' +
+            '        <p class="card-text text-left">' + result['posts'][row].post_content + '</p>\n' +
             '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
-            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result[row].id + ')">Delete</a>\n' +
+            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result['posts'][row].id + ')">Delete</a>\n' +
             '        </div>\n' +
             '      </div>\n' +
             '    </div>\n' +
             '  </div>\n' +
             '</div>'
           $(".card-post").append(cards)
-          if (parseInt(result[row].isoverlay) == 1) {
+          if (parseInt(result['posts'][row].isoverlay) == 1) {
             setTimeout(function () {
-              $('.card-post-' + result[row].id).find('.overlay').css('height', $('.card-post-' + result[row].id).find('img')[0].clientHeight + 'px');
-              $('.card-post-' + result[row].id).find('.overlay').css('background-color', profile.color)
+              $('.card-post-' + result['posts'][row].id).find('.overlay').css('height', $('.card-post-' + result['posts'][row].id).find('img')[0].clientHeight + 'px');
+              $('.card-post-' + result['posts'][row].id).find('.overlay').css('background-color', profile.color)
             }, 10)
           } else {
-            $('.card-post-' + result[row].id).find('.overlay').css('height', '0px');
+            $('.card-post-' + result['posts'][row].id).find('.overlay').css('height', '0px');
           }
         }
       },

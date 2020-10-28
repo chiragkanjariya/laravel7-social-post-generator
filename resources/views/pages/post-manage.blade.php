@@ -53,6 +53,7 @@
               <img src="{{ asset('images/portrait/small/avatar-s-1.jpg') }}" alt="" height="40" width="40" />
             </div>
             <h6 class="mb-0 profile-title">Felecia Rower</h6>
+            <span id="post-count" class="ml-1 badge badge-warning badge-pill float-right mr-2 text-white font-weight-bold"></span>
           </div>
         </header>
       </div>
