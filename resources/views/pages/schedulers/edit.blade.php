@@ -43,7 +43,7 @@
 			</fieldset>
 
 			<fieldset class="form-group">
-				<label for="schedule">@lang('locale.scheduler.schedule')</label>
+				<label for="schedule">@lang('locale.scheduler.schedule') : {{ $scheduler->user->timezone }}</label>
 				<input type="text" id="schedule-time" name="schedule" class="form-control" value="{{ $scheduler->schedule }}" />
 				<span class="danger">{{ $errors->first('schedule') }}</span>
 			</fieldset>
