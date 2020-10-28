@@ -84,7 +84,10 @@ class PostController extends Controller
     $posts = Post::query()->where('profile_id', $request->profile_id)
       ->where('created_at', 'LIKE', $request->post_date.'%')
       ->get();
-    return new JsonResponse($posts, 202);
+    return new JsonResponse([
+      'posts' => $posts,
+      'count' => $posts->count()
+    ], 202);
   }
   /**
    * get posts by profile id

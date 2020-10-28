@@ -29,10 +29,20 @@ class AccountController extends Controller
      */
     public function index()
     {
+        $timezone = array();
+        $timestamp = time();
+        foreach(timezone_identifiers_list(\DateTimeZone::ALL) as $key => $t) {
+            date_default_timezone_set($t);
+            $timezone[$key]['zone'] = $t;
+            $timezone[$key]['GMT_difference'] =  date('P', $timestamp);
+        }
+        $timezone = collect($timezone)->sortBy('GMT_difference');
+
         $user = Auth::user();
         return view('pages/accounts/edit', [
             'pageConfigs' => $this->pageConfigs,
-            'user' => $user
+            'user' => $user,
+            'timezone' => $timezone
         ]);
     }
 
@@ -49,7 +59,8 @@ class AccountController extends Controller
         $validator = $request->validate([
             'username' => 'required|string|max:50',
             'firstname' => 'required|string|max:50',
-            'lastname' => 'required|string|max:50'
+            'lastname' => 'required|string|max:50',
+            'timezone' => 'required'
         ]);
 
         $photo = null;
@@ -61,7 +72,8 @@ class AccountController extends Controller
             'name' => $request->username,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
-            'photo' => $photo
+            'photo' => $photo,
+            'timezone' => $request->timezone
         ]);
 
         return redirect()
