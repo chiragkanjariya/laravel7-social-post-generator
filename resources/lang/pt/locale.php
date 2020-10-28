@@ -131,6 +131,7 @@ return [
         "save" => "Salvar conta",
         "firstname" => "Nome",
         "lastname" => "Sobrenome",
+        "timezone" => "Fuso horário",
         "general" => "Geral",
         "changePassword" => "Mudar senha",
         "oldPassword" => "Senha antiga",

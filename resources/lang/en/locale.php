@@ -133,6 +133,7 @@ return [
         "save" => "Save Account",
         "firstname" => "First Name",
         "lastname" => "Last Name",
+        "timezone" => "Timezone",
         "general" => "General",
         "changePassword" => "Change Password",
         "oldPassword" => "Old Password",

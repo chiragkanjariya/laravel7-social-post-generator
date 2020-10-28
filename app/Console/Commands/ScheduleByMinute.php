@@ -42,10 +42,10 @@ class ScheduleByMinute extends Command
      */
     public function handle()
     {
-        $now = Carbon::now()->format('Y-m-d H:i');
-        $schedulers = Scheduler::where('schedule', '>', $now)->get();
+        $schedulers = Scheduler::all();
         foreach ($schedulers as $one) {
             $schedule = Carbon::parse($one->schedule)->format('Y-m-d H:i');
+            $now = Carbon::now()->timezone($one->timezone)->format('Y-m-d H:i');
             if ($now === $schedule) {
                 $email = $one->user->email;
                 Mail::send('mails.notification', [], function($message) use ($email)
