@@ -3,6 +3,7 @@
 @section('title', trans('locale.account.title'))
 
 @section('vendor-style')
+<link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
 @endsection
 @section('page-style')
 
@@ -86,6 +87,16 @@
 									<input name="lastname" class="form-control @error('lastname') is-invalid @enderror" placeholder="@lang('locale.account.lastname')" value="{{ $user->lastname }}">
 									<span class="danger">{{ $errors->first('lastname') }}</span>
 								</fieldset>
+
+								<fieldset class="form-group">
+									<label for="timezone"> {{ trans('locale.account.timezone') }}*</label>
+									<select  class="select2 form-control" id="timezone"  name="timezone" required>
+										@foreach ($timezone as $time)
+										<option value="{{ $time['zone'] }}" @php echo $user->timezone == $time['zone'] ? 'selected' : '' @endphp> ({{ $time['GMT_difference']. ' ) '.$time['zone'] }}</option>
+										@endforeach
+							 		</select>
+									<span class="danger">{{ $errors->first('timezone') }}</span>
+								</fieldset>
 				
 								<div class="text-right">
 									<button class="btn btn-primary">@lang('locale.account.save')</button>
@@ -141,7 +152,17 @@
 @endsection
 
 @section('vendor-script')
+	<script src="{{ asset(mix('vendors/js/forms/select/select2.full.min.js')) }}"></script>
 @endsection
+
 @section('page-script')
-  <script src="{{ asset(mix('js/scripts/pages/accounts/edit.js')) }}"></script>
+  	<script src="{{ asset(mix('js/scripts/pages/accounts/edit.js')) }}"></script>
+  	<script>
+		$(".select2").select2({
+			// the following code is used to disable x-scrollbar when click in select input and
+			// take 100% width in responsive also
+			dropdownAutoWidth: true,
+			width: '100%'
+		});
+  	</script>
 @endsection
