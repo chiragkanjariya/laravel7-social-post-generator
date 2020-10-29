@@ -71,7 +71,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <div class="controls">
-                      <label for="schedule-title">Title</label>
+                      <label for="schedule-title">{{ trans('locale.scheduler.scheduleTitle') }}</label>
                       <input type="text" id="schedule-title" name="title" class="form-control" placeholder="" required >
                     </div>
                   </div>
@@ -79,7 +79,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <div class="controls">
-                      <label for="schedule-description">Description</label>
+                      <label for="schedule-description">{{ trans('locale.scheduler.scheduleDescription') }}</label>
                       <textarea class="form-control" id="schedule-description" name="description" rows="5" required></textarea>
                     </div>
                   </div>
@@ -87,7 +87,7 @@
                 <div class="col-12">
                   <div class="form-group">
                     <div class="controls">
-                      <label for="schedule">@lang('locale.scheduler.schedule')</label>
+                      <label for="schedule" id="timezone"></label>
                       <input type="text" id="schedule-time" name="schedule" class="form-control" required/>
                     </div>
                   </div>
@@ -184,6 +184,7 @@
       $('#schedule-title').val('');
       $('#schedule-description').val('');
       $('#schedule-time').val('');
+      $('#timezone').text('{{ trans('locale.scheduler.schedule') }} : ' + '{!! auth()->user()->timezone !!}');
       $('#modal').modal({
         'backdrop': 'static'
       });
@@ -195,6 +196,7 @@
       $('#schedule-title').val(post['schedule']['title']);
       $('#schedule-description').val(post['schedule']['description']);
       $('#schedule-time').val(post['schedule']['schedule']);
+      $('#timezone').text('{{ trans('locale.scheduler.schedule') }} : ' + '{!! auth()->user()->timezone !!}');
       $('#modal').modal({
         'backdrop': 'static'
       });
