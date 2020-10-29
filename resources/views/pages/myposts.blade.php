@@ -6,6 +6,9 @@
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/forms/select/select2.min.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/toastr.css')) }}">
   <link rel="stylesheet" href="{{ asset(mix('vendors/css/extensions/sweetalert2.min.css')) }}">
+
+  {{-- datetime picker --}}
+	<link rel="stylesheet" href="{{ asset(mix('vendors/css/jquery.datetimepicker.css')) }}">
 @endsection
 
 @section('content')
@@ -85,7 +88,7 @@
                   <div class="form-group">
                     <div class="controls">
                       <label for="schedule">@lang('locale.scheduler.schedule')</label>
-                      <input type='datetime-local' name="schedule" id="schedule-time" class="form-control" required/>
+                      <input type="text" id="schedule-time" name="schedule" class="form-control" required/>
                     </div>
                   </div>
                 </div>
@@ -106,6 +109,11 @@
   <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
   <script src="{{ asset(mix('vendors/js/extensions/sweetalert2.all.min.js')) }}"></script>
   <script src="{{ asset('reimg.js') }}"></script>
+
+  {{-- datetime picker --}}
+	<script src="{{ asset(mix('vendors/js/php-date-formatter.js')) }}"></script>
+	<script src="{{ asset(mix('vendors/js/jquery.mousewheel.js')) }}"></script>
+	<script src="{{ asset(mix('vendors/js/jquery.datetimepicker.js')) }}"></script>
 @endsection
 @section('page-script')
   <script>
@@ -191,5 +199,9 @@
         'backdrop': 'static'
       });
     }
+
+    $('#schedule-time').datetimepicker({
+			format: 'Y-m-d H:i:s'
+		});
   </script>
 @endsection
