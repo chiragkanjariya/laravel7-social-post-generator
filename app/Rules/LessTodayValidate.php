@@ -4,6 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 use Carbon\Carbon;
+use Auth;
 
 class LessTodayValidate implements Rule
 {
@@ -27,7 +28,7 @@ class LessTodayValidate implements Rule
     public function passes($attribute, $value)
     {
         $schedule = Carbon::parse($value)->format('Y-m-d H:i');
-        $now = Carbon::now()->format('Y-m-d H:i');
+        $now = Carbon::now()->timezone(Auth::user()->timezone)->format('Y-m-d H:i');
 
         return $schedule > $now;
     }
