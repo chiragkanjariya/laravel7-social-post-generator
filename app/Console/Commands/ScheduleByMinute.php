@@ -42,10 +42,12 @@ class ScheduleByMinute extends Command
      */
     public function handle()
     {
+        $dateData = '';
         $schedulers = Scheduler::all();
         foreach ($schedulers as $one) {
             $schedule = Carbon::parse($one->schedule)->format('Y-m-d H:i');
-            $now = Carbon::now()->timezone($one->timezone)->format('Y-m-d H:i');
+            $now = Carbon::now()->timezone($one->user->timezone)->format('Y-m-d H:i');
+            $dateData = $dateData . ' ; ' . $one->user->timezone . ' : ' . $now;
             if ($now === $schedule) {
                 $email = $one->user->email;
                 Mail::send('mails.notification', [], function($message) use ($email)
@@ -65,5 +67,6 @@ class ScheduleByMinute extends Command
                 $res = event(new NotificationEvent($data));
             }
         }
+        echo $dateData;
     }
 }
