@@ -38,8 +38,8 @@
 								<th>@lang('locale.scheduler.scheduleTitle')</th>
 								<th>@lang('locale.scheduler.scheduleDescription')</th>
 								<th>@lang('locale.scheduler.schedule')</th>
-								<th>@lang('locale.CreatedAt')</th>
-								<th>@lang('locale.UpdatedAt')</th>
+								{{-- <th>@lang('locale.CreatedAt')</th>
+								<th>@lang('locale.UpdatedAt')</th> --}}
 								<th>@lang('locale.Actions')</th>
 							</tr>
 						</thead>
@@ -54,8 +54,8 @@
 								<td>{{ $one->title }}</td>
 								<td>{{ $one->description }}</td>
 								<td>{{ $one->schedule }}</td>
-								<td>{{ $one->created_at }}</td>
-								<td>{{ $one->updated_at }}</td>
+								{{-- <td>{{ $one->created_at }}</td>
+								<td>{{ $one->updated_at }}</td> --}}
 								<td>
 									<form id="deleteForm{{ $one->id }}" action="{{ route('schedulers.destroy', $one) }}" method="POST" style="display: none;">
 										@csrf
