@@ -28,12 +28,12 @@
 			<div class="card">
 				<div class="card-content">
           <div class="btn-group dropdown mb-1" style="position: absolute; right: 2px; top: 5px; z-index: 1;">
-            <a class="btn btn-sm btn-success" href="javascript:download({{ $post->id }})">Download Image</a>
-            <a class="btn btn-sm btn-danger" href="javascript:copy({{ $post->id }})">Copy to clipboard</a>
+            <a class="btn btn-sm btn-success" href="javascript:download({{ $post->id }})">@lang('locale.mypost.download')</a>
+            <a class="btn btn-sm btn-danger" href="javascript:copy({{ $post->id }})">@lang('locale.mypost.clipboard')</a>
             @if (\Carbon\Carbon::parse($post->schedule->schedule ?? '0000-00-00 00:00')->format('Y-m-d H:i') < \Carbon\Carbon::now()->format('Y-m-d H:i'))
-              <button class="btn btn-sm btn-primary" onclick="addSchedule({{ $post }});">Add Schedule</button>
+              <button class="btn btn-sm btn-primary" onclick="addSchedule({{ $post }});">@lang('locale.mypost.add')</button>
             @else
-              <button class="btn btn-sm btn-info" onclick="updateSchedule({{ $post }});">Update Schedule</button>
+              <button class="btn btn-sm btn-info" onclick="updateSchedule({{ $post }});">@lang('locale.mypost.update')</button>
             @endif
           </div>
           <canvas id="canvas-{{ $post->id }}" class="card-img-top img-fluid canvas-image" width="100%" post-id="{{ $post->id }}" img-path="/storage/{{ $post->post_image }}" is-overlay="{{ $post->isoverlay }}" profile-color="{{ $post->profile->favour_color }}" alt="Approved posts"></canvas>
@@ -60,7 +60,7 @@
       <div class="modal-dialog modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modal-title">Add Schedule</h5>
+            <h5 class="modal-title" id="modal-title">@lang('locale.mypost.add')</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -96,7 +96,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">@lang('locale.save')</button>
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
       );
     }
     function addSchedule(post) {
-      $('#modal-title').text('Add schedule');
+      $('#modal-title').text('{{ trans('locale.mypost.add') }}');
       $('#schedule-form').attr('method', 'POST');
       $('#schedule-form').attr('action', '/schedulers/'+ post['id'] +'/create');
       $('#schedule-title').val('');
@@ -190,7 +190,7 @@
       });
     }
     function updateSchedule(post) {
-      $('#modal-title').text('Update schedule');
+      $('#modal-title').text('{{ trans('locale.mypost.update') }}');
       $('#schedule-form').attr('method', 'POST');
       $('#schedule-form').attr('action', '/schedulers/'+ post['id'] +'/create');
       $('#schedule-title').val(post['schedule']['title']);

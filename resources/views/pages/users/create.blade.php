@@ -30,25 +30,25 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
               <strong>{{ trans('locale.user.field.name') }}:</strong>
-              {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+              {!! Form::text('name', null, array('placeholder' => trans('locale.user.field.name'),'class' => 'form-control')) !!}
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
               <strong>{{ trans('locale.user.field.email') }}:</strong>
-              {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+              {!! Form::text('email', null, array('placeholder' => trans('locale.user.field.email'),'class' => 'form-control')) !!}
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
               <strong>{{ trans('locale.user.field.password') }}:</strong>
-              {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+              {!! Form::password('password', array('placeholder' => trans('locale.user.field.password'),'class' => 'form-control')) !!}
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
               <strong>{{ trans('locale.user.field.confirm-password') }}:</strong>
-              {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+              {!! Form::password('confirm-password', array('placeholder' => trans('locale.user.field.confirm-password'),'class' => 'form-control')) !!}
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">

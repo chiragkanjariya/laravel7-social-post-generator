@@ -63,8 +63,8 @@
 									<input type="hidden" name="create_image_status" id="create-image-status" value="false"/>
 									<div style="margin-left: calc(49.5% - 70px); margin-top: 10px;">
 										<label class="btn btn-sm btn-primary text-white cursor-pointer"
-												for="create-image-upload" id="create_upload_new">Upload</label>
-										<label class="btn btn-sm btn-danger text-white cursor-pointer" id="create_upload_remove">Remove</label>
+												for="create-image-upload" id="create_upload_new">@lang('locale.account.upload')</label>
+										<label class="btn btn-sm btn-danger text-white cursor-pointer" id="create_upload_remove">@lang('locale.account.remove')</label>
 										<input type="file" name="photo" id="create-image-upload" ref="create_image_upload" hidden>
 									</div>
 									</div>
@@ -134,9 +134,8 @@
 								</div>
   
 								<div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-								  <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
-									 changes</button>
-								  <button type="reset" class="btn btn-outline-warning">Cancel</button>
+								  <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">@lang('locale.account.save')</button>
+								  <button type="reset" class="btn btn-outline-warning">@lang('locale.cancel')</button>
 								</div>
 							 </div>
 						  </form>

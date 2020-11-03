@@ -27,14 +27,30 @@ return [
     "delete" => "Delete",
     "warning" => "Warning",
     "success" => "Success",
+    "cancel" => "Cancel",
+    "save" => "Save",
     "post-manage" => [
-        "title" => "Post management"
+        "title" => "Post management",
+        "view" => "View Profile",
+        "create" => "Create Post",
+        "modal" => [
+            "title" => "Create new post",
+            "upload" => "Upload new image",
+            "remove" => "Remove image",
+            "overlay" => "Image overlay",
+            "fieldTitle" => "Title",
+            "content" => "Content"
+        ]
     ],
     "post-view" => [
         "title" => "New posts"
     ],
     "mypost" => [
         "title" => "My posts",
+        "download" => "Download Image",
+        "clipboard" => "Copy to Clipboard",
+        "update" => "Update Schedule",
+        "add" => "Add Schedule",
         "message" => [
             "delete" => "The post is deleted successfully."
         ]
@@ -94,7 +110,9 @@ return [
         "status" => [
             "title" => "Status",
             "activate" => "Activate",
-            "deactivate" => "Deactivate"
+            "deactivate" => "Deactivate",
+            "activated" => "Activated",
+            "deactivated" => "Deactivated"
         ],
         "field" => [
             "name" => "Name",
@@ -111,6 +129,7 @@ return [
     ],
     "profile" => [
         "title" => "My profile",
+        "profile" => "Profile",
         "save" => "Save Profile",
         "update" => "Update Profile",
         "edit" => "Edit Profile",
@@ -130,7 +149,9 @@ return [
         'title' => "My Account",
         "create" => "Create Account",
         "edit" => "Edit Account",
-        "save" => "Save Account",
+        "save" => "Save Changes",
+        "upload" => "Upload",
+        "remove" => "Remove",
         "firstname" => "First Name",
         "lastname" => "Last Name",
         "timezone" => "Timezone",

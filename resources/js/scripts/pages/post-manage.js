@@ -127,7 +127,7 @@
             '        <h4 class="card-title">' + result['posts'][row].post_title + '</h4>\n' +
             '        <p class="card-text text-left">' + result['posts'][row].post_content + '</p>\n' +
             '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
-            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result['posts'][row].id + ')">Delete</a>\n' +
+            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result['posts'][row].id + ')">{{ trans("locale.delete") }}</a>\n' +
             '        </div>\n' +
             '      </div>\n' +
             '    </div>\n' +
@@ -167,10 +167,10 @@
     if (profile.user.status == 'activated')
     {
       $('#user-status').removeClass('badge-warning').addClass('badge-success')
-      $('#user-status').text("Activated")
+      $('#user-status').text("{{ trans('locale.user.status.activated') }}")
     } else {
       $('#user-status').removeClass('badge-success').addClass('badge-warning')
-      $('#user-status').text("Deactivated")
+      $('#user-status').text("{{ trans('locale.user.status.deactivated') }}")
     }
 
     var postDate = $('#postDate').val();
@@ -197,7 +197,7 @@
             '        <h4 class="card-title">' + result['posts'][row].post_title + '</h4>\n' +
             '        <p class="card-text text-left">' + result['posts'][row].post_content + '</p>\n' +
             '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
-            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result['posts'][row].id + ')">Delete</a>\n' +
+            '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + result['posts'][row].id + ')">{{ trans("locale.delete") }}</a>\n' +
             '        </div>\n' +
             '      </div>\n' +
             '    </div>\n' +
@@ -325,7 +325,7 @@
           '        <h4 class="card-title">' + data.post_title + '</h4>\n' +
           '        <p class="card-text text-left">' + data.post_content + '</p>\n' +
           '        <div class="card-btns d-flex justify-content-between pull-right mb-2">\n' +
-          '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + data.id + ')" >Delete</a>\n' +
+          '          <a href="#" class="btn btn-sm btn-danger" onclick="delete_post(' + data.id + ')" >{{ trans("locale.delete") }}</a>\n' +
           '        </div>\n' +
           '      </div>\n' +
           '    </div>\n' +
