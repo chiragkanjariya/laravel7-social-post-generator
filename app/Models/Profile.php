@@ -32,7 +32,7 @@ class Profile extends Model
      */
     protected $fillable = [
         'user_id',
-        'niche_id',
+        'niche',
         'hashtag',
         'favour_color',
         'instagram'
@@ -53,10 +53,10 @@ class Profile extends Model
      * 
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function niche(): BelongsTo
-    {
-        return $this->belongsTo(Niche::class, 'niche_id', 'id');
-    }
+    // public function niche(): BelongsTo
+    // {
+    //     return $this->belongsTo(Niche::class, 'niche_id', 'id');
+    // }
 
     /**
      * The posts which has the profile.

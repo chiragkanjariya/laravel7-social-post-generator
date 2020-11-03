@@ -47,7 +47,7 @@
 							@foreach($profiles as $key => $profile)
 							<tr>
 								<td>{{ $profile->id }}</td>
-								<td>{{ $profile->niche->name }}</td>
+								<td>{{ $profile->niche }}</td>
 								<td>
 									@php
 										$hashtags = explode(',', $profile->hashtag);

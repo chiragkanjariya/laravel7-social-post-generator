@@ -72,7 +72,7 @@ class ProfileController extends Controller
         return view('/pages/profiles/create', [
             'pageConfigs' => $this->pageConfigs,
             'breadcrumbs' => $breadcrumbs,
-            'niches' => $niches
+            // 'niches' => $niches
         ]);
     }
 
@@ -90,7 +90,7 @@ class ProfileController extends Controller
             'favour_color' => 'required',
         ]);
         Auth::user()->profiles()->create([
-            'niche_id' => $request->niche,
+            'niche' => $request->niche,
             'hashtag' => $request->hashtag,
             'favour_color' => $request->favour_color,
             'instagram' => $request->instagram
