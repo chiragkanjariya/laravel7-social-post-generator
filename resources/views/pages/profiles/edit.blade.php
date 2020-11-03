@@ -40,7 +40,7 @@
 			@method('PUT')
 			<fieldset class="form-group">
 				<label for="niche">@lang('locale.profile.niche')</label>
-				<input class="form-control" value="{{ $profile->niche->name }}" readonly/>
+				<input class="form-control" value="{{ $profile->niche }}" readonly/>
 			</fieldset>
 
 			<fieldset class="form-group">

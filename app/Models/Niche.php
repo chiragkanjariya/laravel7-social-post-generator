@@ -18,8 +18,8 @@ class Niche extends Model
      * 
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function profiles(): HasMany
-    {
-        return $this->hasMany(Profile::class, 'niche_id', 'id');
-    }
+    // public function profiles(): HasMany
+    // {
+    //     return $this->hasMany(Profile::class, 'niche_id', 'id');
+    // }
 }

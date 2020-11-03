@@ -39,11 +39,12 @@
 			@csrf
 			<fieldset class="form-group">
 				<label for="niche">@lang('locale.profile.niche')*</label>
-				<select name="niche" class="form-control">
+				{{-- <select name="niche" class="form-control">
 					@foreach ($niches as $niche)
 					<option value="{{ $niche->id }}">{{ $niche->name }}</option>
 					@endforeach
-				</select>
+				</select> --}}
+				<input name="niche" class="form-control" value="{{ old('niche') }}">
 				<span class="danger">{{ $errors->first('niche') }}</span>
 			</fieldset>
 
