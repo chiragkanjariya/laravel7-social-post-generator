@@ -15,15 +15,15 @@
     <div class="profile-sidebar-area">
       <div class="scroll-area pt-0">
         <p class="pb-0">
-          <span class="text-bold-600 mx-50 font-medium-1">Email : </span>
+          <span class="text-bold-600 mx-50 font-medium-1">@lang('locale.user.field.email') : </span>
           <span class="font-medium-1" id="user-email"></span>
         </p>
         <p class="pb-0">
-          <span class="text-bold-600 mx-50 font-medium-1">Role : </span>
+          <span class="text-bold-600 mx-50 font-medium-1">@lang('locale.user.field.role') : </span>
           <span class="font-medium-1" id="user-role"></span>
         </p>
         <p class="pb-0">
-          <span class="text-bold-600 mx-50 font-medium-1">Status : </span>
+          <span class="text-bold-600 mx-50 font-medium-1">@lang('locale.user.status.title') : </span>
           <span class="badge badge-success font-medium-1" id="user-status">Activated</span>
         </p>
       </div>

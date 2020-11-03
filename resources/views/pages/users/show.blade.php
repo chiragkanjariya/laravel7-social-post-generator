@@ -12,7 +12,6 @@
 @section('content')
   @if (count($errors) > 0)
     <div class="alert alert-danger" role="alert">
-      <h4 class="alert-heading">There were some problems with your input</h4>
       @foreach ($errors->all() as $error)
         <i class="feather icon-info ml-2 align-middle"></i>
         <span class="mb-0 text-white-50">
@@ -29,19 +28,19 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-              <strong>Name:</strong>
+              <strong>@lang('locale.user.field.name'):</strong>
               {{ $user->name }}
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-              <strong>Email:</strong>
+              <strong>@lang('locale.user.field.email'):</strong>
               {{ $user->email }}
             </div>
           </div>
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-              <strong>Roles:</strong>
+              <strong>@lang('locale.user.field.role'):</strong>
               @if(!empty($user->getRoleNames()))
                 @foreach($user->getRoleNames() as $v)
                   <label class="badge badge-success">{{ $v }}</label>

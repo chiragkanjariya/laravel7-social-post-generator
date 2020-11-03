@@ -21,8 +21,8 @@
 						alt="avatar" width="200" style="margin-left: calc(50% - 100px);" />
 				<div style="margin-left: calc(49.5% - 70px); margin-top: 10px;">
 					<label class="btn btn-sm btn-primary text-white cursor-pointer"
-							for="create-image-upload" id="create_upload_new">Upload</label>
-					<label class="btn btn-sm btn-danger text-white cursor-pointer" id="create_upload_remove">Remove</label>
+							for="create-image-upload" id="create_upload_new">@lang('locale.account.upload')</label>
+					<label class="btn btn-sm btn-danger text-white cursor-pointer" id="create_upload_remove">@lang('locale.account.remove')</label>
 					<input type="file" name="image" id="create-image-upload" ref="create_image_upload" hidden>
 				</div>
 				</div>
@@ -36,7 +36,7 @@
 
 			<fieldset class="form-group">
 				<div class="controls">
-					<label for="content">Content*</label>
+					<label for="content">@lang('locale.freepost.content')*</label>
 					<textarea name="content" class="form-control"rows="5"></textarea>
 				 </div>
 				<span class="danger">{{ $errors->first('content') }}</span>

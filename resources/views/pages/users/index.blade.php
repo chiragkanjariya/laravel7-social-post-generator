@@ -29,24 +29,24 @@
                 <table class="table nowrap scroll-horizontal-vertical" width="100%">
                   <thead>
                   <tr>
-                    <th width="10%">No</th>
-                    <th width="20%">Name</th>
-                    <th width="20%">Email</th>
-                    <th width="10%">Roles</th>
-                    <th width="10%">Status</th>
-                    <th width="30%">Action</th>
+                    <th width="10%">#</th>
+                    <th width="20%">@lang('locale.user.field.name')</th>
+                    <th width="20%">@lang('locale.user.field.email')</th>
+                    <th width="10%">@lang('locale.user.field.role')</th>
+                    <th width="10%">@lang('locale.user.status.title')</th>
+                    <th width="30%">@lang('locale.Actions')</th>
                   </tr>
                   </thead>
                   <tbody>
                   @foreach ($data as $key => $user)
                     <tr>
-                      <td>{{ ++$i }}</td>
+                      <td>{{ $user->id }}</td>
                       <td>{{ $user->name }}</td>
                       <td>{{ $user->email }}</td>
                       <td>
                         @if(!empty($user->getRoleNames()))
                           @foreach($user->getRoleNames() as $v)
-                            <label class="badge badge-success">{{ $v }}</label>
+                            <label class="badge badge-info">{{ $v }}</label>
                           @endforeach
                         @endif
                       </td>
