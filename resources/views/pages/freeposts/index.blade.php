@@ -61,13 +61,13 @@
   <script>
 		function deletePost(postId) {
 			Swal.fire({
-				title: 'Are you sure?',
-				text: "You won't be able to revert this!",
+				title: "@lang('locale.swal.delConfirm.title')",
+				text: "@lang('locale.swal.delConfirm.texst')",
 				type: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
 				cancelButtonColor: '#d33',
-				confirmButtonText: 'Yes, delete it!',
+				confirmButtonText: "@lang('locale.swal.delConfirm.yes')",
 				confirmButtonClass: 'btn btn-primary',
 				cancelButtonClass: 'btn btn-danger ml-1',
 				buttonsStyling: false,
