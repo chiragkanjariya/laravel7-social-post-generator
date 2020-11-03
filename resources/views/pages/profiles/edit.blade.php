@@ -11,6 +11,9 @@
 		.favour-color {
 			padding: 2px;
 		}
+		.bootstrap-tagsinput input {
+			width: 350px !important;
+		}
 	</style>
 @endsection
 

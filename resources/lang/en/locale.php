@@ -117,7 +117,7 @@ return [
         "create" => "Create Profile",
         "niche" => "Niche",
         "hashtag" => "Hashtag",
-        "addTag" => "Add 3 more tags...",
+        "addTag" => "The hashtags are separated by ' , ' or ' enter '",
         "favourColor" => "Favour Color",
         "instagram" => "Instagram",
         "instagram_hold" => "Example: https://www.instagram.com/user",
