@@ -2,7 +2,7 @@
 
 return [
     "Dashboard" => "Como funciona",
-	"How it works" => "Como funciona",
+    "HowItWorks" => "Como funciona",
     "id" => "ID",
     "CreatedAt" => "Criado em",
     "UpdatedAt" => "Atualizado em",
@@ -24,16 +24,34 @@ return [
     "userPanel" => "Painel do usuário",
     "adminPanel" => "Painel de administração",
     "approve" => "Aprovar",
+    "disapprove" => "Disapprove",
     "delete" => "Deletar",
     "warning" => "Atenção",
+    "success" => "Success",
+    "cancel" => "Cancel",
+    "save" => "Save",
     "post-manage" => [
-        "title" => "Gerenciar post"
+        "title" => "Gerenciar post",
+        "view" => "View Profile",
+        "create" => "Create Post",
+        "modal" => [
+            "title" => "Create new post",
+            "upload" => "Upload new image",
+            "remove" => "Remove image",
+            "overlay" => "Image overlay",
+            "fieldTitle" => "Title",
+            "content" => "Content"
+        ]
     ],
     "post-view" => [
         "title" => "Novos posts"
     ],
     "mypost" => [
         "title" => "Meu posts",
+        "download" => "Download Image",
+        "clipboard" => "Copy to Clipboard",
+        "update" => "Update Schedule",
+        "add" => "Add Schedule",
         "message" => [
             "delete" => "A postagem foi excluída com sucesso."
         ]
@@ -93,7 +111,9 @@ return [
         "status" => [
             "title" => "Status",
             "activate" => "Ativar",
-            "deactivate" => "Desativar"
+            "deactivate" => "Desativar",
+            "activated" => "Activated",
+            "deactivated" => "Deactivated"
         ],
         "field" => [
             "name" => "Nome",
@@ -110,6 +130,7 @@ return [
     ],
     "profile" => [
         "title" => "Meu perfil",
+        "profile" => "Profile",
         "save" => "Salvar perfil",
         "update" => "Atualizar perfil",
         "edit" => "Editar Perfil",
@@ -130,6 +151,8 @@ return [
         "create" => "Criar conta",
         "edit" => "Editar conta",
         "save" => "Salvar conta",
+        "upload" => "Upload",
+        "remove" => "Remove",
         "firstname" => "Nome",
         "lastname" => "Sobrenome",
         "timezone" => "Fuso horário",
@@ -140,6 +163,22 @@ return [
         "retypePassword" => "Repita a nova senha",
         "message" => [
             'save' => "As informações da sua conta foram salvas com sucesso."
+        ]
+    ],
+    "scheduler" => [
+        "title" => "Scheduler",
+        "create" => "Create Schedule",
+        "edit" => "Edit Schedule",
+        "save" => "Save Schedule",
+        "post" => "Post",
+        "update" => "Update Schedule",
+        "schedule" => "Schedule",
+        "scheduleTitle" => "Schedule Title",
+        "scheduleDescription" => "Schedule Description",
+        "message" => [
+            "save" => "Your schedule is saved successfully.",
+            "update" => "The schedule is updated successfully.",
+            "delete" => "The schedule is deleted successfully."
         ]
     ],
     "scrap-image" => [
@@ -155,7 +194,8 @@ return [
     "swal" => [
         "delConfirm" => [
             "title" => "Você tem certeza?",
-            "text" => "Você não será capaz de reverter isso!"
+            "text" => "Você não será capaz de reverter isso!",
+            "yes" => "Yes, delete it!"
         ],
     ]
 ];
