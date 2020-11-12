@@ -2,6 +2,7 @@
 
 return [
     "Dashboard" => "Como funciona",
+	"How it works" => "Como funciona",
     "id" => "ID",
     "CreatedAt" => "Criado em",
     "UpdatedAt" => "Atualizado em",
@@ -38,13 +39,13 @@ return [
         ]
     ],
     "freepost" => [
-        "title" => "postagens grátis",
-        "create" => "Crie uma postagem gratuita",
-        "save" => "Salvar postagem",
-        "content" => "Publicar conteúdo",
+        "title" => "Postagens Free Style",
+        "create" => "Crie uma Postagem",
+        "save" => "Salvar Postagem",
+        "content" => "Publicar Conteúdo",
         "message" => [
-            "save" => "A postagem gratuita foi armazenada com sucesso.",
-            "delete" => "A postagem gratuita foi removida com sucesso."
+            "save" => "A postagem foi armazenada com sucesso.",
+            "delete" => "A postagem foi removida com sucesso."
         ]
     ],
     "instagram" => [
@@ -72,7 +73,7 @@ return [
         "list" => "Lista de funções",
         "name" => "Nome",
         "details" => "Detalhes da função",
-        "permissions" => "Permições",
+        "permissions" => "Permissões",
         "message" => [
             "save" => "A função foi adicionada com sucesso.",
             "update" => "A função foi atualizada com sucesso.",
@@ -81,8 +82,8 @@ return [
     ],
     "user" => [
         "title" => "Gestão de usuários",
-        "create" => "Criar usuário",
-        "edit" => "Criar usuário",
+        "create" => "Criar Usuário",
+        "edit" => "Editar Usuário",
         "update" => "Atualizar usuário",
         "save" => "Salvar usuário",
         "delete" => "Deletar usuário",
@@ -97,7 +98,7 @@ return [
         "field" => [
             "name" => "Nome",
             "email" => "Email",
-            "role" => "Fun",
+            "role" => "Função",
             "password" => "Senha",
             "confirm-password" => "Confirmar senha"
         ],
@@ -116,12 +117,12 @@ return [
         "niche" => "Nicho",
         "hashtag" => "Hashtag",
         "addTag" => "Adicione 3 ou mais tags...",
-        "favourColor" => "Cor favorita",
+        "favourColor" => "Cor Favorita",
         "instagram" => "Instagram",
         "instagram_hold" => "Exemplo: https://www.instagram.com/user",
         "message" => [
             "delete" => " O perfil foi excluído com sucesso.",
-            "overProfile" => "A quantidade de perfis para o seu nível acabou."
+            "overProfile" => "A quantidade de perfis para o seu nível se esgotou."
         ]
     ],
     "account" => [
@@ -149,12 +150,12 @@ return [
         "lockTitle" => "Sua conta está bloqueada!",
         "lockDescription" => "Sua conta está bloqueada pelo administrador agora, entre em contato com o administrador.",
         "notMatchPassword" => "A senha especificada não corresponde à senha do banco de dados.",
-        "postImageValidate" => "The post image is not uploaded."
+        "postImageValidate" => "A postagem não foi upada."
     ],
     "swal" => [
         "delConfirm" => [
             "title" => "Você tem certeza?",
-            "text" => "Você não seria capaz de reverter isso!"
+            "text" => "Você não será capaz de reverter isso!"
         ],
     ]
 ];
