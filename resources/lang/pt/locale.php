@@ -48,10 +48,10 @@ return [
     ],
     "mypost" => [
         "title" => "Meu posts",
-        "download" => "Download Image",
-        "clipboard" => "Copy to Clipboard",
-        "update" => "Update Schedule",
-        "add" => "Add Schedule",
+        "download" => "Download Imagem",
+        "clipboard" => "Copiar para Teclado (Ctrl+C)",
+        "update" => "Atualizar Agendamento",
+        "add" => "Adicionar Agendamento",
         "message" => [
             "delete" => "A postagem foi excluída com sucesso."
         ]
@@ -166,19 +166,19 @@ return [
         ]
     ],
     "scheduler" => [
-        "title" => "Scheduler",
-        "create" => "Create Schedule",
-        "edit" => "Edit Schedule",
-        "save" => "Save Schedule",
+        "title" => "Agendamento",
+        "create" => "Criar Agendamento",
+        "edit" => "Editar Agendamento",
+        "save" => "Salvar Agendamento",
         "post" => "Post",
-        "update" => "Update Schedule",
-        "schedule" => "Schedule",
-        "scheduleTitle" => "Schedule Title",
-        "scheduleDescription" => "Schedule Description",
+        "update" => "Atualizar Agendamento",
+        "schedule" => "Agendamento",
+        "scheduleTitle" => "Título Agendamento",
+        "scheduleDescription" => "Descrição Agendamento",
         "message" => [
-            "save" => "Your schedule is saved successfully.",
-            "update" => "The schedule is updated successfully.",
-            "delete" => "The schedule is deleted successfully."
+            "save" => "Seu Agendamento foi salvo com sucesso.",
+            "update" => "Seu Agendamento foi atualizado com sucesso.",
+            "delete" => "Seu Agendamento foi removido com sucesso."
         ]
     ],
     "scrap-image" => [
