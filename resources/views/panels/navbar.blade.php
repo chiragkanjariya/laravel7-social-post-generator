@@ -1,16 +1,15 @@
-@if($configData["mainLayoutType"] == 'horizontal' && isset($configData["mainLayoutType"]))
-<nav class="header-navbar navbar-expand-lg navbar navbar-with-menu {{ $configData['navbarColor'] }} navbar-fixed">
-  <div class="navbar-header d-xl-block d-none">
-    <ul class="nav navbar-nav flex-row">
-      <li class="nav-item"><a class="navbar-brand" href="dashboard-analytics">
-          <div class="brand-logo"></div>
-        </a></li>
-    </ul>
-  </div>
+  @if($configData["mainLayoutType"] == 'horizontal' && isset($configData["mainLayoutType"]))
+  <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu {{ $configData['navbarColor'] }} navbar-fixed">
+    <div class="navbar-header d-xl-block d-none">
+      <ul class="nav navbar-nav flex-row">
+        <li class="nav-item"><a class="navbar-brand" href="dashboard-analytics">
+            <div class="brand-logo"></div>
+          </a></li>
+      </ul>
+    </div>
   @else
-  <nav
-    class="header-navbar navbar-expand-lg navbar navbar-with-menu {{ $configData['navbarClass'] }} navbar-light navbar-shadow {{ $configData['navbarColor'] }}">
-    @endif
+  <nav class="header-navbar navbar-expand-lg navbar navbar-with-menu {{ $configData['navbarClass'] }} navbar-light navbar-shadow {{ $configData['navbarColor'] }}">
+  @endif
     <div class="navbar-wrapper">
       <div class="navbar-container content">
         <div class="navbar-collapse" id="navbar-mobile">
@@ -309,7 +308,7 @@
       Notification.requestPermission(permission => {
         if ('serviceWorker' in navigator && 'PushManager' in window) {
           navigator.serviceWorker.register('sw.js')
-            .then(function(swReg) {
+            .then(function (swReg) {
               const url = new URL(window.location.href);
               let message_url = url.protocol + '//' + url.hostname;
               if (url.port) message_url += ':' + url.port;
@@ -325,28 +324,12 @@
               };
               swReg.showNotification(title, options);
             })
-            .catch(function(error) {
+            .catch(function (error) {
               alert('Service Worker Error' + error);
             });
         } else {
           alert('Push messaging is not supported');
         }
-
-      {{--Notification.requestPermission(permission => {--}}
-      {{--  let notification = new Notification(data.title, {--}}
-      {{--    body: data.message.message, // content for the alert--}}
-      {{--    icon: '{{ asset('images/icons/notification.png') }}' // optional image url--}}
-      {{--  });--}}
-
-      {{--  // link to page on clicking the notification--}}
-      {{--  notification.onclick = () => {--}}
-      {{--    const url = new URL(window.location.href);--}}
-      {{--    let message_url = url.protocol + '//' + url.hostname;--}}
-      {{--    if (url.port) message_url += ':' + url.port;--}}
-      {{--    message_url += data.url;--}}
-      {{--    window.open(message_url);--}}
-      {{--  };--}}
-      {{--})--}}
+      });
     });
-
   </script>
