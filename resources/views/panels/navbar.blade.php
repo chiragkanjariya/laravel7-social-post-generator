@@ -307,20 +307,46 @@
       }
 
       Notification.requestPermission(permission => {
-        let notification = new Notification(data.title, {
-          body: data.message.message, // content for the alert
-          icon: '{{ asset('images/icons/notification.png') }}' // optional image url
-        });
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+          navigator.serviceWorker.register('sw.js')
+            .then(function(swReg) {
+              const url = new URL(window.location.href);
+              let message_url = url.protocol + '//' + url.hostname;
+              if (url.port) message_url += ':' + url.port;
+              message_url += data.url;
 
-        // link to page on clicking the notification
-        notification.onclick = () => {
-          const url = new URL(window.location.href);
-          let message_url = url.protocol + '//' + url.hostname;
-          if (url.port) message_url += ':' + url.port;
-          message_url += data.url;
-          window.open(message_url);
-        };
-      })
+              const title = data.title;
+              const options = {
+                data: {
+                  url: message_url
+                },
+                body: data.message.message,
+                icon: "{{ asset('images/icons/notification.png') }}"
+              };
+              swReg.showNotification(title, options);
+            })
+            .catch(function(error) {
+              alert('Service Worker Error' + error);
+            });
+        } else {
+          alert('Push messaging is not supported');
+        }
+
+      {{--Notification.requestPermission(permission => {--}}
+      {{--  let notification = new Notification(data.title, {--}}
+      {{--    body: data.message.message, // content for the alert--}}
+      {{--    icon: '{{ asset('images/icons/notification.png') }}' // optional image url--}}
+      {{--  });--}}
+
+      {{--  // link to page on clicking the notification--}}
+      {{--  notification.onclick = () => {--}}
+      {{--    const url = new URL(window.location.href);--}}
+      {{--    let message_url = url.protocol + '//' + url.hostname;--}}
+      {{--    if (url.port) message_url += ':' + url.port;--}}
+      {{--    message_url += data.url;--}}
+      {{--    window.open(message_url);--}}
+      {{--  };--}}
+      {{--})--}}
     });
 
   </script>
