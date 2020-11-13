@@ -4,6 +4,7 @@ self.addEventListener('push', function(event) {
 });
 
 self.addEventListener('notificationclick', function(event) {
+  console.log(event.notification);
   event.notification.close();
   event.waitUntil(
     clients.openWindow(event.notification.notification.data.url)
