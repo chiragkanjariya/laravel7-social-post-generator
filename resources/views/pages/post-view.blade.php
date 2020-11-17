@@ -37,7 +37,7 @@
                   @foreach($profiles as $profile)
                     <option value="{{ $profile->id }}" {{ ++$index == 1 ? "selected" : "" }}
                         profile-color="{{ $profile->favour_color }}"
-                        profile-hashtag="{{ $profile->hashtag }}">{{ $profile->niche->name }} @lang('locale.profile.profile')</option>
+                        profile-hashtag="{{ $profile->hashtag }}">{{ $profile->niche ?? '' }} @lang('locale.profile.profile')</option>
                   @endforeach
                 </select>
               </div>

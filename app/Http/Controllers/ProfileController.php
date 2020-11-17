@@ -142,6 +142,7 @@ class ProfileController extends Controller
     public function update(Request $request, Profile $profile): RedirectResponse
     {
         $validator = $request->validate([
+            'niche' => ['required'],
             'hashtag' => ['required', new TagValidate],
             'favour_color' => 'required',
         ]);

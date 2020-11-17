@@ -54,9 +54,8 @@ class PostController extends Controller
   public function manage_index(){
     $result = array();
     $profiles = DB::select(DB::raw('
-    SELECT profiles.*, posts_cnt.cnt, niches.name as niche_name FROM profiles
+    SELECT profiles.*, posts_cnt.cnt FROM profiles
       LEFT JOIN (SELECT COUNT(posts.id) AS cnt, posts.profile_id FROM posts WHERE DATE(posts.created_at) = '. date('Y-m-d') .' GROUP BY posts.profile_id) AS posts_cnt ON profiles.id = posts_cnt.profile_id
-      LEFT JOIN niches ON profiles.niche_id = niches.id
     ORDER BY posts_cnt.cnt'));
     foreach ($profiles as $profile)
     {
@@ -64,7 +63,7 @@ class PostController extends Controller
       $role = $user->roles->first()->name;
       $id = $profile->id;
       $count = $profile->cnt;
-      $niche = $profile->niche_name;
+      $niche = $profile->niche;
       $hashtags = $profile->hashtag;
       $color = $profile->favour_color;
       array_push($result, array('user'=> $user, 'role'=> $role, 'id'=> $id, 'count'=> $count, 'niche'=> $niche, 'hashtags'=>$hashtags, 'color'=> $color));
